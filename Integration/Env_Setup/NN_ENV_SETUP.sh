@@ -38,6 +38,7 @@ else
 	echo "Check later if jupyter was properly installed."
 fi 
 conda install --yes -c anaconda pandas=1.1.3
+conda install -yes -c numpy=1.18.5
 conda install --yes -c anaconda pyodbc=4.0.31
 conda install --yes -c anaconda scikit-learn=0.23.2
 conda install --yes -c anaconda statsmodels=0.12.0
