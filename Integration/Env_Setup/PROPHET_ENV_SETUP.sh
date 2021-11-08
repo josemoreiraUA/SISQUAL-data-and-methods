@@ -44,3 +44,6 @@ conda install --yes -c anaconda pyodbc=4.0.31
 conda install --yes -c anaconda scikit-learn=0.23.2
 conda install --yes -c anaconda statsmodels=0.12.0
 conda install --yes -c conda-forge python-dotenv=0.19.0
+conda install --yes -c numpy=1.18.5
+conda install --yes -c flask
+conda install --yes -c requests

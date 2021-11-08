@@ -38,9 +38,11 @@ else
 	echo "Check later if jupyter was properly installed."
 fi 
 conda install --yes -c anaconda pandas=1.1.3
-conda install --yes -c numpy=1.18.5
 conda install --yes -c anaconda pyodbc=4.0.31
 conda install --yes -c anaconda scikit-learn=0.23.2
 conda install --yes -c anaconda statsmodels=0.12.0
 conda install --yes -c conda-forge python-dotenv=0.19.0
 echo y | "$CONDAPATH"/envs/$1/Scripts/pip install --trusted-host=pypi.python.org --trusted-host=pypi.org --trusted-host=files.pythonhosted.org tensorflow==2.2.0
+conda install --yes numpy=1.18.5
+conda install --yes flask
+conda install --yes requests
