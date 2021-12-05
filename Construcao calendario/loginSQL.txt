@@ -1,0 +1,2 @@
+userid = sisqual
+password = rh4.0
