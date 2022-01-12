@@ -1,1 +1,1 @@
-Essa pasta contém os ficheiros Python utilizados nos notebooks. Essa estratégia tem por finalidade reduzir a complexidade visual dos notebooks e estruturar melhor o código utilizado.
+Essa pasta contém os ficheiros Python importados pelos notebooks para tratamento de dados. Essa estratégia tem o objetivo de dar melhor visibildiade aos notebooks e estruturar melhor o código utilizado.
