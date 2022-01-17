@@ -1,3 +1,2 @@
-Nessa pasta estão os ficheiros processados de cada loja.
-Regra para os nomes dos ficheiros:
-df_idloja.csv
+##### In this folder are the processed files of each store. Rule for the file names:
+###### df_idloja.csv
