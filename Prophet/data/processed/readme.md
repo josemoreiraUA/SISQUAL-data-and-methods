@@ -1,1 +1,1 @@
-Ficheiros processados devem ser mantidos nessa pasta
+###### Processed files must be stored in this folder
