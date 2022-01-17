@@ -1,3 +1,5 @@
-Essa pasta foi criada para armazenar os ficheiros do banco de dados da Sisqual, criados de forma intermediária para serem tratados. Refere-se aos ficheiros de cada loja e possuem as horas que possuem registo.
-Sua nomenclatura segue o seguinte padrão:
-<ID_LOJA>_sales_dataframe_with_vd_hours.csv
+
+#### This folder was created to store the Sisqual database files, created in an intermediate way to be processed. It refers to the files of each store and they have the hours that have record. Its nomenclature follows the following pattern:
+###### <STORE_ID>_sales_dataframe_with_vd_hours.csv
+
+
