@@ -1,3 +1,2 @@
-Nessa pasta estão os ficheiros das lojas com resample para 30 minutos
-Formato do nome dos ficheiros:
-store_id_loja.csv
+##### In this folder are the files of the stores with resample for 30 minutes. File name format:
+###### store_id_store.csv
