@@ -1,1 +1,1 @@
-Essa pasta está destinada a armazenar as imagens geradas pelo Prophet
+###### This folder has the purpose to store all images used in this project
