@@ -1,1 +1,1 @@
-Ficheiros sem processamento ou sem tratamento, devem ser mantidos nessa pasta
+###### Raw files must be stored in this folder
