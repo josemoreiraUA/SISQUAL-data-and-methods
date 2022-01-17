@@ -1,1 +1,1 @@
-Ficheiros externos devem ser mantidos nessa pasta
+###### External files must be stored in this folder
