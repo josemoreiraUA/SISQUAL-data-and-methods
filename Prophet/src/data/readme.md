@@ -1,1 +1,1 @@
-Essa pasta contém os ficheiros Python importados pelos notebooks para tratamento de dados. Essa estratégia tem o objetivo de dar melhor visibildiade aos notebooks e estruturar melhor o código utilizado.
+###### This folder keep Python files used by notebooks (in folder named notebooks) for data processing. This strategy aim to keep notebooks clean with focus on visual results.
