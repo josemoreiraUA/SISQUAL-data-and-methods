@@ -38,5 +38,10 @@ The "Models" directory includes a variety of deep learning models that were rese
 		frequent working schedules, schedule standardization, linear imputation and down/up sampling. 
 		ScheduleTreatment_v2 (author: Bruno Mendes) also tries to standardize the number of days weekly considering days that the stores are closed. 
 
-	Further work: Pipelining these entire workflows (sklearn has tools for that)
+	Further work: Pipelining these entire workflows (sklearn has tools for that).
+
+	Requirements: This work was done using conda environments and these are highly recommended. 
+		In order to install the necessary libraries to run these demos check the "Integration\Env_Setup" folder and follow the exact steps given there 
+		in the "installation_step_by_step_README.txt". This method assumes a windows OS. 
+		If the shell script "NN_ENV_SETUP.sh" is causing problems you can open it and manually install the libraries specified there (conda/pip install). 
 >
