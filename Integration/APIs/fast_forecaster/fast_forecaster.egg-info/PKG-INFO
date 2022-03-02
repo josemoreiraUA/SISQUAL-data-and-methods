@@ -1,0 +1,19 @@
+Metadata-Version: 2.1
+Name: fast-forecaster
+Version: 0.1.0
+Summary: Training and Prediction XGBoost model for SISQUAL, this is package will serve a FastAPI API :)
+Home-page: https://github.com/pedroyzkrak/fast_forecaster
+Author: Pedro Gusmão
+Author-email: pedrogusmao@ua.pt
+License: MIT
+Platform: UNKNOWN
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+Requires-Python: >=3.7.0
+
+Training and Prediction XGBoost model for SISQUAL, this is package will serve a FastAPI API :)
+
