@@ -1,0 +1,25 @@
+name: DeepLearning
+channels:
+- anaconda
+- defaults
+- conda-forge
+dependencies:
+- python==3.6.0
+- pandas
+- pip
+- tensorflow
+- keras
+- seaborn
+- matplotlib
+- numpy
+- opencv
+- statsmodels
+- scikit-learn
+- plotly
+- pip:
+  - pyodbc
+  - xgboost
+  - sklearn-genetic
+  - TBATS
+  - seaborn
+  - pmdarima
