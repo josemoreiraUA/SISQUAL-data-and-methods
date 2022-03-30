@@ -13,6 +13,13 @@ import datetime
 import json
 import pickle
 from tbats import TBATS
+import keras
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import LSTM
+from tensorflow.keras.layers import Dense
+from tensorflow.keras.optimizers import Adam,Nadam,RMSprop,Adamax
+from tensorflow.keras.layers import Masking
+from sklearn.preprocessing import MinMaxScaler
 
 
 
@@ -64,8 +71,8 @@ def data_augmentation(forecast_data):
     forecast_data['Dia']=forecast_data['fechaHoraInicio'].apply(lambda x: x.weekday())
     forecast_data['Hora']=forecast_data['fechaHoraInicio'].apply(lambda x: x.hour)
     forecast_data['Fechado']=forecast_data['tickets'].apply(lambda x: fechado(x))
-    inicio_2020=datetime.datetime(2020, 1, 1)
-    forecast_data=forecast_data[forecast_data['fechaHoraInicio']<inicio_2020]
+    t=datetime.datetime(2019, 12, 1)
+    forecast_data=forecast_data[forecast_data['fechaHoraInicio']<t]
 
     return forecast_data
 
@@ -173,8 +180,9 @@ def train_predict_3(model_instance,df_proph,nprev,best_metric,cursor,tienda):
     model.fit(df_proph[:-nprev])
     future=model.make_future_dataframe(freq='H',periods=nprev)
     forecast=model.predict(future)['yhat']
-    forecast[forecast<0]=0
     forecast=np.around(forecast)
+    forecast[forecast<0]=0
+
     end=time.time()
     tempo=round(end-start,2)
 
@@ -188,22 +196,25 @@ def train_predict_3(model_instance,df_proph,nprev,best_metric,cursor,tienda):
     cursor.execute(sql, params)
     cursor.commit()
 
-def train_predict_4(model_instance,X_train,y_train,X_test,y_test,best_metric,cursor,tienda):
+def train_predict_4(model_instance,mms_y,X_train,y_train,X_test,y_test,best_metric,cursor,tienda):
     model=model_instance.model
     n=X_train.shape[0]
 
     start=time.time()
     model.fit(X_train,y_train)
-    forecast=model.predict(X_test).flatten()
-    forecast[forecast<0]=0
+    forecast=model.predict(X_test)
+    forecast=mms_y.inverse_transform(forecast).flatten()
     forecast=np.around(forecast)
+    forecast[forecast<0]=0
     end=time.time()
     tempo=round(end-start,2)
     y_test=y_test.flatten()
 
     sql = "INSERT INTO Martim.models (ts,tienda,model_type,model_params,model_pickle,model_metrics,best_metric,model_train_time,train_size) VALUES (?,?,?,?,?,?,?,?,?)"
     index_aberto=np.where(y_test != 0)[0]
-    best_metric,model_metrics=model_instance.model_errors(y_train[-1,:],y_test,forecast,best_metric,index_aberto)
+    y_train=y_train[-1,:].reshape(1,-1)
+    y_train=mms_y.inverse_transform(forecast).flatten()
+    best_metric,model_metrics=model_instance.model_errors(y_train,y_test,forecast,best_metric,index_aberto)
     params = [datetime.datetime.now(),tienda,model_instance.model_type,json.dumps(model.get_params()),None,model_metrics,best_metric,tempo,n]
     cursor.execute(sql, params)
     cursor.commit()
@@ -246,7 +257,7 @@ def train_predict_6(model_instance,y_train,y_test,best_metric,cursor,tienda,N):
 
     # Forecast 720 steps ahead
     forecast = fitted_model.forecast(steps=N)
-    forecast=np.round(forecast)
+    forecast=np.around(forecast)
 
     end=time.time()
     tempo=round(end-start,2)
@@ -257,47 +268,82 @@ def train_predict_6(model_instance,y_train,y_test,best_metric,cursor,tienda,N):
     cursor.execute(sql, params)
     cursor.commit()
 
-
-
-
-def train_predict(model_instance,X_train,y_train,X_test,y_test,lags,best_metric,cursor,tienda):
+def train_predict_7(model_instance,X_train,y_train,y_test,steps,best_features,best_metric,cursor,tienda):
     model=model_instance.model
     start=time.time()
-    forecast=np.zeros(len(y_test))
     n=X_train.shape[0]
-    sample_weight=[]
-    alpha=0.999
-
-    for i in range(n):
-        valor=alpha**i
-    
-        if valor<0.1:
-            valor=0.1
-        sample_weight.append(valor)
-    sample_weight=list(reversed(sample_weight))
-
-    model.fit(X_train,y_train,sample_weight)
+    model.fit(X_train[:,best_features],y_train)
+    forecast=np.zeros(len(y_test))
 
     for k in range(len(y_test)):
-        X_input=list(X_test[k,:4])
-        for i in range(lags):
-            if(k+i<lags):
+        X_input=[]
+        for i in range(steps):
+            if(k+i<steps):
                 X_input.append(X_train[-1][k+i])
             else:
-                X_input.append(forecast[k+i-lags])
+                X_input.append(forecast[-(steps-k-i)])
+        X_input=np.array(X_input)[best_features]
         forecast[k]=round(max(model.predict(np.array(X_input).reshape((1,len(X_input))))[0],0))
     
     end=time.time()
     tempo=round(end-start,2)
-
-
-
+    
     sql = "INSERT INTO Martim.models (ts,tienda,model_type,model_params,model_pickle,model_metrics,best_metric,model_train_time,train_size) VALUES (?,?,?,?,?,?,?,?,?)"
-    index_aberto=np.where(forecast != 0)[0]
-    best_metric,model_metrics=model_instance.model_errors(y_test,forecast,best_metric,index_aberto)
-    params = [datetime.datetime.now(),tienda,model_instance.model_type,json.dumps(model.get_params()),pickle.dumps(model),model_metrics,best_metric,tempo,n]
+    index_aberto=np.where(y_test != 0)[0]
+    best_metric,model_metrics=model_instance.model_errors(y_train,y_test,forecast,best_metric,index_aberto)
+    params = [datetime.datetime.now(),tienda,model_instance.model_type,None,None,model_metrics,best_metric,tempo,n]
     cursor.execute(sql, params)
     cursor.commit()
+
+
+def train_predict_TBATS(model_instance,y_train,y_test,horizon,best_metric,cursor,tienda):
+    
+    model=model_instance.model
+    start=time.time()
+    n=len(y_train)
+    fitted_model=model.fit(y_train)
+    forecast = fitted_model.forecast(steps=horizon)
+    forecast=np.around(forecast)
+    forecast[forecast<0]=0
+    end=time.time()
+    tempo=round(end-start,2)
+
+    sql = "INSERT INTO Martim.models (ts,tienda,model_type,model_params,model_pickle,model_metrics,best_metric,model_train_time,train_size) VALUES (?,?,?,?,?,?,?,?,?)"
+    index_aberto=np.where(y_test != 0)[0]
+    best_metric,model_metrics=model_instance.model_errors(y_train,y_test,forecast,best_metric,index_aberto)
+    params = [datetime.datetime.now(),tienda,model_instance.model_type,None,None,model_metrics,best_metric,tempo,n]
+    cursor.execute(sql, params)
+    cursor.commit()
+
+
+
+def train_predict_LSTM(model_instance,mms_y,epochs,batch_size,X_train,y_train,X_test,y_test,best_metric,cursor,tienda):
+    model=model_instance.model
+    n=X_train.shape[0]
+
+    start=time.time()
+    model.fit(X_train,y_train,epochs=epochs,batch_size=batch_size)
+    forecast=model.predict(X_test)
+    forecast=mms_y.inverse_transform(forecast).flatten()
+    forecast=np.around(forecast)
+    forecast[forecast<0]=0
+    end=time.time()
+    tempo=round(end-start,2)
+    y_test=y_test.flatten()
+
+    sql = "INSERT INTO Martim.models (ts,tienda,model_type,model_params,model_pickle,model_metrics,best_metric,model_train_time,train_size) VALUES (?,?,?,?,?,?,?,?,?)"
+    index_aberto=np.where(y_test != 0)[0]
+    y_train=y_train[-1,:].reshape(1,-1)
+    y_train=mms_y.inverse_transform(forecast).flatten()
+    best_metric,model_metrics=model_instance.model_errors(y_train,y_test,forecast,best_metric,index_aberto)
+    params = [datetime.datetime.now(),tienda,model_instance.model_type,json.dumps(model.get_params()),None,model_metrics,best_metric,tempo,n]
+    cursor.execute(sql, params)
+    cursor.commit()
+
+
+
+
+
 
 def to_supervised(timeseries,n_lags,n_output=1):
     
@@ -317,7 +363,7 @@ def to_supervised(timeseries,n_lags,n_output=1):
 
 if __name__=='__main__':
 
-    best_metric='r2_score'
+    best_metric='sMASE'
     N=720
 
     ## Pré-processamento
@@ -346,7 +392,7 @@ if __name__=='__main__':
         forecast_data=data_augmentation(forecast_data)
 
 
-        if forecast_data.shape[0]>2*N:
+        if forecast_data.shape[0]>9072+N:
             outliers,new_ts=streming_outlier_detection(forecast_data['tickets'].values,k=53,s=168,N=N,alpha=2)
             forecast_data['filtered_tickets']=new_ts
 
@@ -356,12 +402,33 @@ if __name__=='__main__':
             y_train=forecast_data[:-N]['filtered_tickets'].values
             y_test=forecast_data[-N:]['tickets'].values
 
+            con,cursor=connect_sqlserver()
+            model_tbats = TBATS(seasonal_periods=[168,672,8736])
+            Models(model_tbats,'TBATS')
+            train_predict_TBATS(model_tbats,y_train,y_test,N,best_metric,cursor,tiendas[i])
+
+            con,cursor=connect_sqlserver()
+            model_seasonal_naive=Models(None,'DaySeasonalNaive')
+            train_predict_2(model_seasonal_naive,y_train,y_test,N,24,best_metric,cursor,tiendas[i])
+
+            con,cursor=connect_sqlserver()
+            model_seasonal_naive=Models(None,'WeekSeasonalNaive')
+            train_predict_2(model_seasonal_naive,y_train,y_test,N,168,best_metric,cursor,tiendas[i])
+
+            
+
+            con,cursor=connect_sqlserver()
+            model_seasonal_naive=Models(None,'YearSeasonalNaive')
+            train_predict_2(model_seasonal_naive,y_train,y_test,N,8736,best_metric,cursor,tiendas[i])
+
 
 
             # Create estimator
-            tbats = TBATS(seasonal_periods=[168,672,8736],use_arma_errors=False,use_box_cox=False)
-            model_tbats=Models(tbats,'TBATS')
-            train_predict_6(model_tbats,y_train,y_test,best_metric,cursor,tiendas[i],N)
+            #tbats = TBATS(seasonal_periods=[168,672,8736],use_arma_errors=False,use_box_cox=False)
+            #model_tbats=Models(tbats,'TBATS')
+            #train_predict_6(model_tbats,y_train,y_test,best_metric,cursor,tiendas[i],N)
+            
+            
 
             
             proph=Prophet(daily_seasonality=False,weekly_seasonality=True,yearly_seasonality=False)
@@ -397,24 +464,26 @@ if __name__=='__main__':
             model_hgbr_2=Models(hgbr,'Lag_HistGradientBoosting')
             train_predict_5(model_hgbr_2,X_train,y_train,X_test,y_test,lags,best_metric,cursor,tiendas[i])
 
+            lags=8904
+            X,y=to_supervised(forecast_data['filtered_tickets'].values,n_lags=lags)
+            df=pd.DataFrame(np.hstack((X,y)),columns=['lag'+str(i-1) for i in range(lags+1,0,-1)])
+            df=df.rename(columns={'lag0':'target'})
+            best_features=[i for i in range(0,lags,168)]
+            X=df.iloc[:,:-1].values
+            y=df.iloc[:,-1].values
+            X_train=X[:-N,:]
+            y_train=y[:-N]
+            y_test=y[-N:]
+            hgbr=HistGradientBoostingRegressor()
+            con,cursor=connect_sqlserver()
+            model_seasonal_lag=Models(hgbr,'SeasonalLag_HistGradientBoosting')
+            train_predict_7(model_seasonal_lag,X_train,y_train,y_test,lags,best_features,best_metric,cursor,tiendas[i])
+
 
             
 
-            con,cursor=connect_sqlserver()
-            model_seasonal_naive=Models(None,'DaySeasonalNaive')
-            train_predict_2(model_seasonal_naive,y_train,y_test,N,24,best_metric,cursor,tiendas[i])
-
-            con,cursor=connect_sqlserver()
-            model_seasonal_naive=Models(None,'WeekSeasonalNaive')
-            train_predict_2(model_seasonal_naive,y_train,y_test,N,168,best_metric,cursor,tiendas[i])
-
-            if forecast_data.shape[0]>8736:
-
-                con,cursor=connect_sqlserver()
-                model_seasonal_naive=Models(None,'YearSeasonalNaive')
-                train_predict_2(model_seasonal_naive,y_train,y_test,N,8736,best_metric,cursor,tiendas[i])
             
-            mlpr=MLPRegressor()
+            mlpr=MLPRegressor(hidden_layer_sizes=(1080, 720, 360), max_iter=100)
             con,cursor=connect_sqlserver()
             model_mlpr=Models(mlpr,'MLP')
             X,y=to_supervised(forecast_data['filtered_tickets'].values,n_lags=N,n_output=N)
@@ -422,5 +491,23 @@ if __name__=='__main__':
             y_train=y[:-1]
             X_test=X[-1:]
             y_test=y[-1:]
-            train_predict_4(model_mlpr,X_train,y_train,X_test,y_test,best_metric,cursor,tiendas[i])
+            mms_X=MinMaxScaler()
+            mms_y=MinMaxScaler()
+            X_train=mms_X.fit_transform(X_train)
+            y_train=mms_y.fit_transform(y_train)
+            X_test=mms_X.transform(X_test)
+            train_predict_4(model_mlpr,mms_y,X_train,y_train,X_test,y_test,best_metric,cursor,tiendas[i])
+
+            X_train=X_train.reshape(X_train.shape[0],X_train.shape[1],1)
+            X_test=X_train.reshape(X_test.shape[0],X_test.shape[1],1)
+            model = Sequential()
+            model.add(Masking(mask_value=0,input_shape=(X_train.shape[1], X_train.shape[2])))
+            model.add(LSTM(100, activation='relu', dropout=0.05,return_sequences=True, input_shape=(X_train.shape[1],X_train.shape[2])))
+            model.add(LSTM(100, activation='relu',dropout=0.05))
+            model.add(Dense(N))
+            opt=Adam(learning_rate=0.0001,clipnorm=1,clipvalue=1)
+            model.compile(optimizer=opt, loss='mse')
+            con,cursor=connect_sqlserver()
+            model_lstm=Models(model,'LSTM')
+            train_predict_LSTM(model_lstm,mms_y,10,500,X_train,y_train,X_test,y_test,best_metric,cursor,tiendas[i])
 
