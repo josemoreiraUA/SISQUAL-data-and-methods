@@ -1,7 +1,7 @@
-import pystan
-from prophet import Prophet
 import warnings
 warnings.filterwarnings('ignore')
+import pystan
+from prophet import Prophet
 from Models import Models
 import pyodbc
 import pandas as pd
@@ -213,7 +213,7 @@ def train_predict_4(model_instance,mms_y,X_train,y_train,X_test,y_test,best_metr
     sql = "INSERT INTO Martim.models (ts,tienda,model_type,model_params,model_pickle,model_metrics,best_metric,model_train_time,train_size) VALUES (?,?,?,?,?,?,?,?,?)"
     index_aberto=np.where(y_test != 0)[0]
     y_train=y_train[-1,:].reshape(1,-1)
-    y_train=mms_y.inverse_transform(forecast).flatten()
+    y_train=mms_y.inverse_transform(y_train).flatten()
     best_metric,model_metrics=model_instance.model_errors(y_train,y_test,forecast,best_metric,index_aberto)
     params = [datetime.datetime.now(),tienda,model_instance.model_type,json.dumps(model.get_params()),None,model_metrics,best_metric,tempo,n]
     cursor.execute(sql, params)
@@ -336,7 +336,7 @@ def train_predict_LSTM(model_instance,mms_y,epochs,batch_size,X_train,y_train,X_
     y_train=y_train[-1,:].reshape(1,-1)
     y_train=mms_y.inverse_transform(forecast).flatten()
     best_metric,model_metrics=model_instance.model_errors(y_train,y_test,forecast,best_metric,index_aberto)
-    params = [datetime.datetime.now(),tienda,model_instance.model_type,json.dumps(model.get_params()),None,model_metrics,best_metric,tempo,n]
+    params = [datetime.datetime.now(),tienda,model_instance.model_type,None,None,model_metrics,best_metric,tempo,n]
     cursor.execute(sql, params)
     cursor.commit()
 
@@ -404,8 +404,8 @@ if __name__=='__main__':
 
             con,cursor=connect_sqlserver()
             model_tbats = TBATS(seasonal_periods=[168,672,8736])
-            Models(model_tbats,'TBATS')
-            train_predict_TBATS(model_tbats,y_train,y_test,N,best_metric,cursor,tiendas[i])
+            model_tbats_=Models(model_tbats,'TBATS')
+            #train_predict_TBATS(model_tbats_,y_train,y_test,N,best_metric,cursor,tiendas[i])
 
             con,cursor=connect_sqlserver()
             model_seasonal_naive=Models(None,'DaySeasonalNaive')
@@ -499,7 +499,7 @@ if __name__=='__main__':
             train_predict_4(model_mlpr,mms_y,X_train,y_train,X_test,y_test,best_metric,cursor,tiendas[i])
 
             X_train=X_train.reshape(X_train.shape[0],X_train.shape[1],1)
-            X_test=X_train.reshape(X_test.shape[0],X_test.shape[1],1)
+            X_test=X_test.reshape(X_test.shape[0],X_test.shape[1],1)
             model = Sequential()
             model.add(Masking(mask_value=0,input_shape=(X_train.shape[1], X_train.shape[2])))
             model.add(LSTM(100, activation='relu', dropout=0.05,return_sequences=True, input_shape=(X_train.shape[1],X_train.shape[2])))
