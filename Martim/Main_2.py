@@ -334,7 +334,7 @@ def train_predict_LSTM(model_instance,mms_y,epochs,batch_size,X_train,y_train,X_
     sql = "INSERT INTO Martim.models (ts,tienda,model_type,model_params,model_pickle,model_metrics,best_metric,model_train_time,train_size) VALUES (?,?,?,?,?,?,?,?,?)"
     index_aberto=np.where(y_test != 0)[0]
     y_train=y_train[-1,:].reshape(1,-1)
-    y_train=mms_y.inverse_transform(forecast).flatten()
+    y_train=mms_y.inverse_transform(y_train).flatten()
     best_metric,model_metrics=model_instance.model_errors(y_train,y_test,forecast,best_metric,index_aberto)
     params = [datetime.datetime.now(),tienda,model_instance.model_type,None,None,model_metrics,best_metric,tempo,n]
     cursor.execute(sql, params)
@@ -403,9 +403,9 @@ if __name__=='__main__':
             y_test=forecast_data[-N:]['tickets'].values
 
             con,cursor=connect_sqlserver()
-            model_tbats = TBATS(seasonal_periods=[168,672,8736])
+            model_tbats = TBATS(seasonal_periods=[168,672,8736],use_arma_errors=False,use_box_cox=False)
             model_tbats_=Models(model_tbats,'TBATS')
-            #train_predict_TBATS(model_tbats_,y_train,y_test,N,best_metric,cursor,tiendas[i])
+            train_predict_TBATS(model_tbats_,y_train,y_test,N,best_metric,cursor,tiendas[i])
 
             con,cursor=connect_sqlserver()
             model_seasonal_naive=Models(None,'DaySeasonalNaive')
