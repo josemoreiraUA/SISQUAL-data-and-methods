@@ -23,7 +23,7 @@ Move to the directory where the pyproject.toml is and run:
 poetry install
 ```
 
-to install the dependencies and setup the virtualenv.
+to install the dependencies and setup the `virtualenv`.
 
 ### Notes:
 
@@ -32,7 +32,7 @@ to install the dependencies and setup the virtualenv.
 
 ## Running the web service
 
-Move to the directory where the code for the app is *'/app'* and run:
+Move to the directory where the code for the app is `*/app*` and run:
 
 ```bash
 poetry run hypercorn app:app -b 127.0.0.1:8000 --worker-class trio --workers 1
@@ -69,8 +69,8 @@ to run rhe web service in a web server.
 I'm using port 8000 in these examples! Change this to the port being used!
 
 ## Web Service example output
-	
-**/api/v1/app/models/{model_id}/forecast**
+
+`/api/v1/app/models/{model_id}/forecast`
 
 {'forecast': [0, ..., 43], 'outparams': [0, 0, 0, 0, 0]}
 
