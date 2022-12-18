@@ -2,7 +2,7 @@
 
 Forecast web service developed using FastAPI.
 
-## Installation using [Poetry](https://python-poetry.org/docs/#installing-with-the-official-installer)
+## Install [Poetry](https://python-poetry.org/docs/#installing-with-the-official-installer)
 
 Install Poetry using the Windows (Powershell):
 
@@ -27,8 +27,8 @@ to install the dependencies and setup the virtualenv.
 
 ### Notes:
 
-  - Read https://python-poetry.org/docs/cli/ for a detailled presentation of the commands provided by Poetry.
-  - Use Poetry to add and remove dependencies, i.e., to manage dependencies.
+  - [Read](https://python-poetry.org/docs/cli/) for a detailled presentation of the commands provided by Poetry.
+  - Use Poetry to add and remove dependencies, i.e., to manage dependencies!
 
 ## Running the web service
 
@@ -54,13 +54,12 @@ to run rhe web service in a web server.
 
 ### links:
  
- - uvicorn		https://www.uvicorn.org
-
- - daphne		https://github.com/django/daphne
-
- - hypercorn 	https://gitlab.com/pgjones/hypercorn
-				https://pypi.org/project/hypercorn/
-				https://hypercorn.readthedocs.io/en/latest/how_to_guides/api_usage.html  
+ - [uvicorn](https://www.uvicorn.org)
+ - [daphne](https://github.com/django/daphne)
+ - [hypercorn](https://gitlab.com/pgjones/hypercorn) link 1
+ - [hypercorn](https://pypi.org/project/hypercorn/) link 2
+ - [hypercorn](https://hypercorn.readthedocs.io/en/latest/how_to_guides/api_usage.html) link 3
+				  
 
 ### Web service API documentation (needs to be connected to the internet):
  - http://127.0.0.1:8000/docs
@@ -71,9 +70,7 @@ I'm using port 8000 in these examples! Change this to the port being used!
 
 ## Web service example output
 	
-/api/v1/app/models/{model_id}/forecast
-
-<Response [200]>
+**/api/v1/app/models/{model_id}/forecast**
 
 {'forecast': [0, ..., 43], 'outparams': [0, 0, 0, 0, 0]}
 
