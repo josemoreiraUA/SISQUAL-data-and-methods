@@ -77,6 +77,7 @@ I'm using port 8000 in these examples! Change this to the port being used!
 ## Usefull commands
 
 Command | Description
+--- | ---
 poetry show | Shows the packages installed in the projects' virtualenv.
 poetry env list | Lists the virtualenvs associated with the project.
 poetry add <module> | Adds a dependency.
