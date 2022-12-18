@@ -13,7 +13,7 @@ Install Poetry using the Windows (Powershell):
 ### Notes:
 
  - You may need to add the directory where Poetry is installed to your PATH variable. 
- - Check the Powershell console feedback after installing Poetry for assistance.
+ - Check the Powershell console feedback after installing Poetry, for assistance.
 
 ## Setting up the project
 
@@ -32,7 +32,7 @@ to install the dependencies and setup the virtualenv.
 
 ## Running the web service
 
-Move to the directory where the code for the app is '/app' and run:
+Move to the directory where the code for the app is *'/app'* and run:
 
 ```bash
 poetry run hypercorn app:app -b 127.0.0.1:8000 --worker-class trio --workers 1
@@ -61,14 +61,14 @@ to run rhe web service in a web server.
  - [hypercorn](https://hypercorn.readthedocs.io/en/latest/how_to_guides/api_usage.html) link 3
 				  
 
-### Web service API documentation (needs to be connected to the internet):
+### Web Service API documentation (needs to be connected to the internet):
  - http://127.0.0.1:8000/docs
  - http://127.0.0.1:8000/redoc
  - http://127.0.0.1:8000/openapi.json
 
 I'm using port 8000 in these examples! Change this to the port being used!
 
-## Web service example output
+## Web Service example output
 	
 **/api/v1/app/models/{model_id}/forecast**
 
@@ -76,19 +76,11 @@ I'm using port 8000 in these examples! Change this to the port being used!
 
 ## Usefull commands
 
-poetry show | shows the packages installed in the projects' virtualenv.
---- | --- 
-poetry env list | lists the virtualenvs associated with the project.
---- | --- 
-poetry add <module> | adds a dependency.
---- | --- 
-poetry export --output requirements.txt | writes the projects' dependencies to a file.
---- | --- 
-
-poetry show									shows the packages installed in the projects' virtualenv.
-poetry env list								lists the virtualenvs associated with the project.
-poetry add <module>							adds a dependency
-poetry export --output requirements.txt		writes the projects' dependencies to a file.
+Command | Description
+poetry show | Shows the packages installed in the projects' virtualenv.
+poetry env list | Lists the virtualenvs associated with the project.
+poetry add <module> | Adds a dependency.
+poetry export --output requirements.txt | Writes the projects' dependencies to a file.
 
 ## Contributing
 
