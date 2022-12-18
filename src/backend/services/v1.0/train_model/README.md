@@ -30,6 +30,8 @@ to install the dependencies and setup the `virtualenv`.
   - [Read](https://python-poetry.org/docs/cli/) for a detailled presentation of the commands provided by Poetry.
   - Use Poetry to add and remove dependencies, i.e., to manage dependencies!
 
+  - If an error occurs during this step please read the installation notes for the `Forecast Service`.
+
 ## Running the web service
 
 Move to the directory where the code for the app is `/app` and run:
