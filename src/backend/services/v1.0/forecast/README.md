@@ -2,7 +2,7 @@
 
 Forecast web service developed using FastAPI.
 
-## Installation (Using Poetry[https://python-poetry.org/docs/#installing-with-the-official-installer for more information])
+## Installation using [Poetry](https://python-poetry.org/docs/#installing-with-the-official-installer)
 
 Install Poetry using the Windows (Powershell):
 
@@ -79,9 +79,20 @@ I'm using port 8000 in these examples! Change this to the port being used!
 
 ## Usefull commands
 
+poetry show | shows the packages installed in the projects' virtualenv.
+--- | --- 
+poetry env list | lists the virtualenvs associated with the project.
+--- | --- 
+poetry add <module> | adds a dependency.
+--- | --- 
+poetry export --output requirements.txt | writes the projects' dependencies to a file.
+--- | --- 
+
 poetry show									shows the packages installed in the projects' virtualenv.
 poetry env list								lists the virtualenvs associated with the project.
 poetry add <module>							adds a dependency
 poetry export --output requirements.txt		writes the projects' dependencies to a file.
+
+## Contributing
 
 ## License
