@@ -16,7 +16,7 @@ this runs the app in development mode.
 
 Open [http://localhost:3000](http://localhost:3000) to view the app in a browser.
 
-**Notes:
+**Notes**:
 
  - The app reloads when new changes are detected.
  - lint errors are shown in the console.
@@ -47,7 +47,7 @@ builds the app for production to the `build` folder.
 npm run eject
 ```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+**Note**: this is a one-way operation. Once you `eject`, you can't go back!**
 
 If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
@@ -63,7 +63,7 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 
 ### Making a Web App
 
-[link](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+[link](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app).
 
 ### Advanced Configuration
 
