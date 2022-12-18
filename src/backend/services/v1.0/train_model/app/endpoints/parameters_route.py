@@ -11,13 +11,11 @@
 	
 	APIs:
 		/{client_id}/parameters
-
 """
 
 from fastapi import APIRouter, HTTPException, Header, Depends
 from typing import Union
 
-# custom imports
 from models.models import ParametersIn, ParametersOut
 
 router = APIRouter()

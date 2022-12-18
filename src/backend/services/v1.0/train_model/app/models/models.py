@@ -1,10 +1,10 @@
-""" Domain classes for the application.
+""" 
+    Domain classes for the application.
 
     project: RH 4.0 FeD / POCI-01-0247-FEDER-039719
 	authors: jd
     version: 1.0
 	date:    29/11/2022
-	
 """
 
 from enum import Enum
@@ -24,9 +24,6 @@ class TaskState(str, Enum):
     Executing = 'Executing'
     Finished = 'Finished'
     Error = 'Error'
-
-class ForecastMLModels(str, Enum):
-    MLPRegressor = "sklearn.neural_network.MLPRegressor"
 
 class MyException(Exception):
     pass

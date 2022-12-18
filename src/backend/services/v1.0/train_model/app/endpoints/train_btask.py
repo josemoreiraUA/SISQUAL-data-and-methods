@@ -28,28 +28,23 @@ from sklearn.neural_network import MLPRegressor
 from fastapi import APIRouter, HTTPException, Depends, BackgroundTasks, Request
 
 from sqlalchemy.orm import Session
-#from sqlalchemy import func
 
-# custom imports
 from models.models import TrainIn, ForecastModels, TrainTaskOut, TaskState, ForecastModels2
-#from security.auth import JWTBearer
 import tools.auxiliary_functions as myfuncs
-
-from api import deps
+from dependencies.db import get_db
 from db import crud, models, schemas
-
-models_storage_dir = 'models/ml/'
-#nprev = 720
+from core.config import settings
 
 router = APIRouter()
 
-def check_model_type(model_type: str):
+def check_model_type(model_type: str) -> bool:
     for model in ForecastModels2:
         if model_type == str(model.value):
             return True
 
     raise HTTPException(
-            status_code=404, detail=f'Model of type {model_type} not available!'
+            status_code=404, 
+			detail=f'Model of type {model_type} not available!'
         )
 
 def get_dir(models_storage_dir: str, client_id: str) -> str:
@@ -58,12 +53,12 @@ def get_dir(models_storage_dir: str, client_id: str) -> str:
     if not os.path.exists(dir):
         os.mkdir(dir)
 
-    #os.makedir(client_id, exist_ok=True)
-    #return models_storage_dir + '/' + client_id + '/'
     return dir + '/'
 
 def get_name(model_type: str, model_name: str) -> str:
-    """Gets a name for a new trained model."""
+    """
+	Gets a name for a new trained model.
+	"""
 
     current_time = datetime.datetime.now()
     day = str(current_time.day)
@@ -77,19 +72,21 @@ def get_name(model_type: str, model_name: str) -> str:
     return model_type + '_' + model_name + '_' + day + '_' + month + '_' + year + '_' + hour + '_' + minute + '_' + second + '_' + microsecond
 
 def store(model: object, dir: str, name: str) -> bool:
-    """Stores a model.
-
-
+    """
+	Stores a model.
     """
 
     dump(model, dir + name + '.joblib')
     return True
 
 def train_mlp(params: TrainIn) -> dict:
-    """Trains a MLPRegressor model."""
+    """
+	Trains a MLPRegressor model.
+	"""
 
     data = pd.DataFrame.from_dict(params.imput_data)
     nprev = params.forecast_period
+
     # preprocess data
     data['ts'] = pd.to_datetime(data['ts'])
     data.shape
@@ -97,12 +94,7 @@ def train_mlp(params: TrainIn) -> dict:
     forecast_data = pd.DataFrame(data.resample('H', on = 'ts').values.sum())
     forecast_data.reset_index(inplace=True)
 
-    #forecast_data['Month'] = forecast_data['ts'].apply(lambda x: x.month)
-    #forecast_data['Day'] = forecast_data['ts'].apply(lambda x: x.weekday())
-    #forecast_data['Hour'] = forecast_data['ts'].apply(lambda x: x.hour)
-    #forecast_data['Closed'] = forecast_data['visitors'].apply(lambda x: myfuncs.closed(x))
-
-    # removes outliers
+    # remove outliers
     outliers, new_ts = myfuncs.streming_outlier_detection(forecast_data['values'].values, k=53, s=168, alpha=2)
     forecast_data['filtered_values'] = new_ts
 
@@ -130,10 +122,11 @@ def train_mlp(params: TrainIn) -> dict:
     train_params = {'k': 53, 's': 168, 'alpha': 2, 'max_iter': 10}
 
     return {'model': mlp_model, 'forecast': mlp_model_forecast, 'metrics': mlp_model_metrics, 'train_params': train_params}
-    #return (mlp_model, mlp_model_forecast, mlp_model_metrics)
 
 def switch(model_type: str, params: TrainIn) -> Union[dict, None]:
-    """Chooses which type of model to train for a request."""
+    """
+	Chooses which type of model to train for a request.
+	"""
 
     switch={
        ForecastModels2.MLPRegressor.value : train_mlp(params),
@@ -142,9 +135,9 @@ def switch(model_type: str, params: TrainIn) -> Union[dict, None]:
     return switch.get(model_type, None)
 
 def train_model(db: Session, client_pkey: int, model_type: str, params: TrainIn, task_id: int) -> bool:
-    """Trains a model."""
-
-    #model_type = int(model_type) # temp fix
+    """
+	Trains a model.
+	"""
 
     is_model_created_in_db = False
     is_model_stored_in_hd = False
@@ -161,8 +154,8 @@ def train_model(db: Session, client_pkey: int, model_type: str, params: TrainIn,
             client_id = params.client_id
 
             model_name = params.model_name
+
             # create model in db
-            #model_type = str(model_type) # temp fix
             model_storage_name = get_name(model_type, model_name)
             forecast_period = params.forecast_period
             model = train_output['model']
@@ -190,7 +183,7 @@ def train_model(db: Session, client_pkey: int, model_type: str, params: TrainIn,
                 is_model_created_in_db = True
                 model_db_id = model_in_db.id
 
-            dir = get_dir(models_storage_dir, client_id)
+            dir = get_dir(settings.MODELS_STORAGE_DIR, client_id)
 
             if store(model, dir, model_storage_name):
                 is_model_stored_in_hd = True
@@ -210,9 +203,11 @@ def train_model(db: Session, client_pkey: int, model_type: str, params: TrainIn,
     return False
 
 @router.post('/', status_code=HTTPStatus.ACCEPTED)
-async def train_model_request(model_type: str, params: TrainIn, background_tasks: BackgroundTasks, db: Session = Depends(deps.get_db)):
-    """Trains a model."""
-    #model_name
+async def train_model_request(model_type: str, params: TrainIn, background_tasks: BackgroundTasks, db: Session = Depends(get_db)) -> dict:
+    """
+	Trains a model.
+	"""
+
     client_id = params.client_id
 
     client_pkey = crud.get_client_pkey(db, client_id)
@@ -231,5 +226,4 @@ async def train_model_request(model_type: str, params: TrainIn, background_tasks
 
     background_tasks.add_task(train_model, db, client_pkey=client_pkey, model_type=model_type, params=params, task_id=task.id)
 
-    #return TrainTaskOut(id=task.id, state=task_state)
     return {'detail': '1'}

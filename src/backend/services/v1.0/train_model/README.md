@@ -1,103 +1,124 @@
-#-------------------------------------------------------------------------------
-# If using Poetry.
-#-------------------------------------------------------------------------------
+# Train Model Web Service
 
-#-------------------------------------------------------------------------------
-  1 - Install Poetry using the Windows (Powershell):
-#-------------------------------------------------------------------------------
+Train model web service developed using [FastAPI](https://fastapi.tiangolo.com/).
 
-	(Invoke-WebRequest -Uri https://install.python-poetry.org -UseBasicParsing).Content | py -
+## Install [Poetry](https://python-poetry.org/docs/#installing-with-the-official-installer)
 
-  *See https://python-poetry.org/docs/#installing-with-the-official-installer for more information.
+Install Poetry using the Windows (Powershell):
 
-  #---------
-  Notes:
-  #---------
+```bash
+(Invoke-WebRequest -Uri https://install.python-poetry.org -UseBasicParsing).Content | py -
+```
 
-    - You may need to add the directory where Poetry is installed to your PATH variable. 
-    - Check the Powershell console feedback after installing Poetry for assistance.
+### Notes:
 
-#-------------------------------------------------------------------------------
-  >> Setting up the project.
+ - You may need to add the directory where Poetry is installed to your PATH variable. 
+ - Check the Powershell console feedback after installing Poetry, for assistance.
 
-  2 - Move to the directory where the pyproject.toml is and run:
-#-------------------------------------------------------------------------------
+## Setting up the project
 
-	poetry install
+Move to the directory where the `pyproject.toml` is and run:
 
-  to install the dependencies and setup the virtualenv.
+```bash
+poetry install
+```
 
-  *Read https://python-poetry.org/docs/cli/ for a detailled presentation of the commands provided by Poetry.
+to install the dependencies and setup the `virtualenv`.
 
-  #---------
-  Notes:
-  #---------
+### Notes:
 
-    - Use Poetry to add and remove dependencies, i.e., to manage dependencies.
+  - [Read](https://python-poetry.org/docs/cli/) for a detailled presentation of the commands provided by Poetry.
+  - Use Poetry to add and remove dependencies, i.e., to manage dependencies!
 
-#-------------------------------------------------------------------------------
-  >> Running the web service.
-  
-  3 - Move to the directory where the code for the app is '/app' and run:
-#-------------------------------------------------------------------------------
+## Running the web service
 
-	poetry run hypercorn app:train_app -b 127.0.0.1:8001 --worker-class trio --workers 1
+Move to the directory where the code for the app is `/app` and run:
 
-	or
-	
-	poetry run daphne -b 127.0.0.1 -p 8001 app:train_app
-	
-	or
-	
-	poetry run uvicorn app:train_app --workers 1 --host 127.0.0.1 --port 8001
+```bash
+poetry run hypercorn app:train_app -b 127.0.0.1:8001 --worker-class trio --workers 1
+```
+
+or
+
+```bash
+poetry run daphne -b 127.0.0.1 -p 8001 app:train_app
+```
+
+or
+
+```bash
+poetry run uvicorn app:train_app --workers 1 --host 127.0.0.1 --port 8001
+```
 			
-  to run rhe web service in a web server.		
+to run rhe web service in a web server.		
 
-  #---------
-  Notes:
-  #---------
-  
-    - The web service can be executed, at least, in one of these web servers.
-  
-  #---------
-  links:
-  #---------
-  
-    - uvicorn		https://www.uvicorn.org
+### links:
+ 
+ - [uvicorn](https://www.uvicorn.org)
+ - [daphne](https://github.com/django/daphne)
+ - [hypercorn](https://gitlab.com/pgjones/hypercorn) `link 1`
+ - [hypercorn](https://pypi.org/project/hypercorn/) `link 2`
+ - [hypercorn](https://hypercorn.readthedocs.io/en/latest/how_to_guides/api_usage.html) `link 3`
+				  
 
-    - daphne		https://github.com/django/daphne
+### Web Service API documentation (needs to be connected to the internet):
+ - http://127.0.0.1:8001/docs
+ - http://127.0.0.1:8001/redoc
+ - http://127.0.0.1:8001/openapi.json
 
-    - hypercorn 	https://gitlab.com/pgjones/hypercorn
-					https://pypi.org/project/hypercorn/
-					https://hypercorn.readthedocs.io/en/latest/how_to_guides/api_usage.html  
+I'm using port `8001` in these examples! Change this to the port being used!
 
-  #---------
-  Web service API documentation (needs to be connected to the internet):
+## Web Service example output
 
-    - http://127.0.0.1:8001/docs
-    - http://127.0.0.1:8001/redoc
-	- http://127.0.0.1:8001/openapi.json
+...
 
-  I'm using port 8001 in these examples! Change this to the port being used!
+## Managing DB migration and updates using [Alembic](https://alembic.sqlalchemy.org/en/latest/tutorial.html)
 
-#-------------------------------------------------------------------------------
-  4 - Web service example output:
-	
-  
-#-------------------------------------------------------------------------------
+ - This service uses [SQLAlchemy](https://www.sqlalchemy.org) to connect and communicate with the database.
 
+### Creating an Environment (The Migration Environment)
 
+In the app directory `/app` run:
 
-#-------------------------------------------------------------------------------
-  5 - Usefull commands:
-#-------------------------------------------------------------------------------
+```bash
+poetry run alembic init alembic
+```
 
-poetry show									shows the packages installed in the projects' virtualenv.
+This will create several files and a new directory called `alembic` in `/app/alembic`.
 
-poetry env list								lists the virtualenvs associated with the project.
+ - Edit `alembic.ini` and `/app/alembic/env.py` as needed, according to your settings.
+ 
+### Create a new revision
 
-poetry add <module>							adds a dependency
+```bash
+poetry run alembic revision --autogenerate -m "create initial tables"
+```
 
-poetry export --output requirements.txt		writes the projects' dependencies to a file.
+### Run a new migration
 
-#-------------------------------------------------------------------------------
+```bash
+poetry run alembic upgrade head
+```
+
+Alternatively, you can use a script to automatically create the initial tables
+
+```bash
+poetry run prestart.bat
+```
+
+## Usefull commands
+
+Command | Description
+--- | ---
+`poetry show` | Shows the packages installed in the projects' virtualenv.
+`poetry env list` | Lists the virtualenvs associated with the project.
+`poetry add <module>` | Adds a dependency.
+`poetry export --output requirements.txt` | Writes the projects' dependencies to a file.
+
+## Contributing
+
+...
+
+## License
+
+...

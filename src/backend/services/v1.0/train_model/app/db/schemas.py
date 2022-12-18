@@ -35,7 +35,6 @@ class ClientCreate(ClientBase):
 
 class Client(ClientBase):
     client_pkey: int
-    #models: List[Model] = []
 
     class Config:
         orm_mode = True
