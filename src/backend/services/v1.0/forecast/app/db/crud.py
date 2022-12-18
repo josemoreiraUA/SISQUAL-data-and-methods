@@ -1,9 +1,24 @@
 from sqlalchemy.orm import Session
-from sqlalchemy import select, func
-from fastapi import HTTPException
+from typing import Union, Any
 
-from db import models, schemas
+from db import models
 
+def get_client_pkey(db: Session, client_id: str) -> Union[int, None]:
+
+    client = db.query(models.Client.pkey).filter(models.Client.id == client_id).first()
+
+    if not client:
+        return None
+
+    return client.pkey
+
+def get_model_details(db: Session, model_id: int, client_pkey: int) -> Any:
+    return db.query(models.Model.type.label('type') \
+        , models.Model.storage_name.label('storage_name') \
+        , models.Model.forecast_period.label('forecast_period')
+        ).filter(models.Model.id == model_id, models.Model.client_pkey == client_pkey).first()
+
+"""
 def get_client(db: Session, client_id: str):
     return db.query(models.Client.pkey.label('client_pkey') \
         , models.Client.id.label('id') \
@@ -81,15 +96,6 @@ def get_client_models(db: Session, client_id: str):
         , models.Model.train_params.label('train_params')
         ).filter(models.Model.client_pkey == client.pkey).all()
 
-def get_client_pkey(db: Session, client_id: str):
-    client = db.query(models.Client.pkey).filter(models.Client.id == client_id).first()
-    if not client:
-        raise HTTPException(
-		        status_code=404, detail=f'Client {client_id} not found!'
-			)
-
-    return client.pkey
-
 def create_model(db: Session, model_params: schemas.ModelCreate, client_pkey: int):
     model = models.Model(**model_params.dict(), client_pkey=client_pkey)
     db.add(model)
@@ -140,3 +146,4 @@ def update_task_state(db: Session, task_id: int, new_task_state: str, flag: int)
     db.commit()
     db.flush()
     return True
+"""

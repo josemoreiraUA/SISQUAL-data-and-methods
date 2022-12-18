@@ -1,14 +1,14 @@
-""" Test WFM integration web service.
+""" 
+    Forecast web service tests.
 
     project: RH 4.0 FeD / POCI-01-0247-FEDER-039719
-	authors: jd
+    authors: jd
     version: 1.0
-	date:    29/11/2022
+    date:    29/11/2022
 	
 	Test APIs:
 		/app/api/v1/models/getforecast/{id}
 		/app/api/v1/model/MLPRegressor/getforecast
-
 """
 
 import requests

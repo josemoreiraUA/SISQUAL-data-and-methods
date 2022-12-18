@@ -1,4 +1,5 @@
-""" Test WFM integration web service.
+""" 
+	Forecast parameters web service tests.
 
     project: RH 4.0 FeD / POCI-01-0247-FEDER-039719
 	authors: jd
@@ -7,7 +8,6 @@
 	
 	Test APIs:
 		/app/api/v1/parameters/{id}
-
 """
 
 import requests

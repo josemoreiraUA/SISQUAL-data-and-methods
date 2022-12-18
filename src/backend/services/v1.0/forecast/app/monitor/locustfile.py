@@ -1,4 +1,5 @@
-"""	Performance testing using locust.
+"""	
+	Performance testing using locust.
 
     project: RH 4.0 FeD / POCI-01-0247-FEDER-039719
 	authors: jd
@@ -22,7 +23,6 @@ from locust import HttpUser, task
 
 token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYmYiOjE2NjY2MzMxMjYsImV4cCI6MTg1NjAyMTkyNiwiaXNzIjoiU0lTUVVBTFdGTSM3MDAxIiwiYXVkIjoiRm9yZWNhc3RNYW5hZ2VyIn0.qii3Q-Ocp1YDs9ASTiZNEzFNiDu7Ia3ZxOCUNRQgJ_o'
 headers = {'Authorization': 'Bearer ' + token, 'Content-Type': 'application/json'}
-
 
 class ForescastAPI(HttpUser):
     @task

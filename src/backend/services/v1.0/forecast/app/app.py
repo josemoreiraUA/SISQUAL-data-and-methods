@@ -1,4 +1,5 @@
-""" WFM forecast integration web service.
+""" 
+    WFM forecast integration web service.
 
     project: RH 4.0 FeD / POCI-01-0247-FEDER-039719
 	authors: jd
@@ -9,8 +10,6 @@
 		/app/api/v1/models/{model_id}/forecast
 """
 
-#from pathlib import Path
-
 from fastapi import FastAPI, Request, Header, Depends, HTTPException, status
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from fastapi.middleware.cors import CORSMiddleware
@@ -19,10 +18,8 @@ from sqlalchemy.orm import Session
 
 # custom imports
 
-#from db import crud, models, schemas
-#from api import deps
 from models.models import MyException
-from dependencies import has_authorization
+from dependencies.auth import has_authorization
 from core.config import settings
 from endpoints import forecast_route
 
@@ -39,6 +36,8 @@ app = FastAPI(
 			description='Forecast Integration API.', 
 			version='1.0', 
 			dependencies=[Depends(has_authorization)])
+
+# allowed external connections
 
 if settings.BACKEND_CORS_ORIGINS:
     app.add_middleware(
@@ -65,11 +64,24 @@ async def web_server_exception_handler(request: Request, exc: MyException):
         content={'detail': 'An error occurred! Please contact the system admin.'},
     )
 
-# endpoints/routes
+# endpoints (routes)
+
 app.include_router(
 			forecast_route.router, 
 			prefix='/api/v1/app/models/{model_id}/forecast', 
 			tags=['Forecast using a trained model'])
+
+# inject JWT Bearer token in the response
+
+@app.middleware("http")
+async def add_jwt_bearer_token_header(request: Request, call_next):
+    response = await call_next(request)
+    response.headers['Authorization'] = 'Bearer ' + settings.JWT_TOKEN
+    return response
+
+# -----------------------------------------------------------------------
+# 
+# -----------------------------------------------------------------------
 
 if __name__ == '__main__':
     """
@@ -90,7 +102,6 @@ if __name__ == '__main__':
 			http://127.0.0.1:8000/docs
 			http://127.0.0.1:8000/redoc
 			http://127.0.0.1:8000/openapi.json
-
     """
 
     #import uvicorn
