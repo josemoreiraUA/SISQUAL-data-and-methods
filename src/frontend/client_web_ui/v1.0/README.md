@@ -65,6 +65,8 @@ npm notice
 
 Ignore them for the time being.
 
+## Other commands
+
 ```bash
 npm test
 ```
