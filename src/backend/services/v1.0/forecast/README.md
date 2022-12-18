@@ -1,6 +1,6 @@
 # Forecast Web Service
 
-Forecast web service developed using FastAPI.
+Forecast web service developed using [FastAPI](https://fastapi.tiangolo.com/).
 
 ## Install [Poetry](https://python-poetry.org/docs/#installing-with-the-official-installer)
 
@@ -85,4 +85,8 @@ Command | Description
 
 ## Contributing
 
+...
+
 ## License
+
+...
