@@ -63,16 +63,16 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 
 ### Making a Web App
 
-[Read](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app).
+[Read](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
 ### Advanced Configuration
 
-[Read](https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+[Read](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
 ### Deployment
 
-[Read](https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+[Read](https://facebook.github.io/create-react-app/docs/deployment)
 
 ### `npm run build` fails to minify
 
-[Read](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+[Read](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
