@@ -32,7 +32,7 @@ to install the dependencies and setup the `virtualenv`.
 
 ## Running the web service
 
-Move to the directory where the code for the app is `*/app*` and run:
+Move to the directory where the code for the app is `/app` and run:
 
 ```bash
 poetry run hypercorn app:app -b 127.0.0.1:8000 --worker-class trio --workers 1
@@ -56,9 +56,9 @@ to run rhe web service in a web server.
  
  - [uvicorn](https://www.uvicorn.org)
  - [daphne](https://github.com/django/daphne)
- - [hypercorn](https://gitlab.com/pgjones/hypercorn) link 1
- - [hypercorn](https://pypi.org/project/hypercorn/) link 2
- - [hypercorn](https://hypercorn.readthedocs.io/en/latest/how_to_guides/api_usage.html) link 3
+ - [hypercorn](https://gitlab.com/pgjones/hypercorn) `link 1`
+ - [hypercorn](https://pypi.org/project/hypercorn/) `link 2`
+ - [hypercorn](https://hypercorn.readthedocs.io/en/latest/how_to_guides/api_usage.html) `link 3`
 				  
 
 ### Web Service API documentation (needs to be connected to the internet):
@@ -66,7 +66,7 @@ to run rhe web service in a web server.
  - http://127.0.0.1:8000/redoc
  - http://127.0.0.1:8000/openapi.json
 
-I'm using port 8000 in these examples! Change this to the port being used!
+I'm using port `8000` in these examples! Change this to the port being used!
 
 ## Web Service example output
 
@@ -78,10 +78,10 @@ I'm using port 8000 in these examples! Change this to the port being used!
 
 Command | Description
 --- | ---
-poetry show | Shows the packages installed in the projects' virtualenv.
-poetry env list | Lists the virtualenvs associated with the project.
-poetry add <module> | Adds a dependency.
-poetry export --output requirements.txt | Writes the projects' dependencies to a file.
+`poetry show` | Shows the packages installed in the projects' virtualenv.
+`poetry env list` | Lists the virtualenvs associated with the project.
+`poetry add <module>` | Adds a dependency.
+`poetry export --output requirements.txt` | Writes the projects' dependencies to a file.
 
 ## Contributing
 
