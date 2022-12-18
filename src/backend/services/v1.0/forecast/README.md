@@ -12,12 +12,12 @@ Install Poetry using the Windows (Powershell):
 
 ### Notes:
 
- - You may need to add the directory where Poetry is installed to your PATH variable. 
+ - You may need to add the directory where Poetry is installed to your `PATH` variable. 
  - Check the Powershell console feedback after installing Poetry, for assistance.
 
 ## Setting up the project
 
-Move to the directory where the pyproject.toml is and run:
+Move to the directory where the `pyproject.toml` is and run:
 
 ```bash
 poetry install

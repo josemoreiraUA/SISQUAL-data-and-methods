@@ -75,7 +75,8 @@ I'm using port `8001` in these examples! Change this to the port being used!
 ## Managing DB migration and updates using [Alembic](https://alembic.sqlalchemy.org/en/latest/tutorial.html)
 
  - This service uses [SQLAlchemy](https://www.sqlalchemy.org) to connect and communicate with the database.
-
+ - This service uses [SQLite](https://www.sqlite.org/index.html).
+ 
 ### Creating an Environment (The Migration Environment)
 
 In the app directory `/app` run:
@@ -106,6 +107,9 @@ Alternatively, you can use a script to automatically create the initial tables
 poetry run prestart.bat
 ```
 
+ - This has already been done in the current project and the database is also provided.
+ - These instructions can change in the future if another database engine is used.
+ 
 ## Usefull commands
 
 Command | Description
