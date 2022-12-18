@@ -30,9 +30,9 @@ to install the dependencies and setup the `virtualenv`.
   - [Read](https://python-poetry.org/docs/cli/) for a detailled presentation of the commands provided by Poetry.
   - Use Poetry to add and remove dependencies, i.e., to manage dependencies!
 
-If you get an error during this process, e.g., because of an incompatibility with the python version installed or used by default you can proceed as follows:
+If you get an error during this process, e.g., because of an incompatibility with the python version installed or used by default on your system you can proceed as follows:
 
-if your system has a python 3.9 version installed run:
+If your system has a python 3.9 version installed run:
 
 ```bash
 poetry env list
@@ -60,11 +60,11 @@ Then run:
 poetry env list
 ```
 
-To make sure that a new `virtualenv` was created using python 3.9. It should have a name like, for example, `app-duUi6HXW-py3.9`, where `3.9` is the important part.
+To make sure that a new `virtualenv` was created using `python 3.9`. It should have a name like, for example, `app-duUi6HXW-py3.9`, where `3.9` is the important part.
 
-If you do not have another python version installed, the process may get more complicated.
+If your system does not have another python version installed, the process may get more complicated.
 
-An example follows using [pyenv-win](https://github.com/pyenv-win/pyenv-win)
+An example follows using [pyenv-win](https://github.com/pyenv-win/pyenv-win).
 
 Install pyenv-win using the Windows (Powershell):
 
@@ -72,10 +72,10 @@ Install pyenv-win using the Windows (Powershell):
 Invoke-WebRequest -UseBasicParsing -Uri "https://raw.githubusercontent.com/pyenv-win/pyenv-win/master/pyenv-win/install-pyenv-win.ps1" -OutFile "./install-pyenv-win.ps1"; &"./install-pyenv-win.ps1"
 ```
 
-If you are getting an UnauthorizedAccess error then start Windows PowerShell with the `Run as administrator` option and run `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope LocalMachine`, then re-run the above installation command.
+If you get an `UnauthorizedAccess` error then start Windows PowerShell with the `Run as administrator` option and run `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope LocalMachine`, then re-run the above installation command.
 
-[Read](https://github.com/pyenv-win/pyenv-win/blob/master/docs/installation.md#powershell)
-[Read](https://windowsloop.com/enable-powershell-scripts-execution-windows-10/)
+ - [Read 1](https://github.com/pyenv-win/pyenv-win/blob/master/docs/installation.md#powershell)
+ - [Read 2](https://windowsloop.com/enable-powershell-scripts-execution-windows-10/)
 
 After installing pyenv-win, validate the installation:
 
@@ -83,16 +83,13 @@ After installing pyenv-win, validate the installation:
 pyenv --version
 ```
 
-If getting an error: The term `pyenv` is not recognized as the name of a cmdlet ...
+If getting an error: `The term pyenv is not recognized as the name of a cmdlet ...`
 
 [Read](https://github.com/pyenv-win/pyenv-win/issues/97)
 
+ - `O:\Users\pc\.pyenv\pyenv-win\bin` and `O:\Users\pc\.pyenv\pyenv-win\shims` should be declared in the PATH User and System variables before any declaration of a python installation.
 
- - O:\Users\pc\.pyenv\pyenv-win\bin
- - O:\Users\pc\.pyenv\pyenv-win\shims
- - The above shoul be declared in the PATH User and System variables before any declaration of a python installation.
-
-where `O:\Users\pc\.pyenv\pyenv-win` should be replaced by the path on your system.
+where `O:\Users\pc\.pyenv\pyenv-win` should be replaced with the path on your system.
 
 ### Note:
 
@@ -101,7 +98,7 @@ For security reasons you may have to change your PowerShell execution policy bac
  - Press the Windows Key to open the Start menu.
  - Type `Windows PowerShell`.
  - Right-click on the PowerShell result and select `Run as administrator`.
- - In the PowerShell window, execute `get-executionpolicy` to know the current execution policy.
+ - In the PowerShell window, execute `get-executionpolicy` to know the current execution policy being used.
  - Execute `set-executionpolicy Restricted`.
  - Execute `get-executionpolicy` to make sure the current execution policy is `Restricted`.
 
@@ -117,7 +114,7 @@ Run:
 pyenv install -l
 ```
 
-to get a list of the python versions supported. Choose a python 3.9 version and run:
+To get a list of the python versions supported. Choose a python 3.9 version and run:
 
 ```bash
 pyenv install <python_version>
