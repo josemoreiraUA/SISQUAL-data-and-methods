@@ -1,5 +1,7 @@
 # Frontend created using [React](https://reactjs.org)
 
+![Frontend](ui.png "Frontend UI")
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Setting up the project
