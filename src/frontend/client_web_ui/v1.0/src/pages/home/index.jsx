@@ -14,7 +14,6 @@ import { faCheckCircle } from '@fortawesome/free-solid-svg-icons/faCheckCircle'
 const client = new FastAPIClient(config);
 
 function PopupModalMsg({ onCloseBtnPress, title, bColor, tColor, err, children }) {
-
 	return (
 		<div className="animate-fade-in-down container flex justify-center mx-auto">
 			<div className="absolute inset-0 flex items-center justify-center bg-gray-700 bg-opacity-50"

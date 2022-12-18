@@ -4,8 +4,15 @@ import {Link} from 'react-router-dom';
 function DashboardHeader() {
   return (
     <nav className="flex items-center shadow-lg justify-between flex-wrap bg-gray-50 p-5">
-        <div className="flex items-center flex-shrink-0 text-black mr-6">
-            <span className="font-semibold text-xl tracking-tight">FeD 4.0 Prototype UI</span>
+        <div className="flex items-center flex-shrink-0 mr-6">
+			<span 
+				className="font-bold text-xl tracking-tight"
+				style={{ color: 'red' }}>
+				F
+			</span>
+            <span className="font-semibold text-xl tracking-tight">
+				eD 4.0 Prototype UI
+			</span>
         </div>
         <div className="">
             <Link to="/"

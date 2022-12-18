@@ -17,7 +17,7 @@ class forecastAPIClient {
   /* Create Axios client instance pointing at the REST api backend */
   getApiClient(forecast_client) {
     const initialConfig = {
-      baseURL: `${forecast_client.apiBasePath}/app/api/v1`,
+      baseURL: `${forecast_client.apiBasePath}/api/v1/app`,
     };
     const client = axios.create(initialConfig);
     client.interceptors.request.use(localStorageTokenInterceptor);
@@ -39,6 +39,8 @@ function localStorageTokenInterceptor(config) {
   const tokenString = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYmYiOjE2NjY2MzMxMjYsImV4cCI6MTg1NjAyMTkyNiwiaXNzIjoiU0lTUVVBTFdGTSM3MDAxIiwiYXVkIjoiRm9yZWNhc3RNYW5hZ2VyIn0.qii3Q-Ocp1YDs9ASTiZNEzFNiDu7Ia3ZxOCUNRQgJ_o';
   headers['Authorization'] = `Bearer ${tokenString}`;
   
+  //const tokenString = localStorage.getItem('token');
+
   config['headers'] = headers;
   return config;
 }

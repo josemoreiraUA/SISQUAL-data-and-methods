@@ -69,9 +69,8 @@ const Clients = () => {
 									onDoubleClick={(e) => {e.stopPropagation();}}
 									onMouseDown={(e) => {e.stopPropagation();}}
 									className="flex flex-wrap items-end justify-between w-full bg-white mb-1">
-									<div className="w-full shadow-lg">
+									<div className="w-full shadow-lg py-2">
 										No clients registered yet.
-
 									</div>
 								</div>		  
 							)}

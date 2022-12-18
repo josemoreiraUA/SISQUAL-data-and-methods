@@ -4,7 +4,6 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import Home from './pages/home';
 import Clients from './pages/clients';
 import ClientDashboard from './pages/client-dashboard';
-import CreateClient from './pages/create-client';
 import ErrorPage from './pages/error-page';
 
 const App = () => {
@@ -14,7 +13,6 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route exact path="/clients" element={<Clients />} />
-          <Route exact path="/create-client" element={<CreateClient />} />
           <Route exact path="/client-dashboard" element={<ClientDashboard />} / >
           <Route exact={true} path="*" element={<ErrorPage />} />
         </Routes>

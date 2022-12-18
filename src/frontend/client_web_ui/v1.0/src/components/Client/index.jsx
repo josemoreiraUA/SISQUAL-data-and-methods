@@ -8,6 +8,7 @@ const Client = ({client}) => {
 				<div
 					onClick={(e) => {e.stopPropagation()}} 
 					className="flex flex-wrap items-end justify-between w-full bg-white mb-1">
+						{/*<div className="w-full xl:w-1/4 md:w-1/4 border-2">*/}
 						<div className="w-full shadow-lg">
 							<div 
 								className="relative hover:bg-slate-200 active:bg-slate-500 flex flex-col h-full p-1"
