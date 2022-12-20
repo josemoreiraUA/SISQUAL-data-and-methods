@@ -39,14 +39,11 @@ from sqlalchemy.orm import Session
 
 # custom imports
 
-from models.models import ForecastIn, ForecastOut, ForecastModels2
-from core.config import settings
-from db import crud#, models, schemas
-from dependencies.db import get_db
-
-#models_path = '../train_app/models/ml/'
-#current_file_path = pathlib.Path(__file__).resolve().parent.parent.parent.parent
-#models_path = str(current_file_path) + '\\train_model\\app\\models\\ml\\'
+from app.models.forecast import ForecastIn, ForecastOut, ForecastModels
+#from app.core.config import settings
+from app.core.config import settings, global_file_logger#, global_console_logger
+from app.crud import crud_client, crud_model
+from app.api.dependencies.db import get_db
 
 router = APIRouter()
 
@@ -97,7 +94,7 @@ async def get_model_forecast(model_type: str, params: ForecastIn, model_storage_
 	Gets a forecast according to the model type.
 	"""
 
-    if ForecastModels2.MLPRegressor.value == model_type:
+    if ForecastModels.MLPRegressor.value == model_type:
         return await mlp_forecast(params, model_storage_name, forecast_period)
 
     return None
@@ -108,7 +105,13 @@ async def get_forecast(model_id: int, params: ForecastIn, db: Session = Depends(
 	Forecast.
 	"""
 
-    client_pkey = crud.get_client_pkey(db, params.client_id)
+    # log info about the forecast.
+
+    global_file_logger.info(f'Forecast for client {params.client_id} model {model_id}.')
+
+    # validate forecast request.
+
+    client_pkey = crud_client.get_client_pkey(db, params.client_id)
 
     if not client_pkey:
         raise HTTPException(
@@ -116,7 +119,7 @@ async def get_forecast(model_id: int, params: ForecastIn, db: Session = Depends(
 				detail=f'Client {params.client_id} not found!'
 			)
 
-    model = crud.get_model_details(db, model_id, client_pkey)
+    model = crud_model.get_model_details(db, model_id, client_pkey)
 
     if not model:
         raise HTTPException(
@@ -130,7 +133,11 @@ async def get_forecast(model_id: int, params: ForecastIn, db: Session = Depends(
 				detail=f'Unexpected forecast period: {params.forecast_period}!'
 			)
 
+    # get forecast.
+
     forecast = await get_model_forecast(model.type, params, model.storage_name, model.forecast_period)
+
+    # no forecast.
 
     if forecast == None:
         raise HTTPException(
