@@ -17,7 +17,7 @@ class forecastAPIClient {
   /* Create Axios client instance pointing at the REST api backend */
   getApiClient(forecast_client) {
     const initialConfig = {
-      baseURL: `${forecast_client.apiBasePath}/api/v1/app`,
+      baseURL: `${forecast_client.apiBasePath}/api/v1`,
     };
     const client = axios.create(initialConfig);
     client.interceptors.request.use(localStorageTokenInterceptor);
