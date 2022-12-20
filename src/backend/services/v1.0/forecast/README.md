@@ -85,7 +85,7 @@ pyenv --version
 
 If getting an error: `The term pyenv is not recognized as the name of a cmdlet ...`
 
- - [Read1](https://github.com/pyenv-win/pyenv-win/issues/97)
+ - [Read](https://github.com/pyenv-win/pyenv-win/issues/97)
 
  - `O:\Users\pc\.pyenv\pyenv-win\bin` and `O:\Users\pc\.pyenv\pyenv-win\shims` should be declared in the PATH User and System variables before any declaration of a python installation.
 
