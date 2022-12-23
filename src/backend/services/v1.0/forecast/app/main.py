@@ -22,7 +22,7 @@ from sqlalchemy.orm import Session
 
 from app.models.exception import MyException
 from app.api.dependencies.auth import has_authorization
-from app.core.config import settings#, setup_app_logging
+#from app.core.config import settings#, setup_app_logging
 from app.core.config import settings, global_file_logger, global_console_logger
 from app.api.v1.api import api_router
 
@@ -56,8 +56,6 @@ if settings.BACKEND_CORS_ORIGINS:
 
 # aapp startup / shutdown 
 
-#global_logger = None
-
 @app.on_event("startup")
 async def startup():
     #logger.info('forecast service startup event.')
@@ -73,7 +71,7 @@ async def startup():
     global_console_logger.info('forecast service startup event.')
     global_file_logger.info('forecast service startup event.')
 
-    pass
+    #pass
 
 @app.on_event("shutdown")
 async def shutdown():
@@ -83,7 +81,7 @@ async def shutdown():
     global_console_logger.info('forecast service shutdown event.')
     global_file_logger.info('forecast service shutdown event.')
 
-    pass
+    #pass
 
 # handle web server unexpected exceptions
 

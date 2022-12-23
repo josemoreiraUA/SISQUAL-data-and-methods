@@ -1,7 +1,10 @@
 import pathlib
+import sys
+import logging
 
 from pydantic import AnyHttpUrl, BaseSettings, EmailStr, validator
 from typing import List, Optional, Union
+from loguru import logger
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 
@@ -38,5 +41,27 @@ class Settings(BaseSettings):
 
     class Config:
         case_sensitive = True
+
+log_config = {
+    'handlers': [
+        {'sink': sys.stdout, 
+             'filter':      lambda record: record["extra"].get("name") == "gclog", 
+             'format':      '<green>{time:YYYY-MM-DD HH:mm:ss}</green> | {level: <8} | <blue>{name}:{function}:{line}</blue> | {message}', 
+             'level':       logging.INFO
+        },
+        {'sink': 'train_model_ws.log', 
+             'filter':      lambda record: record["extra"].get("name") == "gflog", 
+             'format':      '{time:YYYY-MM-DD HH:mm:ss} | {level} | {message}', 
+             'level':       logging.INFO, 
+             'rotation':    '1 MB', 
+             'enqueue':     True
+        },
+    ]
+}
+
+logger.configure(**log_config)
+
+global_file_logger = logger.bind(name="gflog")
+global_console_logger = logger.bind(name="gclog")
 
 settings = Settings()

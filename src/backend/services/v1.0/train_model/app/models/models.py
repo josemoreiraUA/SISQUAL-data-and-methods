@@ -12,11 +12,12 @@ from pydantic import BaseModel
 from typing import List, Optional
 from datetime import date, datetime, time, timedelta
 
-class ForecastModels(int, Enum):
-    MLPRegressor = 1
+#class ForecastModels(int, Enum):
+#    MLPRegressor = 1
 
-class ForecastModels2(str, Enum):
+class ForecastModels(str, Enum):
     MLPRegressor = 'MLPRegressor'
+    HistGradientBoostingRegressor = 'HistGradientBoostingRegressor'
 
 class TaskState(str, Enum):
     Created = 'Created'
@@ -54,7 +55,7 @@ class ForecastOut(BaseModel):
 class TrainIn(BaseModel):
     client_id: str
     model_name: str
-    imput_data: dict
+    input_data: dict
     forecast_period: int
 
 class TrainOut(BaseModel):

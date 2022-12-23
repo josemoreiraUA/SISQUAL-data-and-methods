@@ -17,7 +17,7 @@ class FastAPIClient {
   /* Create Axios client instance pointing at the REST api backend */
   getApiClient(config) {
     const initialConfig = {
-      baseURL: `${config.apiBasePath}/app/api/v1`,
+      baseURL: `${config.apiBasePath}/api/v1`,
     };
     const client = axios.create(initialConfig);
     client.interceptors.request.use(localStorageTokenInterceptor);

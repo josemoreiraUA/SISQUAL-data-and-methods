@@ -9,16 +9,19 @@
 
 from enum import Enum
 from pydantic import BaseModel
-from typing import List, Optional
+from typing import List, Optional, Union
 
 class ForecastModels(str, Enum):
     MLPRegressor = 'MLPRegressor'
+    HistGradientBoostingRegressor = 'HistGradientBoostingRegressor'
 
 class ForecastIn(BaseModel):
     client_id: str
-    model_imput_data: List[int]
+    #model_input_data: List[int]
+    model_input_data: Union[dict, List[int]]
     forecast_period: int
 
 class ForecastOut(BaseModel):
     forecast: List[int]
-    outparams: Optional[List[int]] = None
+    #outparams: Optional[str] = None
+    outparams: Optional[List[int]] = []
