@@ -1,3 +1,12 @@
+""" 
+    Database tables structure.
+
+    project: RH 4.0 FeD / POCI-01-0247-FEDER-039719
+    authors: jd
+    version: 1.0
+    date:    29/11/2022
+"""
+
 from sqlalchemy import Boolean, Column, ForeignKey, Integer, String, func, DateTime
 from sqlalchemy.orm import relationship
 

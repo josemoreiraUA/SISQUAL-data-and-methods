@@ -1,5 +1,5 @@
 """ 
-    Domain classes for the application.
+    Forecast domain class.
 
     project: RH 4.0 FeD / POCI-01-0247-FEDER-039719
 	authors: jd
@@ -17,11 +17,9 @@ class ForecastModels(str, Enum):
 
 class ForecastIn(BaseModel):
     client_id: str
-    #model_input_data: List[int]
     model_input_data: Union[dict, List[int]]
     forecast_period: int
 
 class ForecastOut(BaseModel):
     forecast: List[int]
-    #outparams: Optional[str] = None
-    outparams: Optional[List[int]] = []
+    #outparams: Optional[List[int]] = []

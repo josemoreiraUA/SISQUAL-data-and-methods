@@ -1,5 +1,5 @@
 """ 
-	WFM forecast parameters web service integration.
+	Forecast parameters web service integration.
 
     project: RH 4.0 FeD / POCI-01-0247-FEDER-039719
 	authors: jd
@@ -7,9 +7,11 @@
 	date:    29/11/2022
 
 	Services:
+
 		insert, update and get the parameters associated with a client.
 	
 	APIs:
+	
 		/clients/{client_id}/parameters
 """
 

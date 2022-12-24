@@ -1,5 +1,16 @@
+""" 
+    JWT Token Authorization dependency.
+
+    project: RH 4.0 FeD / POCI-01-0247-FEDER-039719
+	authors: jd
+    version: 1.0
+	date:    29/11/2022
+"""
+
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from fastapi import Depends, HTTPException, status
+
+from app.core.config import settings
 
 async def has_authorization(authorization: HTTPAuthorizationCredentials=Depends(HTTPBearer())):
     """
@@ -8,8 +19,8 @@ async def has_authorization(authorization: HTTPAuthorizationCredentials=Depends(
 
     jwt_token = authorization.credentials
 
-    if jwt_token != 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYmYiOjE2NjY2MzMxMjYsImV4cCI6MTg1NjAyMTkyNiwiaXNzIjoiU0lTUVVBTFdGTSM3MDAxIiwiYXVkIjoiRm9yZWNhc3RNYW5hZ2VyIn0.qii3Q-Ocp1YDs9ASTiZNEzFNiDu7Ia3ZxOCUNRQgJ_o':
+    if jwt_token != settings.JWT_TOKEN:
         raise HTTPException(
                     status_code=status.HTTP_401_UNAUTHORIZED,
-                    detail='Invalid authorization credentials.'
+                    detail='Invalid authorization credentials!'
                 )

@@ -1,5 +1,5 @@
 """ 
-    Domain classes for the application.
+    Custom Exception class.
 
     project: RH 4.0 FeD / POCI-01-0247-FEDER-039719
 	authors: jd

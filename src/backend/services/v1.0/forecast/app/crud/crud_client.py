@@ -1,3 +1,12 @@
+""" 
+    Database clients table operations.
+
+    project: RH 4.0 FeD / POCI-01-0247-FEDER-039719
+	authors: jd
+    version: 1.0
+	date:    29/11/2022
+"""
+
 from sqlalchemy.orm import Session
 from typing import Union
 

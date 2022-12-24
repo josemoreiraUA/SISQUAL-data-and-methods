@@ -1,3 +1,12 @@
+""" 
+    API V1 endpoints.
+
+    project: RH 4.0 FeD / POCI-01-0247-FEDER-039719
+	authors: jd
+    version: 1.0
+	date:    29/11/2022
+"""
+
 from fastapi import APIRouter
 from app.api.v1.endpoints import forecast
 
