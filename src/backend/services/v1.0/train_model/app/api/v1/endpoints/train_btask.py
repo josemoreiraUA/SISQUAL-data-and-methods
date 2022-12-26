@@ -438,4 +438,4 @@ async def train_model_request(model_type: str, params: TrainIn, background_tasks
 
     # reply to the client (task accepted)
 
-    return {'detail': '1'}
+    return {'detail': '1', 'task_id': task.id}
