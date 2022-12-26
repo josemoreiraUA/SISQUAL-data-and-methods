@@ -23,7 +23,7 @@ class Model(ModelBase):
 
 class ClientParametersIn(BaseModel):
     culture: str
-    is_active: Optional[bool] = False
+    is_active: Optional[bool] = True
 
 class ClientBase(BaseModel):
     id: str

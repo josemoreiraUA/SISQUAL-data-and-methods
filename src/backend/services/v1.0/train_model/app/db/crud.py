@@ -18,8 +18,8 @@ def get_clients(db: Session):
         , models.Client.is_active.label('is_active') \
         ).all()
 
-def get_number_clients(db: Session):
-    return db.query(models.Client).count()
+#def get_number_clients(db: Session):
+#    return db.query(models.Client).count()
 
 def create_client(db: Session, client: schemas.ClientCreate):
     client_exists = db.query(models.Client).filter(models.Client.id == client.id).first()
@@ -42,17 +42,18 @@ def update_client_parameters(db: Session, client_id: str, params: schemas.Client
 			)
 
     new_culture = params.culture
+    new_state = params.is_active
 
-    db.query(models.Client).filter(models.Client.pkey == client.pkey).update({'culture': new_culture})
+    db.query(models.Client).filter(models.Client.pkey == client.pkey).update({'culture': new_culture, 'is_active': new_state})
     db.commit()
     db.flush()
     return True
 
-def delete_client(db: Session, client_id: str):
-    num_deleted_clients = db.query(models.Client).filter(models.Client.id == client_id).delete()
-    db.commit()
+#def delete_client(db: Session, client_id: str):
+#    num_deleted_clients = db.query(models.Client).filter(models.Client.id == client_id).delete()
+#    db.commit()
 
-    return num_deleted_clients
+#    return num_deleted_clients
 
 def get_model(db: Session, model_id: int):
     return db.query(models.Model.id.label('id') \
@@ -97,6 +98,10 @@ def create_model(db: Session, model_params: schemas.ModelCreate, client_pkey: in
     db.commit()
     db.refresh(model)
     return model
+
+def get_task_state(db: Session, task_id: int):
+    return db.query(models.TrainTask.state.label('state')
+        ).filter(models.TrainTask.id == task_id).first()
 
 def get_task(db: Session, task_id: int):
     return db.query(models.TrainTask.id.label('id') \

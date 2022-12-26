@@ -1,5 +1,5 @@
 """ 
-	WFM train model integration web service.
+	Train model integration web service.
 
     project: RH 4.0 FeD / POCI-01-0247-FEDER-039719
 	authors: jd
@@ -7,15 +7,19 @@
 	date:    29/11/2022
 
 	Services:
+
 		train a forecast model.
 	
 	APIs:
-		/
+
+		/models/{model_type}/train
 
 	Designed options:
+
 		...
 
     TODOS:
+
         - This needs a logger!
         - Remove DB records and HD files in case of failure.
         - DB structure needs to be reviewed.
@@ -35,11 +39,11 @@ from fastapi import APIRouter, HTTPException, Depends, BackgroundTasks, Request
 
 from sqlalchemy.orm import Session
 
-from models.models import TrainIn, ForecastModels, TrainTaskOut, TaskState, ForecastModels
-import tools.auxiliary_functions as myfuncs
-from dependencies.db import get_db
-from db import crud, models, schemas
-from core.config import settings
+from app.models.models import TrainIn, ForecastModels, TrainTaskOut, TaskState, ForecastModels
+import app.tools.auxiliary_functions as myfuncs
+from app.dependencies.db import get_db
+from app.db import crud, schemas#, models
+from app.core.config import settings
 
 router = APIRouter()
 
@@ -402,7 +406,7 @@ def train_model(db: Session, client_pkey: int, model_type: str, params: TrainIn,
 
     return False
 
-@router.post('/', status_code=HTTPStatus.ACCEPTED)
+@router.post('', status_code=HTTPStatus.ACCEPTED)
 async def train_model_request(model_type: str, params: TrainIn, background_tasks: BackgroundTasks, db: Session = Depends(get_db)) -> dict:
     """
 	Trains a model.
