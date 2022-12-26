@@ -25,13 +25,13 @@ class FastAPIClient {
   }
 
   get_list_available_forecast_models() {
-    return this.apiClient.get(`/models/`).then(({data}) => {
+    return this.apiClient.get(`/models`).then(({data}) => {
       return data;
     }).catch((error) => console.log(error));
   }
 
   get_list_clients() {
-    return this.apiClient.get(`/clients/`).then(({data}) => {
+    return this.apiClient.get(`/clients`).then(({data}) => {
       return data;
     }).catch((error) => console.log(error));
   }
@@ -43,13 +43,13 @@ class FastAPIClient {
   }
 
   get_client_trained_models(clientId){
-    return this.apiClient.get(`/client/${clientId}/models`).then(({data}) => {
+    return this.apiClient.get(`/clients/${clientId}/models`).then(({data}) => {
       return data;
     }).catch((error) => console.log(error));
   }
   
   get_client_tasks(clientId){
-    return this.apiClient.get(`/client/${clientId}/tasks`).then(({data}) => {
+    return this.apiClient.get(`/clients/${clientId}/tasks`).then(({data}) => {
       return data;
     }).catch((err) => {
 		alert(err);
@@ -64,13 +64,13 @@ class FastAPIClient {
   }
 
   create_client(json_payload){
-    return this.apiClient.put(`/clients/`,json_payload).then(({data}) => {
+    return this.apiClient.put(`/clients`,json_payload).then(({data}) => {
       return data;
     }).catch((error) => console.log(error));
   }  
   
   train_model(modelType, json_payload){
-    return this.apiClient.post(`/models/${modelType}/train/`,json_payload).then(({data}) => {
+    return this.apiClient.post(`/models/${modelType}/train`,json_payload).then(({data}) => {
       return data;
     }).catch((error) => console.log(error));
   } 
