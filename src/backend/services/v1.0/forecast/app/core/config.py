@@ -10,9 +10,11 @@
 import pathlib
 import sys
 import logging
+import datetime
 
 from pydantic import AnyHttpUrl, BaseSettings, EmailStr, validator
 from typing import List, Optional, Union
+import loguru
 from loguru import logger
 
 # global configuration (settings)
@@ -47,35 +49,43 @@ class Settings(BaseSettings):
             return v
         raise ValueError(v)
 
+    current_time = datetime.datetime.now()
+    #print(type(current_time))
+
+    LOG_FILENAME: str = 'forecast_API_Log_' + str(current_time.day) + '_' + str(current_time.month) + '_' + str(current_time.year) + '.log'
+    LOG_FILE_DIR: str = 'logs/'
+
+    # file logger
+    file_logger: loguru._logger.Logger = None
+    # console logger
+    console_logger: loguru._logger.Logger = None
+
     class Config:
         case_sensitive = True
 
-# logging global settings
-
-#'format':      '{time:YYYY-MM-DD HH:mm:ss} | {level: <8} | {name: ^15}:{function: ^15}:{line: >3} | {message}', 
-
-log_config = {
-    'handlers': [
-        {'sink': sys.stdout, 
-             'filter':      lambda record: record["extra"].get("name") == "gclog", 
+# logging settings
+def setup_app_logging(config: Settings) -> None:
+    #'format':      '{time:YYYY-MM-DD HH:mm:ss} | {level: <8} | {name: ^15}:{function: ^15}:{line: >3} | {message}', 
+    log_config = {
+        'handlers': [
+            {'sink': sys.stdout, 
+             'filter':      lambda record: record["extra"].get("name") == "clogger", 
              'format':      '<green>{time:YYYY-MM-DD HH:mm:ss}</green> | {level: <8} | <blue>{name}:{function}:{line}</blue> | {message}', 
              'level':       logging.INFO
-        },
-        {'sink': 'forecast.log', 
-             'filter':      lambda record: record["extra"].get("name") == "gflog", 
+            },
+            {'sink': config.LOG_FILE_DIR + config.LOG_FILENAME, 
+             'filter':      lambda record: record["extra"].get("name") == "flogger", 
              'format':      '{time:YYYY-MM-DD HH:mm:ss} | {level} | {message}', 
              'level':       logging.INFO, 
              'rotation':    '1 MB', 
              'enqueue':     True
-        },
-    ]
-}
+            },
+        ]
+    }
 
-logger.configure(**log_config)
+    logger.configure(**log_config)
 
-# file logger
-global_file_logger = logger.bind(name="gflog")
-# console logger
-global_console_logger = logger.bind(name="gclog")
+    config.file_logger = logger.bind(name="flogger")
+    config.console_logger = logger.bind(name="clogger")
 
 settings = Settings()

@@ -21,8 +21,10 @@ from sqlalchemy.orm import Session
 
 from app.models.exception import MyException
 from app.api.dependencies.auth import has_authorization
-from app.core.config import settings, global_file_logger, global_console_logger
+from app.core.config import settings, setup_app_logging#, global_file_logger, global_console_logger
 from app.api.v1.api import api_router
+
+setup_app_logging(settings)
 
 """
 app = FastAPI(
@@ -54,14 +56,14 @@ if settings.BACKEND_CORS_ORIGINS:
 
 @app.on_event("startup")
 async def startup():
-    global_console_logger.info('forecast service startup event.')
-    global_file_logger.info('forecast service startup event.')
+    settings.console_logger.info('startup event.')
+    settings.file_logger.info('startup event.')
     #pass
 
 @app.on_event("shutdown")
 async def shutdown():
-    global_console_logger.info('forecast service shutdown event.')
-    global_file_logger.info('forecast service shutdown event.')
+    settings.console_logger.info('shutdown event.')
+    settings.file_logger.info('shutdown event.')
     #pass
 
 # handle web server unexpected exceptions

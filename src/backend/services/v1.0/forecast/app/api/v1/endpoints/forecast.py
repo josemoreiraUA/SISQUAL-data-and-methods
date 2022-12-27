@@ -52,7 +52,7 @@ from sqlalchemy.orm import Session
 # custom imports
 
 from app.models.forecast import ForecastIn, ForecastOut, ForecastModels
-from app.core.config import settings, global_file_logger#, global_console_logger
+from app.core.config import settings#, global_file_logger#, global_console_logger
 from app.crud import crud_client, crud_model
 from app.api.dependencies.db import get_db
 
@@ -137,7 +137,7 @@ async def get_model_forecast(model_type: str, params: ForecastIn, model_storage_
     elif ForecastModels.HistGradientBoostingRegressor.value == model_type:
         return await hgbr_forecast(params, model_storage_name, forecast_period)
 
-    global_file_logger.critical(f'Model {model_type} not supported!')
+    settings.file_logger.critical(f'Model {model_type} not supported!')
     return None
 
 @router.post('', response_model=ForecastOut)
@@ -148,14 +148,14 @@ async def get_forecast(model_id: int, params: ForecastIn, db: Session = Depends(
 
     # log info about the forecast.
 
-    global_file_logger.info(f'Forecast for client {params.client_id} model {model_id}.')
+    settings.file_logger.info(f'Forecast for client {params.client_id} model {model_id}.')
 
     # validate forecast request.
 
     client_pkey = crud_client.get_client_pkey(db, params.client_id)
 
     if not client_pkey:
-        global_file_logger.error(f'Client {params.client_id} not found!')
+        settings.file_logger.error(f'Client {params.client_id} not found!')
         raise HTTPException(
 		        status_code=404, 
 				detail=f'Client {params.client_id} not found!'
@@ -164,14 +164,14 @@ async def get_forecast(model_id: int, params: ForecastIn, db: Session = Depends(
     model = crud_model.get_model_details(db, model_id, client_pkey)
 
     if not model:
-        global_file_logger.critical(f'Model {model_id} not found for client {params.client_id}!')
+        settings.file_logger.critical(f'Model {model_id} not found for client {params.client_id}!')
         raise HTTPException(
 		        status_code=404, 
 				detail=f'Model {model_id} not found for client {params.client_id}!'
 			)
 
     if model.forecast_period != params.forecast_period:
-        global_file_logger.error(f'Unexpected forecast period: {params.forecast_period}!')
+        settings.file_logger.error(f'Unexpected forecast period: {params.forecast_period}!')
         raise HTTPException(
 		        status_code=400, 
 				detail=f'Unexpected forecast period: {params.forecast_period}!'
