@@ -120,7 +120,8 @@ def model_details_to_html(
     forecast_period_elem_title: str) -> str:
 
     html = '<h3>' + model_details_elem_title + '</h3>'
-    html += "<table class='ModelDetails'>"
+    #html += "<table class='ModelDetails'>"
+    html += "<table>"
     html += '<tbody>'
     html += '<tr>'
     html += '<td>' + model_type_elem_title + '</td>'
@@ -147,7 +148,7 @@ def to_html(data: dict, title: str, round_val: bool = False, num_decimals: int =
     html = ''
 
     if data is not None and len(data) > 0:
-        html += '<div>'
+        #html += '<div>'
         html += '<h4>' + title + '</h4>'
         html += '<table>'
         html += '<tbody>'
@@ -165,7 +166,7 @@ def to_html(data: dict, title: str, round_val: bool = False, num_decimals: int =
 
         html += '</tbody>'
         html += '</table>'
-        html += '</div>'
+        #html += '</div>'
 
     return html
 
