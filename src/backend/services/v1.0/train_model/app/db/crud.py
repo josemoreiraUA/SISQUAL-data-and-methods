@@ -55,6 +55,15 @@ def update_client_parameters(db: Session, client_id: str, params: schemas.Client
 
 #    return num_deleted_clients
 
+def get_client_registration_key(db: Session, client_id: str):
+    return db.query(models.Client.pkey).filter(models.Client.id == client_id).first()
+
+def update_model_html_report(db: Session, html_report: str, model_id: int):
+    upd_output = db.query(models.Model).filter(models.Model.id == model_id).update({'html_report': html_report})
+    db.commit()
+    db.flush()
+    return upd_output
+
 def get_model(db: Session, model_id: int):
     return db.query(models.Model.id.label('id') \
         , models.Model.type.label('type') \
@@ -63,6 +72,7 @@ def get_model(db: Session, model_id: int):
         , models.Model.metrics.label('metrics') \
         , models.Model.forecast_period.label('forecast_period') \
         , models.Model.train_params.label('train_params') \
+        , models.Model.html_report.label('html_report')
         ).filter(models.Model.id == model_id).first()
 
 def get_client_models(db: Session, client_id: str):
@@ -79,7 +89,8 @@ def get_client_models(db: Session, client_id: str):
         , models.Model.time_trained.label('time_trained') \
         , models.Model.metrics.label('metrics') \
         , models.Model.forecast_period.label('forecast_period') \
-        , models.Model.train_params.label('train_params')
+        , models.Model.train_params.label('train_params') \
+        , models.Model.html_report.label('html_report')
         ).filter(models.Model.client_pkey == client.pkey).all()
 
 def get_client_pkey(db: Session, client_id: str):

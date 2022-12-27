@@ -22,9 +22,11 @@ from app.models.models import MyException#, ForecastModels
 from app.dependencies.auth import has_authorization
 from app.dependencies.db import get_db
 #from core.config import settings
-from app.core.config import settings, global_file_logger, global_console_logger
+from app.core.config import settings, setup_app_logging#, global_file_logger, global_console_logger
 from app.db import crud, schemas
 from app.api.v1.api import api_router
+
+setup_app_logging(settings)
 
 #train_app = FastAPI(root_path="/api/v1")
 
@@ -50,15 +52,15 @@ if settings.BACKEND_CORS_ORIGINS:
 
 @train_app.on_event("startup")
 async def startup():
-    global_console_logger.info('train model service startup event.')
-    global_file_logger.info('train model service startup event.')
+    settings.console_logger.info('startup event.')
+    settings.file_logger.info('startup event.')
 
     #pass
 
 @train_app.on_event("shutdown")
 async def shutdown():
-    global_console_logger.info('train model service shutdown event.')
-    global_file_logger.info('train model service shutdown event.')
+    settings.console_logger.info('shutdown event.')
+    settings.file_logger.info('shutdown event.')
 
     #pass
 

@@ -47,7 +47,11 @@ from app.core.config import settings
 
 router = APIRouter()
 
-def check_model_type(model_type: str) -> bool:
+# --------------------------------------------------------------------
+
+def check_model_type_deprecated(model_type: str) -> bool:
+    """Use is_model_available() instead."""
+
     for model in ForecastModels:
         if model_type == str(model.value):
             return True
@@ -56,6 +60,173 @@ def check_model_type(model_type: str) -> bool:
             status_code=404, 
 			detail=f'Model of type {model_type} not available!'
         )
+
+def train_mlp_deprecated(params: TrainIn) -> dict:
+    """Use train_mlp() instead."""
+
+    data = pd.DataFrame.from_dict(params.input_data)
+    nprev = params.forecast_period
+
+    # preprocess data
+    data['dt'] = pd.to_datetime(data['dt'])
+    data.shape
+
+    forecast_data = pd.DataFrame(data.resample('H', on = 'dt').values.sum())
+    forecast_data.reset_index(inplace=True)
+
+    # remove outliers
+    outliers, new_ts = myfuncs.streming_outlier_detection(forecast_data['values'].values, k=53, s=168, alpha=2)
+    forecast_data['filtered_values'] = new_ts
+
+    # preprocess data
+    X, y = myfuncs.to_supervised(forecast_data['filtered_values'].values, n_lags=nprev, n_output=nprev)
+
+    # prepare data for training
+    X_train = X[:-1]
+    y_train = y[:-1]
+    X_test = X[-1].reshape(1,-1)
+    y_test = y[-1].reshape(1,-1)
+
+    # create model
+    mlp_model = MLPRegressor(max_iter=10)
+
+    # train model
+    mlp_model.fit(X_train,y_train)
+
+    # get params
+    model_params = mlp_model.get_params(deep=True)
+    print(model_params)
+
+    # predict
+    mlp_model_forecast = mlp_model.predict(X_test)
+
+    # model evaluation metrics
+    mlp_model_metrics = myfuncs.model_metrics(y_test.flatten(), mlp_model_forecast.flatten())
+
+    train_params = {'k': 53, 's': 168, 'alpha': 2, 'max_iter': 10}
+
+    return {'model': mlp_model, 'forecast': mlp_model_forecast, 'metrics': mlp_model_metrics, 'train_params': train_params}
+
+# --------------------------------------------------------------------
+
+# --------------------------------------------------------------------
+
+def model_details_to_html(
+    model_in_db, 
+    model_details_elem_title: str,
+    model_type_elem_title: str,
+    model_name_elem_title: str,
+    model_time_trained_elem_title: str,
+    forecast_period_elem_title: str) -> str:
+
+    html = '<h3>' + model_details_elem_title + '</h3>'
+    html += "<table class='ModelDetails'>"
+    html += '<tbody>'
+    html += '<tr>'
+    html += '<td>' + model_type_elem_title + '</td>'
+    html += '<td>' + model_in_db.type + '</td>'
+    html += '</tr>'
+    html += '<tr>'
+    html += '<td>' + model_name_elem_title + '</td>'
+    html += '<td>' + model_in_db.model_name + '</td>'
+    html += '</tr>'
+    html += '<tr>'
+    html += '<td>' + model_time_trained_elem_title + '</td>'
+    html += '<td>' + str(model_in_db.time_trained).replace('T', ' ') + '</td>'
+    html += '</tr>'
+    html += '<tr>'
+    html += '<td>' + forecast_period_elem_title + '</td>'
+    html += '<td>' + str(model_in_db.forecast_period) + '</td>'
+    html += '</tr>'
+    html += '</tbody>'
+    html += '</table>'
+
+    return html
+
+def to_html(data: dict, title: str, round_val: bool = False, num_decimals: int = 2) -> str:
+    html = ''
+
+    if data is not None and len(data) > 0:
+        html += '<div>'
+        html += '<h4>' + title + '</h4>'
+        html += '<table>'
+        html += '<tbody>'
+
+        for key, value in data.items():
+            html += '<tr>'
+            html += '<td>' + key + '</td>'
+
+            if round_val:
+                html += '<td>' + str(round(value, num_decimals)) + '</td>'
+            else:
+                html += '<td>' + str(value) + '</td>'
+
+            html += '</tr>'
+
+        html += '</tbody>'
+        html += '</table>'
+        html += '</div>'
+
+    return html
+
+#model_in_db: models.Model,
+def create_html_report(
+    model_in_db,
+    outlier_detection_parameters: dict,
+    model_parameters: dict,
+    custom_train_parameters: dict,
+    model_metrics: dict) -> str:
+    """Creates an html report"""
+
+    # report encapsulating div element
+    html_report = "<div class='htmlReport'>"
+
+    # title labels
+    model_details_elem_title = 'Model Details'
+    model_type_elem_title = 'Type'
+    model_name_elem_title = 'Name'
+    model_time_trained_elem_title = 'Time Trained'
+    forecast_period_elem_title = 'Forecast Period'
+
+    outlier_detection_parameters_elem_title = 'Ooutlier Detection Parameters'
+    model_parameters_elem_title = 'Model Parameters'
+    custom_train_parameters_elem_title = 'Custom Train Parameters'
+    model_metrics_elem_title = 'Model Metrics'
+
+    # model details
+    html_report += model_details_to_html(
+            model_in_db=model_in_db,
+            model_details_elem_title=model_details_elem_title,
+            model_type_elem_title=model_type_elem_title,
+            model_name_elem_title=model_name_elem_title,
+            model_time_trained_elem_title=model_time_trained_elem_title,
+            forecast_period_elem_title=forecast_period_elem_title
+        )
+
+    # outlier detection parameters
+    html_report += to_html(data=outlier_detection_parameters, title=outlier_detection_parameters_elem_title)
+
+    # model parameters
+    html_report += to_html(data=model_parameters, title=model_parameters_elem_title)
+
+    # custom train parameters
+    html_report += to_html(data=custom_train_parameters, title=custom_train_parameters_elem_title)
+
+    # model metrics
+    html_report += to_html(data=model_metrics, title=model_metrics_elem_title, round_val=True, num_decimals=3)
+
+    # add images
+
+    html_report += '</div>'
+
+    return html_report
+
+def is_model_available(model_type: str) -> bool:
+    for model in ForecastModels:
+        if model_type == model.value:
+            return True
+
+    return False
 
 def get_dir(models_storage_dir: str, client_id: str) -> str:
     dir = models_storage_dir + client_id
@@ -96,10 +267,10 @@ def pre_process_data(input_data: dict) -> dict:
 
     data = pd.DataFrame.from_dict(input_data)
 
-    data['ds'] = pd.to_datetime(data['ds'])
+    data['dt'] = pd.to_datetime(data['dt'])
     data.shape
 
-    data_resample = pd.DataFrame(data.resample('H', on = 'ds').values.sum())
+    data_resample = pd.DataFrame(data.resample('H', on = 'dt').values.sum())
     data_resample.reset_index(inplace=True)
 
     return data_resample
@@ -117,9 +288,9 @@ def train_hgbr(params: TrainIn) -> dict:
 
     data = pre_process_data(params.input_data)
 
-    data['Month'] = data['ds'].apply(lambda x: x.month)
-    data['Day'] = data['ds'].apply(lambda x: x.weekday())
-    data['Hour'] = data['ds'].apply(lambda x: x.hour)
+    data['Month'] = data['dt'].apply(lambda x: x.month)
+    data['Day'] = data['dt'].apply(lambda x: x.weekday())
+    data['Hour'] = data['dt'].apply(lambda x: x.hour)
     data['Closed'] = data['values'].apply(lambda x: myfuncs.closed(x))
 
     outliers, filtered_values = myfuncs.streming_outlier_detection(data['values'].values, k=K, s=S, alpha=ALPHA)
@@ -255,55 +426,6 @@ def train_mlp(params: TrainIn) -> dict:
             'custom_train_parameters': train_params
             }
 
-def train_mlp_deprecated(params: TrainIn) -> dict:
-    """
-	Trains a MLPRegressor model.
-    https://scikit-learn.org/stable/modules/generated/sklearn.neural_network.MLPRegressor.html
-	"""
-
-    data = pd.DataFrame.from_dict(params.input_data)
-    nprev = params.forecast_period
-
-    # preprocess data
-    data['ds'] = pd.to_datetime(data['ds'])
-    data.shape
-
-    forecast_data = pd.DataFrame(data.resample('H', on = 'ds').values.sum())
-    forecast_data.reset_index(inplace=True)
-
-    # remove outliers
-    outliers, new_ts = myfuncs.streming_outlier_detection(forecast_data['values'].values, k=53, s=168, alpha=2)
-    forecast_data['filtered_values'] = new_ts
-
-    # preprocess data
-    X, y = myfuncs.to_supervised(forecast_data['filtered_values'].values, n_lags=nprev, n_output=nprev)
-
-    # prepare data for training
-    X_train = X[:-1]
-    y_train = y[:-1]
-    X_test = X[-1].reshape(1,-1)
-    y_test = y[-1].reshape(1,-1)
-
-    # create model
-    mlp_model = MLPRegressor(max_iter=10)
-
-    # train model
-    mlp_model.fit(X_train,y_train)
-
-    # get params
-    model_params = mlp_model.get_params(deep=True)
-    print(model_params)
-
-    # predict
-    mlp_model_forecast = mlp_model.predict(X_test)
-
-    # model evaluation metrics
-    mlp_model_metrics = myfuncs.model_metrics(y_test.flatten(), mlp_model_forecast.flatten())
-
-    train_params = {'k': 53, 's': 168, 'alpha': 2, 'max_iter': 10}
-
-    return {'model': mlp_model, 'forecast': mlp_model_forecast, 'metrics': mlp_model_metrics, 'train_params': train_params}
-
 def switch(model_type: str, params: TrainIn) -> Union[dict, None]:
     """
 	Chooses which type of model to train for a request.
@@ -363,7 +485,7 @@ def train_model(db: Session, client_pkey: int, model_type: str, params: TrainIn,
             custom_train_parameters_csv = ''
             for key, value in custom_train_parameters.items():
                 custom_train_parameters_csv += key + ':' + str(value) + ';'
-            # << temp
+            # << 
 
             model_params = schemas.ModelCreate(type = model_type \
 			    , model_name = model_name \
@@ -377,6 +499,22 @@ def train_model(db: Session, client_pkey: int, model_type: str, params: TrainIn,
             if model_in_db:
                 is_model_created_in_db = True
                 model_db_id = model_in_db.id
+
+            # >> create html report 
+
+            html_report = create_html_report(
+                model_in_db=model_in_db,
+                outlier_detection_parameters=outlier_detection_parameters,
+                model_parameters=model_parameters,
+                custom_train_parameters=custom_train_parameters,
+                model_metrics=model_metrics
+                )
+
+            #print(html_report)
+            update_output = crud.update_model_html_report(db, html_report, model_in_db.id)
+            #update_output = 1 > success
+            #print('------------------->', update_output)
+            # << 
 
             # store model in the HD
             dir = get_dir(settings.MODELS_STORAGE_DIR, client_id)
@@ -392,7 +530,7 @@ def train_model(db: Session, client_pkey: int, model_type: str, params: TrainIn,
             # update the state of the task in the DB
             update_result = crud.update_task_state(db, task_id, TaskState.Error, -1)
     except Exception as e:
-        #print(e)
+        print('-------------------------->', e)
         # update the state of the task in the DB
         update_result = crud.update_task_state(db, task_id, TaskState.Error, -1)
         if is_model_created_in_db:
@@ -406,22 +544,52 @@ def train_model(db: Session, client_pkey: int, model_type: str, params: TrainIn,
 
     return False
 
+# --------------------------------------------------------------------
+
+# --------------------------------------------------------------------
+
 @router.post('', status_code=HTTPStatus.ACCEPTED)
 async def train_model_request(model_type: str, params: TrainIn, background_tasks: BackgroundTasks, db: Session = Depends(get_db)) -> dict:
-    """
-	Trains a model.
-	"""
 
-    # request validation steps
+    # validation steps
 
+    # 1. check if the client is known (registered)
     client_id = params.client_id
 
-    client_pkey = crud.get_client_pkey(db, client_id)
+    client = crud.get_client_registration_key(db, client_id)
 
-    check_model_type(model_type)
+    if not client:
+        # error message
+        err_message = f'Client {client_id} not found!'
+
+        # log error
+        settings.console_logger.error(err_message)
+        settings.file_logger.error(err_message)
+
+        # send error message
+        raise HTTPException(
+            status_code=404, 
+            detail=err_message
+        )
+
+    client_pkey = client.pkey
+
+    # 2. check if the model type requested is available (supported)
+    if not is_model_available(model_type):
+        # error message
+        err_message = f'Model of type {model_type} not available!'
+    
+        # log error
+        settings.console_logger.error(err_message)
+        settings.file_logger.error(err_message)
+
+        # send error message
+        raise HTTPException(
+            status_code=404, 
+            detail=err_message
+        )
 
     # create task
-
     task_state = TaskState.Pending
 
     task = schemas.TTaskCreate(
@@ -433,9 +601,7 @@ async def train_model_request(model_type: str, params: TrainIn, background_tasks
     task = crud.create_task(db, task)
 
     # create background task to train the model
-
     background_tasks.add_task(train_model, db, client_pkey=client_pkey, model_type=model_type, params=params, task_id=task.id)
 
     # reply to the client (task accepted)
-
     return {'detail': '1', 'task_id': task.id}

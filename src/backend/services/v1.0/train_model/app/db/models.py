@@ -24,6 +24,7 @@ class Model(Base):
     metrics = Column(String)
     forecast_period = Column(Integer)
     train_params = Column(String)
+    html_report = Column(String)
     client_pkey = Column(Integer, ForeignKey("clients.pkey"))
 
     client = relationship("Client", back_populates="models")
