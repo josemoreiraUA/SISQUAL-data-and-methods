@@ -18,6 +18,7 @@ from datetime import date, datetime, time, timedelta
 class ForecastModels(str, Enum):
     MLPRegressor = 'MLPRegressor'
     HistGradientBoostingRegressor = 'HistGradientBoostingRegressor'
+    Prophet = 'Prophet'
 
 class TaskState(str, Enum):
     Created = 'Created'

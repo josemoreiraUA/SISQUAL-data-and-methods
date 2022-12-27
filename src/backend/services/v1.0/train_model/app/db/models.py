@@ -37,5 +37,6 @@ class TrainTask(Base):
     time_started = Column(DateTime(timezone=True))
     time_finished = Column(DateTime(timezone=True))
     client_pkey = Column(Integer, ForeignKey("clients.pkey"))
-    model_type = Column(String(100))	
+    model_type = Column(String(100))
+    model_id = Column(Integer)
     state = Column(String(25))

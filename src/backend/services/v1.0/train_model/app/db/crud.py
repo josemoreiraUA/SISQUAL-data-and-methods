@@ -124,6 +124,10 @@ def get_task(db: Session, task_id: int):
         , models.TrainTask.state.label('state')
         ).filter(models.TrainTask.id == task_id).first()
 
+def get_report(db: Session, task_id: int):
+    return db.query(models.Model.html_report.label('html_report')
+        ).join(models.TrainTask, models.Model.id == models.TrainTask.model_id).filter(models.TrainTask.id == task_id).first()
+
 def get_client_tasks(db: Session, client_id: str):
     client = db.query(models.Client.pkey).filter(models.Client.id == client_id).first()
     if not client:
@@ -147,11 +151,11 @@ def create_task(db: Session, task_params: schemas.TTaskCreate):
     db.refresh(task)
     return task
 
-def update_task_state(db: Session, task_id: int, new_task_state: str, flag: int) -> bool:
+def update_task_state(db: Session, task_id: int, new_task_state: str, flag: int, model_id: int) -> bool:
     if flag == 1:
         db.query(models.TrainTask).filter(models.TrainTask.id == task_id).update({'state': new_task_state, 'time_started': func.now()})
     elif flag == 0:
-        db.query(models.TrainTask).filter(models.TrainTask.id == task_id).update({'state': new_task_state, 'time_finished': func.now()})
+        db.query(models.TrainTask).filter(models.TrainTask.id == task_id).update({'state': new_task_state, 'time_finished': func.now(), 'model_id': model_id})
     else:
         db.query(models.TrainTask).filter(models.TrainTask.id == task_id).update({'state': new_task_state})
 

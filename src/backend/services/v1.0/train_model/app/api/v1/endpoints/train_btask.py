@@ -459,7 +459,7 @@ def train_model(db: Session, client_pkey: int, model_type: str, params: TrainIn,
     model_hd_name = ''
 
     try:
-        update_result = crud.update_task_state(db, task_id, TaskState.Executing, 1)
+        update_result = crud.update_task_state(db, task_id, TaskState.Executing, 1, None)
 
         train_output = switch(model_type, params)
 
@@ -525,15 +525,15 @@ def train_model(db: Session, client_pkey: int, model_type: str, params: TrainIn,
                 model_hd_name = dir + model_storage_name + '.joblib'
 
             # update the state of the task in the DB
-            update_result = crud.update_task_state(db, task_id, TaskState.Finished, 0)
+            update_result = crud.update_task_state(db, task_id, TaskState.Finished, 0, model_in_db.id)
             return True
         else:
             # update the state of the task in the DB
-            update_result = crud.update_task_state(db, task_id, TaskState.Error, -1)
+            update_result = crud.update_task_state(db, task_id, TaskState.Error, -1, None)
     except Exception as e:
         print('-------------------------->', e)
         # update the state of the task in the DB
-        update_result = crud.update_task_state(db, task_id, TaskState.Error, -1)
+        update_result = crud.update_task_state(db, task_id, TaskState.Error, -1, None)
         if is_model_created_in_db:
             # TODO: remove record from the DB
             pass

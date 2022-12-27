@@ -30,6 +30,7 @@ from fastapi import APIRouter, HTTPException, Depends#, BackgroundTasks, Request
 
 from sqlalchemy.orm import Session
 
+from app.models.models import TaskState
 #from app.models.models import TrainIn, ForecastModels, TrainTaskOut, TaskState, ForecastModels
 #import app.tools.auxiliary_functions as myfuncs
 from app.dependencies.db import get_db
@@ -60,5 +61,11 @@ def get_task_state(task_id: int, db: Session = Depends(get_db)) -> str:
                 status_code=404, 
                 detail=f'Task {task_id} not found!'
             )
+
+    if task.state == TaskState.Finished:
+        report = crud.get_report(db, task_id)
+        #print('===========================', report.html_report)
+        if report:
+            return {'state': task.state, 'html_report': report.html_report}
 
     return {'state': task.state}
