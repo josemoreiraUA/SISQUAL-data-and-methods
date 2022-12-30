@@ -29,6 +29,65 @@
   color: #61dafb;
 }
 
+h3, h4
+{
+  text-align: left;
+  padding: 15px 4px 15px 4px;
+  font-weight: bold;
+  font-size: 18px;
+  color: #3b6291;
+  /*border: 1px solid silver;*/
+  /*width: 500px;*/
+}
+
+.htmlReport
+{
+  padding-left: 20px;
+  text-align: left;
+}
+
+.htmlReport img
+{
+  padding: 0px;
+  border: 1px solid silver;
+}
+
+.htmlReport table
+{
+  width: 500px;
+  border: 1px solid silver;
+  /*padding: 3px 30px 3px 3px;*/
+}
+
+.htmlReport td
+{
+  padding: 3px 3px 3px 10px;
+}
+
+.htmlReport td:nth-child(even)
+{
+  /*background-color: silver;*/
+  width: 60%;
+}
+
+.htmlReport td:nth-child(odd)
+{
+  font-weight: bold;
+}
+
+.htmlReport tr:nth-child(even)
+{
+  /*background-color: silver;*/
+  /*background-color: #92a2a7;*/
+
+  background-color: #edf2f8;
+}
+
+.htmlReport tr:nth-child(odd)
+{
+  background-color: white;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

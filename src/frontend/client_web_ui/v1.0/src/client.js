@@ -48,6 +48,12 @@ class FastAPIClient {
     }).catch((error) => console.log(error));
   }
   
+  get_task_state(taskId){
+    return this.apiClient.get(`/tasks/${taskId}/state`).then(({data}) => {
+      return data;
+    }).catch((error) => console.log(error));
+  }
+
   get_client_tasks(clientId){
     return this.apiClient.get(`/clients/${clientId}/tasks`).then(({data}) => {
       return data;
