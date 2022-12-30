@@ -44,6 +44,8 @@ import pandas as pd
 from joblib import load
 from sklearn.neural_network import MLPRegressor
 from sklearn.ensemble import HistGradientBoostingRegressor
+from prophet import Prophet
+from prophet.serialize import model_from_json
 from fastapi import APIRouter, HTTPException, Header, Depends
 from typing import Union
 
@@ -65,6 +67,48 @@ async def load_model(model_location_on_disk: str) -> Union[MLPRegressor, HistGra
 
     mlp_model = load(model_location_on_disk)
     return mlp_model
+
+async def prophet_forecast(params: ForecastIn, model_storage_name: str, forecast_period: int) -> ForecastOut:
+    """
+    Gets a forecast using a stored Prophet model.
+    """
+
+    client_id = params.client_id
+
+    # load input forecast data
+    forecast_input_data = pd.DataFrame(params.model_input_data)
+
+    #if forecast_input_data.Hour.size != forecast_period:
+    #    raise HTTPException(
+    #            status_code=400, 
+    #            detail=f'Unexpected imput data size: {forecast_input_data.Hour.size} for defined forecast period: {forecast_period}!'
+    #        )
+
+    forecast = None
+
+    # load model
+    with open(settings.MODELS_DIR + client_id + '\\' + model_storage_name, 'r') as fin:
+        m = model_from_json(fin.read())
+        forecast = m.predict(forecast_input_data)
+
+    #forecast[['ds', 'yhat', 'yhat_lower', 'yhat_upper']].tail()
+
+    #mlp_model = await load_model(settings.MODELS_DIR + client_id + '\\' + model_storage_name)
+
+    # forecast
+    #forecast = mlp_model.predict(forecast_input_data)
+
+    # postprocess forecast
+
+    #print(type(forecast['yhat']))
+    #print(forecast['yhat'])
+
+    #forecast = forecast['yhat'].flatten().tolist()
+    forecast = forecast['yhat'].tolist()
+    forecast = [0 if x < 0 else x for x in forecast]
+    
+    #return ForecastOut(forecast=forecast, outparams=[len(forecast)])
+    return ForecastOut(forecast=forecast)
 
 async def mlp_forecast(params: ForecastIn, model_storage_name: str, forecast_period: int) -> ForecastOut:
     """
@@ -136,6 +180,8 @@ async def get_model_forecast(model_type: str, params: ForecastIn, model_storage_
         return await mlp_forecast(params, model_storage_name, forecast_period)
     elif ForecastModels.HistGradientBoostingRegressor.value == model_type:
         return await hgbr_forecast(params, model_storage_name, forecast_period)
+    elif ForecastModels.Prophet.value == model_type:
+        return await prophet_forecast(params, model_storage_name, forecast_period)
 
     settings.file_logger.critical(f'Model {model_type} not supported!')
     return None

@@ -14,6 +14,7 @@ from typing import List, Optional, Union
 class ForecastModels(str, Enum):
     MLPRegressor = 'MLPRegressor'
     HistGradientBoostingRegressor = 'HistGradientBoostingRegressor'
+    Prophet = 'Prophet'
 
 class ForecastIn(BaseModel):
     client_id: str
