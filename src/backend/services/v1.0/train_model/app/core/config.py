@@ -54,6 +54,9 @@ class Settings(BaseSettings):
     ROOT_DIR = pathlib.Path(__file__).resolve().parent.parent
     MODELS_STORAGE_DIR: str = 'models/ml/'
 
+    IMG_WEBSERVER_DIR: str = 'C:\\temp\\nginx-1.22.1\\nginx-1.22.1\\html\\files'
+    IMG_WEBSERVER_URI: str = 'http://127.0.0.1/files'
+
     AVAILABLE_MODELS: List[dict] = []
 
     for model in ForecastModels:
