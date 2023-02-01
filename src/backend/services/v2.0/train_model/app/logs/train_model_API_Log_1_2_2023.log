@@ -1,0 +1,105 @@
+2023-02-01 18:18:04 | CRITICAL | Client 00000023 not found!
+2023-02-01 18:18:04 | CRITICAL | Model type MLPRegressor2 not available!
+2023-02-01 18:18:04 | INFO | Task 1 for client AR21TY2023 (1) train model MLPRegressor created!
+2023-02-01 18:18:04 | INFO | Task 1 Executing!
+2023-02-01 18:18:04 | INFO | Task 1: initial pre-process data step!
+2023-02-01 18:18:04 | INFO | Task 1: remove (detect) outliers step!
+2023-02-01 18:18:05 | INFO | Task 1: additional pre-process data step!
+2023-02-01 18:18:09 | INFO | Task 1: starting model training!
+2023-02-01 18:27:03 | SUCCESS | Task 1: model trained!
+2023-02-01 18:27:03 | INFO | Task 1: getting model evaluation metrics!
+2023-02-01 18:27:04 | INFO | Task 1: storing the model info in the DB.
+2023-02-01 18:27:04 | INFO | Task 1: creating the html report.
+2023-02-01 18:27:04 | INFO | Task 1: storing the model in the HD.
+2023-02-01 18:27:04 | SUCCESS | Task 1 Finished!
+2023-02-01 19:09:11 | INFO | Task 2 for client AR21TY2023 (1) train model HistGradientBoostingRegressor created!
+2023-02-01 19:09:11 | INFO | Task 2 Executing!
+2023-02-01 19:09:11 | INFO | Task 2: initial pre-process data step!
+2023-02-01 19:09:12 | INFO | Task 2: remove (detect) outliers step!
+2023-02-01 19:09:13 | INFO | Task 2: starting model training!
+2023-02-01 19:09:13 | SUCCESS | Task 2: model trained!
+2023-02-01 19:09:13 | INFO | Task 2: getting model evaluation metrics!
+2023-02-01 19:09:13 | INFO | Task 2: storing the model info in the DB.
+2023-02-01 19:09:13 | INFO | Task 2: creating the html report.
+2023-02-01 19:09:13 | INFO | Task 2: storing the model in the HD.
+2023-02-01 19:09:13 | SUCCESS | Task 2 Finished!
+2023-02-01 19:09:13 | INFO | Task 3 for client AR21TY2023 (1) train model Prophet created!
+2023-02-01 19:09:13 | INFO | Task 3 Executing!
+2023-02-01 19:09:13 | INFO | Task 3: initial pre-process data step!
+2023-02-01 19:09:13 | INFO | Task 3: remove (detect) outliers step!
+2023-02-01 19:09:14 | INFO | Task 3: starting model training!
+2023-02-01 19:09:24 | SUCCESS | Task 3: model trained!
+2023-02-01 19:09:34 | INFO | Task 3: model cross validation step finished!
+2023-02-01 19:09:34 | INFO | Task 3: getting model performance metrics!
+2023-02-01 19:09:36 | INFO | Task 3: getting model components!
+2023-02-01 19:09:37 | INFO | Task 3: storing the model info in the DB.
+2023-02-01 19:09:37 | INFO | Task 3: creating the html report.
+2023-02-01 19:09:37 | INFO | Task 3: storing the model in the HD.
+2023-02-01 19:09:37 | SUCCESS | Task 3 Finished!
+2023-02-01 19:09:37 | INFO | Task 4 for client AR21TY2023 (1) train model MLPRegressor created!
+2023-02-01 19:09:37 | INFO | Task 4 Executing!
+2023-02-01 19:09:37 | INFO | Task 4: initial pre-process data step!
+2023-02-01 19:09:37 | INFO | Task 4: remove (detect) outliers step!
+2023-02-01 19:09:37 | INFO | Task 4: additional pre-process data step!
+2023-02-01 19:09:37 | INFO | Task 4: starting model training!
+2023-02-01 19:09:38 | SUCCESS | Task 4: model trained!
+2023-02-01 19:09:38 | INFO | Task 4: getting model evaluation metrics!
+2023-02-01 19:09:38 | INFO | Task 4: storing the model info in the DB.
+2023-02-01 19:09:38 | INFO | Task 4: creating the html report.
+2023-02-01 19:09:38 | INFO | Task 4: storing the model in the HD.
+2023-02-01 19:09:38 | SUCCESS | Task 4 Finished!
+2023-02-01 19:09:38 | INFO | Task 5 for client AR21TY2023 (1) train model MLPRegressor created!
+2023-02-01 19:09:38 | INFO | Task 5 Executing!
+2023-02-01 19:09:38 | INFO | Task 5: initial pre-process data step!
+2023-02-01 19:09:38 | INFO | Task 5: remove (detect) outliers step!
+2023-02-01 19:09:38 | INFO | Task 5: additional pre-process data step!
+2023-02-01 19:09:38 | INFO | Task 5: starting model training!
+2023-02-01 19:09:39 | SUCCESS | Task 5: model trained!
+2023-02-01 19:09:39 | INFO | Task 5: getting model evaluation metrics!
+2023-02-01 19:09:39 | INFO | Task 5: storing the model info in the DB.
+2023-02-01 19:09:39 | INFO | Task 5: creating the html report.
+2023-02-01 19:09:39 | INFO | Task 5: storing the model in the HD.
+2023-02-01 19:09:39 | SUCCESS | Task 5 Finished!
+2023-02-01 19:09:39 | INFO | Task 6 for client AR21TY2023 (1) train model MLPRegressor created!
+2023-02-01 19:09:39 | INFO | Task 6 Executing!
+2023-02-01 19:09:39 | INFO | Task 6: initial pre-process data step!
+2023-02-01 19:09:39 | INFO | Task 6: remove (detect) outliers step!
+2023-02-01 19:09:39 | INFO | Task 6: additional pre-process data step!
+2023-02-01 19:09:39 | CRITICAL | Task 6 Error: error report created!
+2023-02-01 19:09:39 | CRITICAL | Task 6 Error: Training data size (2159 hours) too small (must be at least 2161 hours)!
+2023-02-01 19:09:39 | INFO | Task 7 for client AR21TY2023 (1) train model MLPRegressor created!
+2023-02-01 19:09:39 | INFO | Task 7 Executing!
+2023-02-01 19:09:39 | INFO | Task 7: initial pre-process data step!
+2023-02-01 19:09:39 | INFO | Task 7: remove (detect) outliers step!
+2023-02-01 19:09:39 | INFO | Task 7: additional pre-process data step!
+2023-02-01 19:09:39 | CRITICAL | Task 7 Error: error report created!
+2023-02-01 19:09:39 | CRITICAL | Task 7 Error: Training data size (2160 hours) too small (must be at least 2161 hours)!
+2023-02-01 19:09:39 | INFO | Task 8 for client AR21TY2023 (1) train model HistGradientBoostingRegressor created!
+2023-02-01 19:09:39 | INFO | Task 8 Executing!
+2023-02-01 19:09:39 | INFO | Task 8: initial pre-process data step!
+2023-02-01 19:09:39 | INFO | Task 8: remove (detect) outliers step!
+2023-02-01 19:09:39 | INFO | Task 8: starting model training!
+2023-02-01 19:09:39 | SUCCESS | Task 8: model trained!
+2023-02-01 19:09:39 | INFO | Task 8: getting model evaluation metrics!
+2023-02-01 19:09:39 | INFO | Task 8: storing the model info in the DB.
+2023-02-01 19:09:39 | INFO | Task 8: creating the html report.
+2023-02-01 19:09:39 | INFO | Task 8: storing the model in the HD.
+2023-02-01 19:09:39 | SUCCESS | Task 8 Finished!
+2023-02-01 19:09:40 | INFO | Task 9 for client AR21TY2023 (1) train model HistGradientBoostingRegressor created!
+2023-02-01 19:09:40 | INFO | Task 9 Executing!
+2023-02-01 19:09:40 | INFO | Task 9: initial pre-process data step!
+2023-02-01 19:09:40 | CRITICAL | Task 9 Error: error report created!
+2023-02-01 19:09:40 | CRITICAL | Task 9 Error: Training data size (720 hours) too small (must be at least 721 hours)!
+2023-02-01 19:09:40 | INFO | Task 10 for client AR21TY2023 (1) train model Prophet created!
+2023-02-01 19:09:40 | INFO | Task 10 Executing!
+2023-02-01 19:09:40 | INFO | Task 10: initial pre-process data step!
+2023-02-01 19:09:40 | INFO | Task 10: remove (detect) outliers step!
+2023-02-01 19:09:40 | INFO | Task 10: starting model training!
+2023-02-01 19:09:40 | SUCCESS | Task 10: model trained!
+2023-02-01 19:09:41 | INFO | Task 10: model cross validation step finished!
+2023-02-01 19:09:41 | INFO | Task 10: getting model performance metrics!
+2023-02-01 19:09:42 | INFO | Task 10: getting model components!
+2023-02-01 19:09:43 | INFO | Task 10: storing the model info in the DB.
+2023-02-01 19:09:43 | INFO | Task 10: creating the html report.
+2023-02-01 19:09:43 | INFO | Task 10: storing the model in the HD.
+2023-02-01 19:09:43 | SUCCESS | Task 10 Finished!
