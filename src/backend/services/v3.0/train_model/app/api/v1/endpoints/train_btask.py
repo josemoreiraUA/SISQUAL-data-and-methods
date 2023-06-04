@@ -439,13 +439,13 @@ def store_using_json(model: object, dir: str, name: str) -> bool:
 # train machine learning models functions.
 # --------------------------------------------------------------------
 
-"""
-    Input data: ds, x, y
-        ds -> datetime
-        x  -> number of customers
-        y  -> number of cashiers that sold items (caixas que venderam artigos)
-"""
 def train_RandomForestRegressor(params: TrainIn, task_id: int) -> dict:
+    """
+        Input data: ds, x, y
+            ds -> datetime
+            x  -> number of customers
+            y  -> number of cashiers that sold items (caixas que venderam artigos)
+    """
 
     log_message(f'Task {task_id}: pre-process data step!', MessageLevel.Info)
 
@@ -753,16 +753,16 @@ def train_mlp(params: TrainIn, task_id: int) -> dict:
             'report_dir_name': None
             }
 
-"""
-    Input data: ds, x, y
-        ds -> datetime
-        y1 -> number of customers
-        y2 -> number of cashiers that sold items (caixas que venderam artigos)
-"""
 def train_mlp_multivariate(params: TrainIn, task_id: int) -> dict:
     """
     Trains a MLPRegressor model to forecast customer flow and team size simultaneously.
     https://scikit-learn.org/stable/modules/generated/sklearn.neural_network.MLPRegressor.html
+
+    Input data: ds, y1, y2
+        ds -> datetime
+        y1 -> number of customers
+        y2 -> number of cashiers that sold items (caixas que venderam artigos)
+
     """
 
     K = 53

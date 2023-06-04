@@ -1,0 +1,19 @@
+# ------------------------------------------------------------------------------------------------------
+# How to run tests.
+# ------------------------------------------------------------------------------------------------------
+
+Delete the db test.db in .\backend\services.
+
+- First, run the train model tests.
+
+    .\backend\services\train_model\app>poetry run pytest
+
+This will create the db test.db in .\backend\services.
+
+- Then, run the forecast tests.
+
+    .\backend\services\forecast\app>poetry run pytest
+
+If you want to run the forecast tests several times, do not delete the db test.db.
+
+If running the train tests again, first delete the db test.db in .\backend\services.

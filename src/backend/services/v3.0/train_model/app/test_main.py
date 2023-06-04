@@ -48,7 +48,7 @@ def test_create_client():
     
     assert response.status_code == 200
     assert response.json()['detail'] == '1', f'Error creating client!'
-"""
+
 def test_get_client_details():
     client_id = 'AR21TY2023'
     culture = 'en-EN'
@@ -765,7 +765,7 @@ def test_train_Prophet_model_unexpected_ds_input_data():
     assert response.status_code == 200
     assert response.json()['state'] == 'Error'
     assert response.json()['error_report'] == '<div><h3>Task 12 Error: Given date string a not likely a datetime present at position 0!</h3></div>'
-"""
+
 # ---------------------------------------------------------------------------------------------------------------
 # Sizing
 # ---------------------------------------------------------------------------------------------------------------
@@ -793,9 +793,9 @@ def test_train_RandomForestRegressor_model():
 
     N = forecast_period
 
-    ds = ds[0:-forecast_period]
-    x = x[0:-forecast_period]
-    y = y[0:-forecast_period]
+    ds = ds[:-forecast_period]
+    x = x[:-forecast_period]
+    y = y[:-forecast_period]
 
     assert len(ds) == len(x)
     assert len(ds) == len(y)
@@ -887,7 +887,6 @@ def test_train_RandomForestRegressor_model_with_bad_name_imput_data_parameters()
 
     assert len(ds) == len(x)
     assert len(ds) == len(y)
-    #assert len(ds) == N
 
     input_data = {'ds' : ds, 'x': x, 'a': y}
 
@@ -911,9 +910,6 @@ def test_train_MLPRegressor_model_tickets_and_sizing():
 
     data['ds'] = pd.to_datetime(data['ds'])
     data.shape
-
-    #data.reset_index(inplace=True)
-    #data.rename(columns={'StartDate': 'ds', 'Tickets': 'x', 'Checkouts': 'y'}, inplace=True)    
 
     ds = data['ds'].astype('string').tolist()
     y1 = data['y1'].tolist()
@@ -961,9 +957,6 @@ def test_train_MLPRegressor_model_tickets_and_sizing_with_less_number_parameters
     data['ds'] = pd.to_datetime(data['ds'])
     data.shape
 
-    #data.reset_index(inplace=True)
-    #data.rename(columns={'StartDate': 'ds', 'Tickets': 'x', 'Checkouts': 'y'}, inplace=True)    
-
     ds = data['ds'].astype('string').tolist()
     y1 = data['y1'].tolist()
     y2 = data['y2'].tolist()
@@ -999,9 +992,6 @@ def test_train_MLPRegressor_model_tickets_and_sizing_with_bad_name_parameters():
 
     data['ds'] = pd.to_datetime(data['ds'])
     data.shape
-
-    #data.reset_index(inplace=True)
-    #data.rename(columns={'StartDate': 'ds', 'Tickets': 'x', 'Checkouts': 'y'}, inplace=True)    
 
     ds = data['ds'].astype('string').tolist()
     y1 = data['y1'].tolist()

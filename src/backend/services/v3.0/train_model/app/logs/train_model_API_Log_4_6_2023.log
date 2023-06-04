@@ -108,3 +108,146 @@
 2023-06-04 01:04:10 | SUCCESS | Task 2 Finished!
 2023-06-04 01:04:10 | CRITICAL | Client AR21TY2023 model MLPRegressor. Unexpected number of keys in input data structure dict_keys(['ds', 'y2']) (2) expected (3)!
 2023-06-04 01:04:10 | CRITICAL | Client AR21TY2023 model MLPRegressor. Unexpected input data structure (expected key ds, y1 or y2 not found) dict_keys(['ds', 'x', 'y2'])!
+2023-06-04 17:49:07 | CRITICAL | Client 00000023 not found!
+2023-06-04 17:49:07 | CRITICAL | Model type MLPRegressor2 not available!
+2023-06-04 17:49:07 | INFO | Task 1 for client AR21TY2023 (1) train model MLPRegressor created!
+2023-06-04 17:49:07 | INFO | Task 1 Executing!
+2023-06-04 17:49:07 | INFO | Task 1: initial pre-process data step!
+2023-06-04 17:49:07 | INFO | Task 1: remove (detect) outliers step!
+2023-06-04 17:49:09 | INFO | Task 1: additional pre-process data step!
+2023-06-04 17:49:13 | INFO | Task 1: starting model training!
+2023-06-04 17:56:24 | SUCCESS | Task 1: model trained!
+2023-06-04 17:56:24 | INFO | Task 1: getting model evaluation metrics!
+2023-06-04 17:56:24 | INFO | Task 1: storing the model info in the DB.
+2023-06-04 17:56:24 | INFO | Task 1: creating the html report.
+2023-06-04 17:56:24 | INFO | Task 1: storing the model in the HD.
+2023-06-04 17:56:24 | SUCCESS | Task 1 Finished!
+2023-06-04 17:56:24 | INFO | Task 2 for client AR21TY2023 (1) train model HistGradientBoostingRegressor created!
+2023-06-04 17:56:24 | INFO | Task 2 Executing!
+2023-06-04 17:56:24 | INFO | Task 2: initial pre-process data step!
+2023-06-04 17:56:24 | INFO | Task 2: remove (detect) outliers step!
+2023-06-04 17:56:25 | INFO | Task 2: starting model training!
+2023-06-04 17:56:26 | SUCCESS | Task 2: model trained!
+2023-06-04 17:56:26 | INFO | Task 2: getting model evaluation metrics!
+2023-06-04 17:56:26 | INFO | Task 2: storing the model info in the DB.
+2023-06-04 17:56:26 | INFO | Task 2: creating the html report.
+2023-06-04 17:56:26 | INFO | Task 2: storing the model in the HD.
+2023-06-04 17:56:26 | SUCCESS | Task 2 Finished!
+2023-06-04 17:56:26 | INFO | Task 3 for client AR21TY2023 (1) train model Prophet created!
+2023-06-04 17:56:26 | INFO | Task 3 Executing!
+2023-06-04 17:56:26 | INFO | Task 3: initial pre-process data step!
+2023-06-04 17:56:26 | INFO | Task 3: remove (detect) outliers step!
+2023-06-04 17:56:27 | INFO | Task 3: starting model training!
+2023-06-04 17:56:38 | SUCCESS | Task 3: model trained!
+2023-06-04 17:56:49 | INFO | Task 3: model cross validation step finished!
+2023-06-04 17:56:49 | INFO | Task 3: getting model performance metrics!
+2023-06-04 17:56:51 | INFO | Task 3: getting model components!
+2023-06-04 17:56:52 | INFO | Task 3: storing the model info in the DB.
+2023-06-04 17:56:52 | INFO | Task 3: creating the html report.
+2023-06-04 17:56:52 | INFO | Task 3: storing the model in the HD.
+2023-06-04 17:56:52 | SUCCESS | Task 3 Finished!
+2023-06-04 17:56:52 | INFO | Task 4 for client AR21TY2023 (1) train model MLPRegressor created!
+2023-06-04 17:56:52 | INFO | Task 4 Executing!
+2023-06-04 17:56:52 | INFO | Task 4: initial pre-process data step!
+2023-06-04 17:56:52 | INFO | Task 4: remove (detect) outliers step!
+2023-06-04 17:56:52 | INFO | Task 4: additional pre-process data step!
+2023-06-04 17:56:52 | INFO | Task 4: starting model training!
+2023-06-04 17:56:53 | SUCCESS | Task 4: model trained!
+2023-06-04 17:56:53 | INFO | Task 4: getting model evaluation metrics!
+2023-06-04 17:56:53 | INFO | Task 4: storing the model info in the DB.
+2023-06-04 17:56:53 | INFO | Task 4: creating the html report.
+2023-06-04 17:56:53 | INFO | Task 4: storing the model in the HD.
+2023-06-04 17:56:53 | SUCCESS | Task 4 Finished!
+2023-06-04 17:56:54 | INFO | Task 5 for client AR21TY2023 (1) train model MLPRegressor created!
+2023-06-04 17:56:54 | INFO | Task 5 Executing!
+2023-06-04 17:56:54 | INFO | Task 5: initial pre-process data step!
+2023-06-04 17:56:54 | INFO | Task 5: remove (detect) outliers step!
+2023-06-04 17:56:54 | INFO | Task 5: additional pre-process data step!
+2023-06-04 17:56:54 | INFO | Task 5: starting model training!
+2023-06-04 17:56:54 | SUCCESS | Task 5: model trained!
+2023-06-04 17:56:54 | INFO | Task 5: getting model evaluation metrics!
+2023-06-04 17:56:54 | INFO | Task 5: storing the model info in the DB.
+2023-06-04 17:56:54 | INFO | Task 5: creating the html report.
+2023-06-04 17:56:54 | INFO | Task 5: storing the model in the HD.
+2023-06-04 17:56:54 | SUCCESS | Task 5 Finished!
+2023-06-04 17:56:55 | INFO | Task 6 for client AR21TY2023 (1) train model MLPRegressor created!
+2023-06-04 17:56:55 | INFO | Task 6 Executing!
+2023-06-04 17:56:55 | INFO | Task 6: initial pre-process data step!
+2023-06-04 17:56:55 | INFO | Task 6: remove (detect) outliers step!
+2023-06-04 17:56:55 | INFO | Task 6: additional pre-process data step!
+2023-06-04 17:56:55 | CRITICAL | Task 6 Error: error report created!
+2023-06-04 17:56:55 | CRITICAL | Task 6 Error: Training data size (2159 hours) too small (must be at least 2161 hours)
+2023-06-04 17:56:55 | INFO | Task 7 for client AR21TY2023 (1) train model MLPRegressor created!
+2023-06-04 17:56:55 | INFO | Task 7 Executing!
+2023-06-04 17:56:55 | INFO | Task 7: initial pre-process data step!
+2023-06-04 17:56:55 | INFO | Task 7: remove (detect) outliers step!
+2023-06-04 17:56:55 | INFO | Task 7: additional pre-process data step!
+2023-06-04 17:56:55 | CRITICAL | Task 7 Error: error report created!
+2023-06-04 17:56:55 | CRITICAL | Task 7 Error: Training data size (2160 hours) too small (must be at least 2161 hours)
+2023-06-04 17:56:55 | INFO | Task 8 for client AR21TY2023 (1) train model HistGradientBoostingRegressor created!
+2023-06-04 17:56:55 | INFO | Task 8 Executing!
+2023-06-04 17:56:55 | INFO | Task 8: initial pre-process data step!
+2023-06-04 17:56:55 | INFO | Task 8: remove (detect) outliers step!
+2023-06-04 17:56:55 | INFO | Task 8: starting model training!
+2023-06-04 17:56:55 | SUCCESS | Task 8: model trained!
+2023-06-04 17:56:55 | INFO | Task 8: getting model evaluation metrics!
+2023-06-04 17:56:55 | INFO | Task 8: storing the model info in the DB.
+2023-06-04 17:56:55 | INFO | Task 8: creating the html report.
+2023-06-04 17:56:55 | INFO | Task 8: storing the model in the HD.
+2023-06-04 17:56:55 | SUCCESS | Task 8 Finished!
+2023-06-04 17:56:55 | INFO | Task 9 for client AR21TY2023 (1) train model HistGradientBoostingRegressor created!
+2023-06-04 17:56:55 | INFO | Task 9 Executing!
+2023-06-04 17:56:55 | INFO | Task 9: initial pre-process data step!
+2023-06-04 17:56:55 | CRITICAL | Task 9 Error: error report created!
+2023-06-04 17:56:55 | CRITICAL | Task 9 Error: Training data size (720 hours) too small (must be at least 721 hours)
+2023-06-04 17:56:56 | INFO | Task 10 for client AR21TY2023 (1) train model Prophet created!
+2023-06-04 17:56:56 | INFO | Task 10 Executing!
+2023-06-04 17:56:56 | INFO | Task 10: initial pre-process data step!
+2023-06-04 17:56:56 | INFO | Task 10: remove (detect) outliers step!
+2023-06-04 17:56:56 | INFO | Task 10: starting model training!
+2023-06-04 17:56:56 | SUCCESS | Task 10: model trained!
+2023-06-04 17:56:57 | INFO | Task 10: model cross validation step finished!
+2023-06-04 17:56:57 | INFO | Task 10: getting model performance metrics!
+2023-06-04 17:56:58 | INFO | Task 10: getting model components!
+2023-06-04 17:56:59 | INFO | Task 10: storing the model info in the DB.
+2023-06-04 17:56:59 | INFO | Task 10: creating the html report.
+2023-06-04 17:56:59 | INFO | Task 10: storing the model in the HD.
+2023-06-04 17:56:59 | SUCCESS | Task 10 Finished!
+2023-06-04 17:56:59 | CRITICAL | Client AR21TY2023 model Prophet. Unexpected number of keys in input data structure dict_keys(['ds', 'y', 'x']) (3) expected (2)!
+2023-06-04 17:56:59 | CRITICAL | Client AR21TY2023 model Prophet. Unexpected input data structure (expected key (ds, y) not found) dict_keys(['ds', 'y1'])!
+2023-06-04 17:56:59 | INFO | Task 11 for client AR21TY2023 (1) train model Prophet created!
+2023-06-04 17:56:59 | INFO | Task 11 Executing!
+2023-06-04 17:56:59 | INFO | Task 11: initial pre-process data step!
+2023-06-04 17:57:00 | CRITICAL | Task 11 Error: error report created!
+2023-06-04 17:57:00 | CRITICAL | Task 11 Error: can only concatenate str (not "float") to str
+2023-06-04 17:57:00 | INFO | Task 12 for client AR21TY2023 (1) train model Prophet created!
+2023-06-04 17:57:00 | INFO | Task 12 Executing!
+2023-06-04 17:57:00 | INFO | Task 12: initial pre-process data step!
+2023-06-04 17:57:00 | CRITICAL | Task 12 Error: error report created!
+2023-06-04 17:57:00 | CRITICAL | Task 12 Error: Given date string a not likely a datetime present at position 0
+2023-06-04 17:57:00 | INFO | Task 13 for client AR21TY2023 (1) train model RandomForestRegressor created!
+2023-06-04 17:57:00 | INFO | Task 13 Executing!
+2023-06-04 17:57:00 | INFO | Task 13: pre-process data step!
+2023-06-04 17:57:00 | INFO | Task 13: training model!
+2023-06-04 17:57:00 | INFO | Task 13: model trained!
+2023-06-04 17:57:00 | INFO | Task 13: getting model evaluation metrics!
+2023-06-04 17:57:00 | INFO | Task 13: storing the model info in the DB.
+2023-06-04 17:57:00 | INFO | Task 13: creating the html report.
+2023-06-04 17:57:00 | INFO | Task 13: storing the model in the HD.
+2023-06-04 17:57:00 | SUCCESS | Task 13 Finished!
+2023-06-04 17:57:00 | CRITICAL | Client AR21TY2023 model RandomForestRegressor. Unexpected number of keys in input data structure dict_keys(['ds', 'y']) (2) expected (3)!
+2023-06-04 17:57:00 | CRITICAL | Client AR21TY2023 model RandomForestRegressor. Unexpected input data structure (expected key ds, x or y not found) dict_keys(['ds', 'x', 'a'])!
+2023-06-04 17:57:00 | INFO | Task 14 for client AR21TY2023 (1) train model MLPRegressor created!
+2023-06-04 17:57:00 | INFO | Task 14 Executing!
+2023-06-04 17:57:00 | INFO | Task 14: initial pre-process data step!
+2023-06-04 17:57:00 | INFO | Task 14: remove (detect) outliers step!
+2023-06-04 17:57:00 | INFO | Task 14: additional pre-process data step!
+2023-06-04 17:57:03 | INFO | Task 14: starting model training!
+2023-06-04 17:59:47 | SUCCESS | Task 14: model trained!
+2023-06-04 17:59:47 | INFO | Task 14: getting model evaluation metrics!
+2023-06-04 17:59:47 | INFO | Task 14: storing the model info in the DB.
+2023-06-04 17:59:47 | INFO | Task 14: creating the html report.
+2023-06-04 17:59:47 | INFO | Task 14: storing the model in the HD.
+2023-06-04 17:59:47 | SUCCESS | Task 14 Finished!
+2023-06-04 17:59:47 | CRITICAL | Client AR21TY2023 model MLPRegressor. Unexpected number of keys in input data structure dict_keys(['ds', 'y2']) (2) expected (3)!
+2023-06-04 17:59:47 | CRITICAL | Client AR21TY2023 model MLPRegressor. Unexpected input data structure (expected key ds, y1 or y2 not found) dict_keys(['ds', 'x', 'y2'])!
