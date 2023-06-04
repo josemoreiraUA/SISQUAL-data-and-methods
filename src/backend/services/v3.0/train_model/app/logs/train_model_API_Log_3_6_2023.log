@@ -1,0 +1,86 @@
+2023-06-03 20:50:27 | INFO | Task 1 for client AR21TY2023 (1) train model RandomForestRegressor created!
+2023-06-03 20:50:27 | INFO | Task 1 Executing!
+2023-06-03 20:50:27 | INFO | Task 1: pre-process data step!
+2023-06-03 20:50:27 | INFO | Task 1: training model!
+2023-06-03 20:50:27 | INFO | Task 1: model trained!
+2023-06-03 20:50:27 | INFO | Task 1: getting model evaluation metrics!
+2023-06-03 20:50:27 | CRITICAL | Task 1 Error: error report created!
+2023-06-03 20:50:27 | CRITICAL | Task 1 Error: 'NoneType' object has no attribute 'items'
+2023-06-03 20:50:27 | INFO | Task 1: starting cleanup procedure!
+2023-06-03 20:50:27 | INFO | Task 1: cleanup procedure finished!
+2023-06-03 20:54:48 | INFO | Task 1 for client AR21TY2023 (1) train model RandomForestRegressor created!
+2023-06-03 20:54:48 | INFO | Task 1 Executing!
+2023-06-03 20:54:48 | INFO | Task 1: pre-process data step!
+2023-06-03 20:54:48 | INFO | Task 1: training model!
+2023-06-03 20:54:49 | INFO | Task 1: model trained!
+2023-06-03 20:54:49 | INFO | Task 1: getting model evaluation metrics!
+2023-06-03 20:54:49 | INFO | Task 1: storing the model info in the DB.
+2023-06-03 20:54:49 | INFO | Task 1: creating the html report.
+2023-06-03 20:54:49 | INFO | Task 1: storing the model in the HD.
+2023-06-03 20:54:49 | SUCCESS | Task 1 Finished!
+2023-06-03 21:00:10 | INFO | Task 1 for client AR21TY2023 (1) train model RandomForestRegressor created!
+2023-06-03 21:00:10 | INFO | Task 1 Executing!
+2023-06-03 21:00:10 | INFO | Task 1: pre-process data step!
+2023-06-03 21:00:10 | INFO | Task 1: training model!
+2023-06-03 21:00:10 | INFO | Task 1: model trained!
+2023-06-03 21:00:10 | INFO | Task 1: getting model evaluation metrics!
+2023-06-03 21:00:10 | INFO | Task 1: storing the model info in the DB.
+2023-06-03 21:00:10 | INFO | Task 1: creating the html report.
+2023-06-03 21:00:10 | INFO | Task 1: storing the model in the HD.
+2023-06-03 21:00:10 | SUCCESS | Task 1 Finished!
+2023-06-03 21:01:05 | INFO | Task 1 for client AR21TY2023 (1) train model RandomForestRegressor created!
+2023-06-03 21:01:05 | INFO | Task 1 Executing!
+2023-06-03 21:01:05 | INFO | Task 1: pre-process data step!
+2023-06-03 21:01:05 | INFO | Task 1: training model!
+2023-06-03 21:01:06 | INFO | Task 1: model trained!
+2023-06-03 21:01:06 | INFO | Task 1: getting model evaluation metrics!
+2023-06-03 21:01:06 | INFO | Task 1: storing the model info in the DB.
+2023-06-03 21:01:06 | INFO | Task 1: creating the html report.
+2023-06-03 21:01:06 | INFO | Task 1: storing the model in the HD.
+2023-06-03 21:01:06 | SUCCESS | Task 1 Finished!
+2023-06-03 21:04:44 | INFO | Task 1 for client AR21TY2023 (1) train model RandomForestRegressor created!
+2023-06-03 21:04:44 | INFO | Task 1 Executing!
+2023-06-03 21:04:44 | INFO | Task 1: pre-process data step!
+2023-06-03 21:04:44 | INFO | Task 1: training model!
+2023-06-03 21:04:45 | INFO | Task 1: model trained!
+2023-06-03 21:04:45 | INFO | Task 1: getting model evaluation metrics!
+2023-06-03 21:04:45 | INFO | Task 1: storing the model info in the DB.
+2023-06-03 21:04:45 | INFO | Task 1: creating the html report.
+2023-06-03 21:04:45 | INFO | Task 1: storing the model in the HD.
+2023-06-03 21:04:45 | SUCCESS | Task 1 Finished!
+2023-06-03 21:15:30 | INFO | Task 1 for client AR21TY2023 (1) train model RandomForestRegressor created!
+2023-06-03 21:15:30 | INFO | Task 1 Executing!
+2023-06-03 21:15:30 | INFO | Task 1: pre-process data step!
+2023-06-03 21:15:30 | INFO | Task 1: training model!
+2023-06-03 21:15:30 | INFO | Task 1: model trained!
+2023-06-03 21:15:30 | INFO | Task 1: getting model evaluation metrics!
+2023-06-03 21:15:30 | INFO | Task 1: storing the model info in the DB.
+2023-06-03 21:15:30 | INFO | Task 1: creating the html report.
+2023-06-03 21:15:30 | INFO | Task 1: storing the model in the HD.
+2023-06-03 21:15:30 | SUCCESS | Task 1 Finished!
+2023-06-03 21:15:30 | CRITICAL | Client AR21TY2023 model RandomForestRegressor. Unexpected number of keys in input data structure dict_keys(['ds', 'y']) (2) expected (3)!
+2023-06-03 21:15:30 | CRITICAL | Client AR21TY2023 model RandomForestRegressor. Unexpected input data structure (expected key ds, x or y not found) dict_keys(['ds', 'a', 'y'])!
+2023-06-03 21:16:14 | INFO | Task 1 for client AR21TY2023 (1) train model RandomForestRegressor created!
+2023-06-03 21:16:14 | INFO | Task 1 Executing!
+2023-06-03 21:16:14 | INFO | Task 1: pre-process data step!
+2023-06-03 21:16:14 | INFO | Task 1: training model!
+2023-06-03 21:16:14 | INFO | Task 1: model trained!
+2023-06-03 21:16:14 | INFO | Task 1: getting model evaluation metrics!
+2023-06-03 21:16:14 | INFO | Task 1: storing the model info in the DB.
+2023-06-03 21:16:14 | INFO | Task 1: creating the html report.
+2023-06-03 21:16:14 | INFO | Task 1: storing the model in the HD.
+2023-06-03 21:16:14 | SUCCESS | Task 1 Finished!
+2023-06-03 21:16:15 | CRITICAL | Client AR21TY2023 model RandomForestRegressor. Unexpected number of keys in input data structure dict_keys(['ds', 'y']) (2) expected (3)!
+2023-06-03 21:16:15 | CRITICAL | Client AR21TY2023 model RandomForestRegressor. Unexpected input data structure (expected key ds, x or y not found) dict_keys(['ds', 'x', 'a'])!
+2023-06-03 23:00:26 | INFO | Task 1 for client AR21TY2023 (1) train model RandomForestRegressor created!
+2023-06-03 23:00:27 | INFO | Task 1 Executing!
+2023-06-03 23:00:27 | INFO | Task 1: pre-process data step!
+2023-06-03 23:00:27 | INFO | Task 1: training model!
+2023-06-03 23:00:27 | INFO | Task 1: model trained!
+2023-06-03 23:00:27 | INFO | Task 1: getting model evaluation metrics!
+2023-06-03 23:00:27 | INFO | Task 1: storing the model info in the DB.
+2023-06-03 23:00:27 | INFO | Task 1: creating the html report.
+2023-06-03 23:00:27 | INFO | Task 1: storing the model in the HD.
+2023-06-03 23:00:27 | SUCCESS | Task 1 Finished!
+2023-06-03 23:00:27 | CRITICAL | Client AR21TY2023 model RandomForestRegressor. Unexpected number of keys in input data structure dict_keys(['ds', 'y']) (2) expected (3)!
+2023-06-03 23:00:27 | CRITICAL | Client AR21TY2023 model RandomForestRegressor. Unexpected input data structure (expected key ds, x or y not found) dict_keys(['ds', 'x', 'a'])!
