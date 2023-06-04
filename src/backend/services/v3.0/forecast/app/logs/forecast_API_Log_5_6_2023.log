@@ -1,0 +1,252 @@
+2023-06-05 00:02:58 | INFO | Forecast: client 00000023 model 1.
+2023-06-05 00:02:58 | CRITICAL | Forecast: client 00000023 model 1. Client 00000023 not found!
+2023-06-05 00:02:58 | INFO | Forecast: client AR21TY2023 model 0.
+2023-06-05 00:02:58 | CRITICAL | Forecast: client AR21TY2023 model 0. Model 0 not found for client AR21TY2023!
+2023-06-05 00:02:58 | INFO | Forecast: client AR21TY2023 model 1.
+2023-06-05 00:02:58 | CRITICAL | Forecast: client AR21TY2023 model 1. Unexpected forecast period: received 721 expecting 720!
+2023-06-05 00:02:58 | INFO | Forecast: client AR21TY2023 model 1.
+2023-06-05 00:02:58 | INFO | Getting forecast: client AR21TY2023 model 1.
+2023-06-05 00:02:58 | INFO | Sending forecast: client AR21TY2023 model 1.
+2023-06-05 00:02:58 | INFO | Forecast: client AR21TY2023 model 2.
+2023-06-05 00:02:58 | INFO | Getting forecast: client AR21TY2023 model 2.
+2023-06-05 00:02:58 | INFO | Sending forecast: client AR21TY2023 model 2.
+2023-06-05 00:02:58 | INFO | Forecast: client AR21TY2023 model 3.
+2023-06-05 00:02:58 | INFO | Getting forecast: client AR21TY2023 model 3.
+2023-06-05 00:02:59 | INFO | Sending forecast: client AR21TY2023 model 3.
+2023-06-05 00:02:59 | INFO | Forecast: client AR21TY2023 model 3.
+2023-06-05 00:02:59 | CRITICAL | Forecast: client AR21TY2023 model 3. Unexpected number of keys in input data structure dict_keys(['ds', 'y']) (2) expected (1)!
+2023-06-05 00:02:59 | INFO | Forecast: client AR21TY2023 model 3.
+2023-06-05 00:02:59 | CRITICAL | Forecast: client AR21TY2023 model 3. Unexpected input data structure (expected key (ds) not found) dict_keys(['d'])!
+2023-06-05 00:02:59 | INFO | Forecast: client AR21TY2023 model 3.
+2023-06-05 00:02:59 | INFO | Getting forecast: client AR21TY2023 model 3.
+2023-06-05 00:02:59 | CRITICAL | Forecast: client AR21TY2023 model 3. An error occurred: Given date string a not likely a datetime present at position 0!
+2023-06-05 00:02:59 | INFO | Forecast: client AR21TY2023 model 1.
+2023-06-05 00:02:59 | CRITICAL | Forecast: client AR21TY2023 model 1. Unexpected number of keys in input data structure dict_keys(['ds', 'y', 'x']) (3) expected (2)!
+2023-06-05 00:02:59 | INFO | Forecast: client AR21TY2023 model 1.
+2023-06-05 00:02:59 | CRITICAL | Forecast: client AR21TY2023 model 1. Unexpected input data structure (expected key (ds, y) not found) dict_keys(['ds', 'y1'])!
+2023-06-05 00:02:59 | INFO | Forecast: client AR21TY2023 model 1.
+2023-06-05 00:02:59 | INFO | Getting forecast: client AR21TY2023 model 1.
+2023-06-05 00:02:59 | CRITICAL | Forecast: client AR21TY2023 model 1. An error occurred: could not convert string to float: 'a'!
+2023-06-05 00:02:59 | INFO | Forecast: client AR21TY2023 model 8.
+2023-06-05 00:02:59 | INFO | Getting forecast: client AR21TY2023 model 8.
+2023-06-05 00:02:59 | INFO | Sending forecast: client AR21TY2023 model 8.
+2023-06-05 00:02:59 | INFO | Forecast: client AR21TY2023 model 8.
+2023-06-05 00:02:59 | CRITICAL | Forecast: client AR21TY2023 model 8. Unexpected number of keys in input data structure dict_keys(['ds']) (1) expected (2)!
+2023-06-05 00:02:59 | INFO | Forecast: client AR21TY2023 model 8.
+2023-06-05 00:02:59 | CRITICAL | Forecast: client AR21TY2023 model 8. Unexpected input data structure (expected key ds or x not found) dict_keys(['ds', 'a'])!
+2023-06-05 00:02:59 | INFO | Forecast: client AR21TY2023 model 9.
+2023-06-05 00:02:59 | INFO | Getting forecast: client AR21TY2023 model 9.
+2023-06-05 00:02:59 | INFO | Sending forecast: client AR21TY2023 model 9.
+2023-06-05 00:02:59 | INFO | Forecast: client AR21TY2023 model 9.
+2023-06-05 00:02:59 | CRITICAL | Forecast: client AR21TY2023 model 9. Unexpected number of keys in input data structure dict_keys(['ds', 'y1']) (2) expected (3)!
+2023-06-05 00:02:59 | INFO | Forecast: client AR21TY2023 model 9.
+2023-06-05 00:02:59 | CRITICAL | Forecast: client AR21TY2023 model 9. Unexpected input data structure (expected key ds, y1 or y2 not found) dict_keys(['ds', 'x1', 'y2'])!
+2023-06-05 00:04:28 | INFO | Forecast: client 00000023 model 1.
+2023-06-05 00:04:28 | CRITICAL | Forecast: client 00000023 model 1. Client 00000023 not found!
+2023-06-05 00:04:28 | INFO | Forecast: client AR21TY2023 model 0.
+2023-06-05 00:04:28 | CRITICAL | Forecast: client AR21TY2023 model 0. Model 0 not found for client AR21TY2023!
+2023-06-05 00:04:28 | INFO | Forecast: client AR21TY2023 model 1.
+2023-06-05 00:04:28 | CRITICAL | Forecast: client AR21TY2023 model 1. Unexpected forecast period: received 721 expecting 720!
+2023-06-05 00:04:28 | INFO | Forecast: client AR21TY2023 model 1.
+2023-06-05 00:04:28 | INFO | Getting forecast: client AR21TY2023 model 1.
+2023-06-05 00:04:28 | INFO | Sending forecast: client AR21TY2023 model 1.
+2023-06-05 00:04:28 | INFO | Forecast: client AR21TY2023 model 2.
+2023-06-05 00:04:28 | INFO | Getting forecast: client AR21TY2023 model 2.
+2023-06-05 00:04:28 | INFO | Sending forecast: client AR21TY2023 model 2.
+2023-06-05 00:04:28 | INFO | Forecast: client AR21TY2023 model 3.
+2023-06-05 00:04:28 | INFO | Getting forecast: client AR21TY2023 model 3.
+2023-06-05 00:04:29 | INFO | Sending forecast: client AR21TY2023 model 3.
+2023-06-05 00:04:29 | INFO | Forecast: client AR21TY2023 model 3.
+2023-06-05 00:04:29 | CRITICAL | Forecast: client AR21TY2023 model 3. Unexpected number of keys in input data structure dict_keys(['ds', 'y']) (2) expected (1)!
+2023-06-05 00:04:29 | INFO | Forecast: client AR21TY2023 model 3.
+2023-06-05 00:04:29 | CRITICAL | Forecast: client AR21TY2023 model 3. Unexpected input data structure (expected key (ds) not found) dict_keys(['d'])!
+2023-06-05 00:04:29 | INFO | Forecast: client AR21TY2023 model 3.
+2023-06-05 00:04:29 | INFO | Getting forecast: client AR21TY2023 model 3.
+2023-06-05 00:04:29 | CRITICAL | Forecast: client AR21TY2023 model 3. An error occurred: Given date string a not likely a datetime present at position 0!
+2023-06-05 00:04:29 | INFO | Forecast: client AR21TY2023 model 1.
+2023-06-05 00:04:29 | CRITICAL | Forecast: client AR21TY2023 model 1. Unexpected number of keys in input data structure dict_keys(['ds', 'y', 'x']) (3) expected (2)!
+2023-06-05 00:04:29 | INFO | Forecast: client AR21TY2023 model 1.
+2023-06-05 00:04:29 | CRITICAL | Forecast: client AR21TY2023 model 1. Unexpected input data structure (expected key (ds, y) not found) dict_keys(['ds', 'y1'])!
+2023-06-05 00:04:29 | INFO | Forecast: client AR21TY2023 model 1.
+2023-06-05 00:04:29 | INFO | Getting forecast: client AR21TY2023 model 1.
+2023-06-05 00:04:29 | CRITICAL | Forecast: client AR21TY2023 model 1. An error occurred: could not convert string to float: 'a'!
+2023-06-05 00:04:29 | INFO | Forecast: client AR21TY2023 model 8.
+2023-06-05 00:04:29 | CRITICAL | Forecast: client AR21TY2023 model 8. Unexpected number of keys in input data structure dict_keys(['ds']) (1) expected (2)!
+2023-06-05 00:04:30 | INFO | Forecast: client AR21TY2023 model 8.
+2023-06-05 00:04:30 | CRITICAL | Forecast: client AR21TY2023 model 8. Unexpected input data structure (expected key ds or x not found) dict_keys(['ds', 'a'])!
+2023-06-05 00:04:30 | INFO | Forecast: client AR21TY2023 model 9.
+2023-06-05 00:04:30 | INFO | Getting forecast: client AR21TY2023 model 9.
+2023-06-05 00:04:30 | INFO | Sending forecast: client AR21TY2023 model 9.
+2023-06-05 00:04:30 | INFO | Forecast: client AR21TY2023 model 9.
+2023-06-05 00:04:30 | CRITICAL | Forecast: client AR21TY2023 model 9. Unexpected number of keys in input data structure dict_keys(['ds', 'y1']) (2) expected (3)!
+2023-06-05 00:04:30 | INFO | Forecast: client AR21TY2023 model 9.
+2023-06-05 00:04:30 | CRITICAL | Forecast: client AR21TY2023 model 9. Unexpected input data structure (expected key ds, y1 or y2 not found) dict_keys(['ds', 'x1', 'y2'])!
+2023-06-05 00:09:27 | INFO | Forecast: client 00000023 model 1.
+2023-06-05 00:09:27 | CRITICAL | Forecast: client 00000023 model 1. Client 00000023 not found!
+2023-06-05 00:09:27 | INFO | Forecast: client AR21TY2023 model 0.
+2023-06-05 00:09:27 | CRITICAL | Forecast: client AR21TY2023 model 0. Model 0 not found for client AR21TY2023!
+2023-06-05 00:09:27 | INFO | Forecast: client AR21TY2023 model 1.
+2023-06-05 00:09:27 | CRITICAL | Forecast: client AR21TY2023 model 1. Unexpected forecast period: received 721 expecting 720!
+2023-06-05 00:09:27 | INFO | Forecast: client AR21TY2023 model 1.
+2023-06-05 00:09:27 | INFO | Getting forecast: client AR21TY2023 model 1.
+2023-06-05 00:09:27 | INFO | Sending forecast: client AR21TY2023 model 1.
+2023-06-05 00:09:27 | INFO | Forecast: client AR21TY2023 model 2.
+2023-06-05 00:09:27 | INFO | Getting forecast: client AR21TY2023 model 2.
+2023-06-05 00:09:27 | INFO | Sending forecast: client AR21TY2023 model 2.
+2023-06-05 00:09:27 | INFO | Forecast: client AR21TY2023 model 3.
+2023-06-05 00:09:27 | INFO | Getting forecast: client AR21TY2023 model 3.
+2023-06-05 00:09:27 | INFO | Sending forecast: client AR21TY2023 model 3.
+2023-06-05 00:09:27 | INFO | Forecast: client AR21TY2023 model 3.
+2023-06-05 00:09:27 | CRITICAL | Forecast: client AR21TY2023 model 3. Unexpected number of keys in input data structure dict_keys(['ds', 'y']) (2) expected (1)!
+2023-06-05 00:09:28 | INFO | Forecast: client AR21TY2023 model 3.
+2023-06-05 00:09:28 | CRITICAL | Forecast: client AR21TY2023 model 3. Unexpected input data structure (expected key (ds) not found) dict_keys(['d'])!
+2023-06-05 00:09:28 | INFO | Forecast: client AR21TY2023 model 3.
+2023-06-05 00:09:28 | INFO | Getting forecast: client AR21TY2023 model 3.
+2023-06-05 00:09:28 | CRITICAL | Forecast: client AR21TY2023 model 3. An error occurred: Given date string a not likely a datetime present at position 0!
+2023-06-05 00:09:28 | INFO | Forecast: client AR21TY2023 model 1.
+2023-06-05 00:09:28 | CRITICAL | Forecast: client AR21TY2023 model 1. Unexpected number of keys in input data structure dict_keys(['ds', 'y', 'x']) (3) expected (2)!
+2023-06-05 00:09:28 | INFO | Forecast: client AR21TY2023 model 1.
+2023-06-05 00:09:28 | CRITICAL | Forecast: client AR21TY2023 model 1. Unexpected input data structure (expected key (ds, y) not found) dict_keys(['ds', 'y1'])!
+2023-06-05 00:09:28 | INFO | Forecast: client AR21TY2023 model 1.
+2023-06-05 00:09:28 | INFO | Getting forecast: client AR21TY2023 model 1.
+2023-06-05 00:09:28 | CRITICAL | Forecast: client AR21TY2023 model 1. An error occurred: could not convert string to float: 'a'!
+2023-06-05 00:09:28 | INFO | Forecast: client AR21TY2023 model 8.
+2023-06-05 00:09:28 | INFO | Getting forecast: client AR21TY2023 model 8.
+2023-06-05 00:09:28 | INFO | Sending forecast: client AR21TY2023 model 8.
+2023-06-05 00:09:28 | INFO | Forecast: client AR21TY2023 model 8.
+2023-06-05 00:09:28 | CRITICAL | Forecast: client AR21TY2023 model 8. Unexpected number of keys in input data structure dict_keys(['ds']) (1) expected (2)!
+2023-06-05 00:09:28 | INFO | Forecast: client AR21TY2023 model 8.
+2023-06-05 00:09:28 | CRITICAL | Forecast: client AR21TY2023 model 8. Unexpected input data structure (expected key ds or x not found) dict_keys(['ds', 'a'])!
+2023-06-05 00:09:28 | INFO | Forecast: client AR21TY2023 model 9.
+2023-06-05 00:09:28 | INFO | Getting forecast: client AR21TY2023 model 9.
+2023-06-05 00:09:28 | INFO | Sending forecast: client AR21TY2023 model 9.
+2023-06-05 00:09:28 | INFO | Forecast: client AR21TY2023 model 9.
+2023-06-05 00:09:28 | CRITICAL | Forecast: client AR21TY2023 model 9. Unexpected number of keys in input data structure dict_keys(['ds', 'y1']) (2) expected (3)!
+2023-06-05 00:09:28 | INFO | Forecast: client AR21TY2023 model 9.
+2023-06-05 00:09:28 | CRITICAL | Forecast: client AR21TY2023 model 9. Unexpected input data structure (expected key ds, y1 or y2 not found) dict_keys(['ds', 'x1', 'y2'])!
+2023-06-05 00:09:36 | INFO | Forecast: client 00000023 model 1.
+2023-06-05 00:09:36 | CRITICAL | Forecast: client 00000023 model 1. Client 00000023 not found!
+2023-06-05 00:09:36 | INFO | Forecast: client AR21TY2023 model 0.
+2023-06-05 00:09:36 | CRITICAL | Forecast: client AR21TY2023 model 0. Model 0 not found for client AR21TY2023!
+2023-06-05 00:09:36 | INFO | Forecast: client AR21TY2023 model 1.
+2023-06-05 00:09:36 | CRITICAL | Forecast: client AR21TY2023 model 1. Unexpected forecast period: received 721 expecting 720!
+2023-06-05 00:09:36 | INFO | Forecast: client AR21TY2023 model 1.
+2023-06-05 00:09:36 | INFO | Getting forecast: client AR21TY2023 model 1.
+2023-06-05 00:09:36 | INFO | Sending forecast: client AR21TY2023 model 1.
+2023-06-05 00:09:36 | INFO | Forecast: client AR21TY2023 model 2.
+2023-06-05 00:09:36 | INFO | Getting forecast: client AR21TY2023 model 2.
+2023-06-05 00:09:36 | INFO | Sending forecast: client AR21TY2023 model 2.
+2023-06-05 00:09:36 | INFO | Forecast: client AR21TY2023 model 3.
+2023-06-05 00:09:36 | INFO | Getting forecast: client AR21TY2023 model 3.
+2023-06-05 00:09:37 | INFO | Sending forecast: client AR21TY2023 model 3.
+2023-06-05 00:09:37 | INFO | Forecast: client AR21TY2023 model 3.
+2023-06-05 00:09:37 | CRITICAL | Forecast: client AR21TY2023 model 3. Unexpected number of keys in input data structure dict_keys(['ds', 'y']) (2) expected (1)!
+2023-06-05 00:09:37 | INFO | Forecast: client AR21TY2023 model 3.
+2023-06-05 00:09:37 | CRITICAL | Forecast: client AR21TY2023 model 3. Unexpected input data structure (expected key (ds) not found) dict_keys(['d'])!
+2023-06-05 00:09:37 | INFO | Forecast: client AR21TY2023 model 3.
+2023-06-05 00:09:37 | INFO | Getting forecast: client AR21TY2023 model 3.
+2023-06-05 00:09:37 | CRITICAL | Forecast: client AR21TY2023 model 3. An error occurred: Given date string a not likely a datetime present at position 0!
+2023-06-05 00:09:37 | INFO | Forecast: client AR21TY2023 model 1.
+2023-06-05 00:09:37 | CRITICAL | Forecast: client AR21TY2023 model 1. Unexpected number of keys in input data structure dict_keys(['ds', 'y', 'x']) (3) expected (2)!
+2023-06-05 00:09:37 | INFO | Forecast: client AR21TY2023 model 1.
+2023-06-05 00:09:37 | CRITICAL | Forecast: client AR21TY2023 model 1. Unexpected input data structure (expected key (ds, y) not found) dict_keys(['ds', 'y1'])!
+2023-06-05 00:09:37 | INFO | Forecast: client AR21TY2023 model 1.
+2023-06-05 00:09:37 | INFO | Getting forecast: client AR21TY2023 model 1.
+2023-06-05 00:09:37 | CRITICAL | Forecast: client AR21TY2023 model 1. An error occurred: could not convert string to float: 'a'!
+2023-06-05 00:09:37 | INFO | Forecast: client AR21TY2023 model 8.
+2023-06-05 00:09:37 | INFO | Getting forecast: client AR21TY2023 model 8.
+2023-06-05 00:09:37 | INFO | Sending forecast: client AR21TY2023 model 8.
+2023-06-05 00:09:37 | INFO | Forecast: client AR21TY2023 model 8.
+2023-06-05 00:09:37 | CRITICAL | Forecast: client AR21TY2023 model 8. Unexpected number of keys in input data structure dict_keys(['ds']) (1) expected (2)!
+2023-06-05 00:09:37 | INFO | Forecast: client AR21TY2023 model 8.
+2023-06-05 00:09:37 | CRITICAL | Forecast: client AR21TY2023 model 8. Unexpected input data structure (expected key ds or x not found) dict_keys(['ds', 'a'])!
+2023-06-05 00:09:37 | INFO | Forecast: client AR21TY2023 model 9.
+2023-06-05 00:09:37 | INFO | Getting forecast: client AR21TY2023 model 9.
+2023-06-05 00:09:37 | INFO | Sending forecast: client AR21TY2023 model 9.
+2023-06-05 00:09:37 | INFO | Forecast: client AR21TY2023 model 9.
+2023-06-05 00:09:37 | CRITICAL | Forecast: client AR21TY2023 model 9. Unexpected number of keys in input data structure dict_keys(['ds', 'y1']) (2) expected (3)!
+2023-06-05 00:09:37 | INFO | Forecast: client AR21TY2023 model 9.
+2023-06-05 00:09:37 | CRITICAL | Forecast: client AR21TY2023 model 9. Unexpected input data structure (expected key ds, y1 or y2 not found) dict_keys(['ds', 'x1', 'y2'])!
+2023-06-05 00:35:06 | INFO | Forecast: client 00000023 model 1.
+2023-06-05 00:35:06 | CRITICAL | Forecast: client 00000023 model 1. Client 00000023 not found!
+2023-06-05 00:35:06 | INFO | Forecast: client AR21TY2023 model 0.
+2023-06-05 00:35:06 | CRITICAL | Forecast: client AR21TY2023 model 0. Model 0 not found for client AR21TY2023!
+2023-06-05 00:35:06 | INFO | Forecast: client AR21TY2023 model 1.
+2023-06-05 00:35:06 | CRITICAL | Forecast: client AR21TY2023 model 1. Unexpected forecast period: received 721 expecting 720!
+2023-06-05 00:35:06 | INFO | Forecast: client AR21TY2023 model 1.
+2023-06-05 00:35:06 | INFO | Getting forecast: client AR21TY2023 model 1.
+2023-06-05 00:35:06 | INFO | Sending forecast: client AR21TY2023 model 1.
+2023-06-05 00:35:06 | INFO | Forecast: client AR21TY2023 model 2.
+2023-06-05 00:35:06 | INFO | Getting forecast: client AR21TY2023 model 2.
+2023-06-05 00:35:06 | INFO | Sending forecast: client AR21TY2023 model 2.
+2023-06-05 00:35:06 | INFO | Forecast: client AR21TY2023 model 3.
+2023-06-05 00:35:06 | INFO | Getting forecast: client AR21TY2023 model 3.
+2023-06-05 00:35:07 | INFO | Sending forecast: client AR21TY2023 model 3.
+2023-06-05 00:35:07 | INFO | Forecast: client AR21TY2023 model 3.
+2023-06-05 00:35:07 | CRITICAL | Forecast: client AR21TY2023 model 3. Unexpected number of keys in input data structure dict_keys(['ds', 'y']) (2) expected (1)!
+2023-06-05 00:35:07 | INFO | Forecast: client AR21TY2023 model 3.
+2023-06-05 00:35:07 | CRITICAL | Forecast: client AR21TY2023 model 3. Unexpected input data structure (expected key (ds) not found) dict_keys(['d'])!
+2023-06-05 00:35:07 | INFO | Forecast: client AR21TY2023 model 3.
+2023-06-05 00:35:07 | INFO | Getting forecast: client AR21TY2023 model 3.
+2023-06-05 00:35:07 | CRITICAL | Forecast: client AR21TY2023 model 3. An error occurred: Given date string a not likely a datetime present at position 0!
+2023-06-05 00:35:07 | INFO | Forecast: client AR21TY2023 model 1.
+2023-06-05 00:35:07 | CRITICAL | Forecast: client AR21TY2023 model 1. Unexpected number of keys in input data structure dict_keys(['ds', 'y', 'x']) (3) expected (2)!
+2023-06-05 00:35:07 | INFO | Forecast: client AR21TY2023 model 1.
+2023-06-05 00:35:07 | CRITICAL | Forecast: client AR21TY2023 model 1. Unexpected input data structure (expected key (ds, y) not found) dict_keys(['ds', 'y1'])!
+2023-06-05 00:35:07 | INFO | Forecast: client AR21TY2023 model 1.
+2023-06-05 00:35:07 | INFO | Getting forecast: client AR21TY2023 model 1.
+2023-06-05 00:35:07 | CRITICAL | Forecast: client AR21TY2023 model 1. An error occurred: could not convert string to float: 'a'!
+2023-06-05 00:35:08 | INFO | Forecast: client AR21TY2023 model 8.
+2023-06-05 00:35:08 | CRITICAL | Forecast: client AR21TY2023 model 8. Unexpected number of keys in input data structure dict_keys(['ds']) (1) expected (2)!
+2023-06-05 00:35:08 | INFO | Forecast: client AR21TY2023 model 8.
+2023-06-05 00:35:08 | CRITICAL | Forecast: client AR21TY2023 model 8. Unexpected input data structure (expected key ds or x not found) dict_keys(['ds', 'a'])!
+2023-06-05 00:35:08 | INFO | Forecast: client AR21TY2023 model 9.
+2023-06-05 00:35:08 | INFO | Getting forecast: client AR21TY2023 model 9.
+2023-06-05 00:35:08 | INFO | Sending forecast: client AR21TY2023 model 9.
+2023-06-05 00:35:08 | INFO | Forecast: client AR21TY2023 model 9.
+2023-06-05 00:35:08 | CRITICAL | Forecast: client AR21TY2023 model 9. Unexpected number of keys in input data structure dict_keys(['ds', 'y1']) (2) expected (3)!
+2023-06-05 00:35:08 | INFO | Forecast: client AR21TY2023 model 9.
+2023-06-05 00:35:08 | CRITICAL | Forecast: client AR21TY2023 model 9. Unexpected input data structure (expected key ds, y1 or y2 not found) dict_keys(['ds', 'x1', 'y2'])!
+2023-06-05 00:36:54 | INFO | Forecast: client 00000023 model 1.
+2023-06-05 00:36:54 | CRITICAL | Forecast: client 00000023 model 1. Client 00000023 not found!
+2023-06-05 00:36:54 | INFO | Forecast: client AR21TY2023 model 0.
+2023-06-05 00:36:54 | CRITICAL | Forecast: client AR21TY2023 model 0. Model 0 not found for client AR21TY2023!
+2023-06-05 00:36:54 | INFO | Forecast: client AR21TY2023 model 1.
+2023-06-05 00:36:54 | CRITICAL | Forecast: client AR21TY2023 model 1. Unexpected forecast period: received 721 expecting 720!
+2023-06-05 00:36:54 | INFO | Forecast: client AR21TY2023 model 1.
+2023-06-05 00:36:54 | INFO | Getting forecast: client AR21TY2023 model 1.
+2023-06-05 00:36:54 | INFO | Sending forecast: client AR21TY2023 model 1.
+2023-06-05 00:36:54 | INFO | Forecast: client AR21TY2023 model 2.
+2023-06-05 00:36:54 | INFO | Getting forecast: client AR21TY2023 model 2.
+2023-06-05 00:36:54 | INFO | Sending forecast: client AR21TY2023 model 2.
+2023-06-05 00:36:54 | INFO | Forecast: client AR21TY2023 model 3.
+2023-06-05 00:36:54 | INFO | Getting forecast: client AR21TY2023 model 3.
+2023-06-05 00:36:55 | INFO | Sending forecast: client AR21TY2023 model 3.
+2023-06-05 00:36:55 | INFO | Forecast: client AR21TY2023 model 3.
+2023-06-05 00:36:55 | CRITICAL | Forecast: client AR21TY2023 model 3. Unexpected number of keys in input data structure dict_keys(['ds', 'y']) (2) expected (1)!
+2023-06-05 00:36:55 | INFO | Forecast: client AR21TY2023 model 3.
+2023-06-05 00:36:55 | CRITICAL | Forecast: client AR21TY2023 model 3. Unexpected input data structure (expected key (ds) not found) dict_keys(['d'])!
+2023-06-05 00:36:55 | INFO | Forecast: client AR21TY2023 model 3.
+2023-06-05 00:36:55 | INFO | Getting forecast: client AR21TY2023 model 3.
+2023-06-05 00:36:55 | CRITICAL | Forecast: client AR21TY2023 model 3. An error occurred: Given date string a not likely a datetime present at position 0!
+2023-06-05 00:36:55 | INFO | Forecast: client AR21TY2023 model 1.
+2023-06-05 00:36:55 | CRITICAL | Forecast: client AR21TY2023 model 1. Unexpected number of keys in input data structure dict_keys(['ds', 'y', 'x']) (3) expected (2)!
+2023-06-05 00:36:55 | INFO | Forecast: client AR21TY2023 model 1.
+2023-06-05 00:36:55 | CRITICAL | Forecast: client AR21TY2023 model 1. Unexpected input data structure (expected key (ds, y) not found) dict_keys(['ds', 'y1'])!
+2023-06-05 00:36:55 | INFO | Forecast: client AR21TY2023 model 1.
+2023-06-05 00:36:55 | INFO | Getting forecast: client AR21TY2023 model 1.
+2023-06-05 00:36:55 | CRITICAL | Forecast: client AR21TY2023 model 1. An error occurred: could not convert string to float: 'a'!
+2023-06-05 00:36:55 | INFO | Forecast: client AR21TY2023 model 8.
+2023-06-05 00:36:55 | INFO | Getting forecast: client AR21TY2023 model 8.
+2023-06-05 00:36:55 | INFO | Sending forecast: client AR21TY2023 model 8.
+2023-06-05 00:36:55 | INFO | Forecast: client AR21TY2023 model 8.
+2023-06-05 00:36:55 | CRITICAL | Forecast: client AR21TY2023 model 8. Unexpected number of keys in input data structure dict_keys(['ds']) (1) expected (2)!
+2023-06-05 00:36:55 | INFO | Forecast: client AR21TY2023 model 8.
+2023-06-05 00:36:55 | CRITICAL | Forecast: client AR21TY2023 model 8. Unexpected input data structure (expected key ds or x not found) dict_keys(['ds', 'a'])!
+2023-06-05 00:36:55 | INFO | Forecast: client AR21TY2023 model 9.
+2023-06-05 00:36:55 | INFO | Getting forecast: client AR21TY2023 model 9.
+2023-06-05 00:36:55 | INFO | Sending forecast: client AR21TY2023 model 9.
+2023-06-05 00:36:55 | INFO | Forecast: client AR21TY2023 model 9.
+2023-06-05 00:36:55 | CRITICAL | Forecast: client AR21TY2023 model 9. Unexpected number of keys in input data structure dict_keys(['ds', 'y1']) (2) expected (3)!
+2023-06-05 00:36:55 | INFO | Forecast: client AR21TY2023 model 9.
+2023-06-05 00:36:55 | CRITICAL | Forecast: client AR21TY2023 model 9. Unexpected input data structure (expected key ds, y1 or y2 not found) dict_keys(['ds', 'x1', 'y2'])!

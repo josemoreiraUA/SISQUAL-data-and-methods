@@ -287,7 +287,10 @@ def test_forecast_RandomForestRegressor():
     ds = X_pred['ds'].astype('string').tolist()
     x = X_pred['x'].tolist()
 
-    assert len(ds) == forecast_period    
+    #print(ds)
+    #print(x)
+
+    assert len(ds) == forecast_period
     assert len(x) == forecast_period
 
     model_input_data = {'ds' : ds, 'x': x}

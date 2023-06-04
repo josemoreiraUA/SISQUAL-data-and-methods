@@ -159,3 +159,136 @@ forecast
 2023-06-04 18:07:46 | CRITICAL | Forecast: client AR21TY2023 model 9. Unexpected number of keys in input data structure dict_keys(['ds', 'y1']) (2) expected (3)!
 2023-06-04 18:07:46 | INFO | Forecast: client AR21TY2023 model 9.
 2023-06-04 18:07:46 | CRITICAL | Forecast: client AR21TY2023 model 9. Unexpected input data structure (expected key ds, y1 or y2 not found) dict_keys(['ds', 'x1', 'y2'])!
+2023-06-04 18:47:02 | INFO | Forecast: client 00000023 model 1.
+2023-06-04 18:47:02 | CRITICAL | Forecast: client 00000023 model 1. Client 00000023 not found!
+2023-06-04 18:47:02 | INFO | Forecast: client AR21TY2023 model 0.
+2023-06-04 18:47:02 | CRITICAL | Forecast: client AR21TY2023 model 0. Model 0 not found for client AR21TY2023!
+2023-06-04 18:47:02 | INFO | Forecast: client AR21TY2023 model 1.
+2023-06-04 18:47:02 | CRITICAL | Forecast: client AR21TY2023 model 1. Unexpected forecast period: received 721 expecting 720!
+2023-06-04 18:47:02 | INFO | Forecast: client AR21TY2023 model 1.
+2023-06-04 18:47:02 | INFO | Getting forecast: client AR21TY2023 model 1.
+2023-06-04 18:47:02 | INFO | Sending forecast: client AR21TY2023 model 1.
+2023-06-04 18:47:02 | INFO | Forecast: client AR21TY2023 model 2.
+2023-06-04 18:47:02 | INFO | Getting forecast: client AR21TY2023 model 2.
+2023-06-04 18:47:02 | INFO | Sending forecast: client AR21TY2023 model 2.
+2023-06-04 18:47:02 | INFO | Forecast: client AR21TY2023 model 3.
+2023-06-04 18:47:02 | INFO | Getting forecast: client AR21TY2023 model 3.
+2023-06-04 18:47:03 | INFO | Sending forecast: client AR21TY2023 model 3.
+2023-06-04 18:47:03 | INFO | Forecast: client AR21TY2023 model 3.
+2023-06-04 18:47:03 | CRITICAL | Forecast: client AR21TY2023 model 3. Unexpected number of keys in input data structure dict_keys(['ds', 'y']) (2) expected (1)!
+2023-06-04 18:47:03 | INFO | Forecast: client AR21TY2023 model 3.
+2023-06-04 18:47:03 | CRITICAL | Forecast: client AR21TY2023 model 3. Unexpected input data structure (expected key (ds) not found) dict_keys(['d'])!
+2023-06-04 18:47:03 | INFO | Forecast: client AR21TY2023 model 3.
+2023-06-04 18:47:03 | INFO | Getting forecast: client AR21TY2023 model 3.
+2023-06-04 18:47:03 | CRITICAL | Forecast: client AR21TY2023 model 3. An error occurred: Given date string a not likely a datetime present at position 0!
+2023-06-04 18:47:03 | INFO | Forecast: client AR21TY2023 model 1.
+2023-06-04 18:47:03 | CRITICAL | Forecast: client AR21TY2023 model 1. Unexpected number of keys in input data structure dict_keys(['ds', 'y', 'x']) (3) expected (2)!
+2023-06-04 18:47:03 | INFO | Forecast: client AR21TY2023 model 1.
+2023-06-04 18:47:03 | CRITICAL | Forecast: client AR21TY2023 model 1. Unexpected input data structure (expected key (ds, y) not found) dict_keys(['ds', 'y1'])!
+2023-06-04 18:47:03 | INFO | Forecast: client AR21TY2023 model 1.
+2023-06-04 18:47:03 | INFO | Getting forecast: client AR21TY2023 model 1.
+2023-06-04 18:47:03 | CRITICAL | Forecast: client AR21TY2023 model 1. An error occurred: could not convert string to float: 'a'!
+2023-06-04 18:47:03 | INFO | Forecast: client AR21TY2023 model 8.
+2023-06-04 18:47:03 | INFO | Getting forecast: client AR21TY2023 model 8.
+2023-06-04 18:47:03 | INFO | Sending forecast: client AR21TY2023 model 8.
+2023-06-04 18:47:03 | INFO | Forecast: client AR21TY2023 model 8.
+2023-06-04 18:47:03 | CRITICAL | Forecast: client AR21TY2023 model 8. Unexpected number of keys in input data structure dict_keys(['ds']) (1) expected (2)!
+2023-06-04 18:47:03 | INFO | Forecast: client AR21TY2023 model 8.
+2023-06-04 18:47:03 | CRITICAL | Forecast: client AR21TY2023 model 8. Unexpected input data structure (expected key ds or x not found) dict_keys(['ds', 'a'])!
+2023-06-04 18:47:03 | INFO | Forecast: client AR21TY2023 model 9.
+2023-06-04 18:47:03 | INFO | Getting forecast: client AR21TY2023 model 9.
+2023-06-04 18:47:03 | INFO | Sending forecast: client AR21TY2023 model 9.
+2023-06-04 18:47:03 | INFO | Forecast: client AR21TY2023 model 9.
+2023-06-04 18:47:03 | CRITICAL | Forecast: client AR21TY2023 model 9. Unexpected number of keys in input data structure dict_keys(['ds', 'y1']) (2) expected (3)!
+2023-06-04 18:47:04 | INFO | Forecast: client AR21TY2023 model 9.
+2023-06-04 18:47:04 | CRITICAL | Forecast: client AR21TY2023 model 9. Unexpected input data structure (expected key ds, y1 or y2 not found) dict_keys(['ds', 'x1', 'y2'])!
+2023-06-04 19:13:41 | INFO | startup event.
+2023-06-04 22:39:43 | INFO | Forecast: client Test model 8.
+2023-06-04 22:39:43 | INFO | Getting forecast: client Test model 8.
+2023-06-04 22:39:44 | INFO | Sending forecast: client Test model 8.
+2023-06-04 22:39:56 | INFO | Forecast: client Test model 7.
+2023-06-04 22:39:56 | CRITICAL | Forecast: client Test model 7. Unexpected number of keys in input data structure dict_keys(['Month', 'Day', 'Hour']) (3) expected (1)!
+2023-06-04 22:40:11 | INFO | Forecast: client Test model 7.
+2023-06-04 22:40:11 | CRITICAL | Forecast: client Test model 7. Unexpected number of keys in input data structure dict_keys(['Month', 'Day', 'Hour']) (3) expected (1)!
+2023-06-04 22:40:22 | INFO | Forecast: client Test model 8.
+2023-06-04 22:40:22 | INFO | Getting forecast: client Test model 8.
+2023-06-04 22:40:23 | INFO | Sending forecast: client Test model 8.
+2023-06-04 23:10:47 | INFO | Forecast: client Test model 7.
+2023-06-04 23:10:47 | INFO | Getting forecast: client Test model 7.
+2023-06-04 23:10:47 | INFO | Sending forecast: client Test model 7.
+2023-06-04 23:11:02 | INFO | Forecast: client Test model 8.
+2023-06-04 23:11:02 | INFO | Getting forecast: client Test model 8.
+2023-06-04 23:11:03 | INFO | Sending forecast: client Test model 8.
+2023-06-04 23:11:14 | INFO | Forecast: client Test model 7.
+2023-06-04 23:11:14 | INFO | Getting forecast: client Test model 7.
+2023-06-04 23:11:14 | INFO | Sending forecast: client Test model 7.
+2023-06-04 23:11:44 | INFO | Forecast: client Test model 8.
+2023-06-04 23:11:44 | INFO | Getting forecast: client Test model 8.
+2023-06-04 23:11:45 | INFO | Sending forecast: client Test model 8.
+2023-06-04 23:11:58 | INFO | Forecast: client Test model 7.
+2023-06-04 23:11:58 | INFO | Getting forecast: client Test model 7.
+2023-06-04 23:11:58 | INFO | Sending forecast: client Test model 7.
+2023-06-04 23:12:16 | INFO | Forecast: client Test model 7.
+2023-06-04 23:12:16 | INFO | Getting forecast: client Test model 7.
+2023-06-04 23:12:16 | INFO | Sending forecast: client Test model 7.
+2023-06-04 23:12:24 | INFO | Forecast: client Test model 8.
+2023-06-04 23:12:24 | INFO | Getting forecast: client Test model 8.
+2023-06-04 23:12:24 | INFO | Sending forecast: client Test model 8.
+2023-06-04 23:12:31 | INFO | Forecast: client Test model 7.
+2023-06-04 23:12:31 | INFO | Getting forecast: client Test model 7.
+2023-06-04 23:12:31 | INFO | Sending forecast: client Test model 7.
+2023-06-04 23:18:19 | INFO | Forecast: client Test model 6.
+2023-06-04 23:18:19 | INFO | Getting forecast: client Test model 6.
+2023-06-04 23:18:19 | INFO | Sending forecast: client Test model 6.
+2023-06-04 23:18:30 | INFO | Forecast: client Test model 7.
+2023-06-04 23:18:30 | INFO | Getting forecast: client Test model 7.
+2023-06-04 23:18:30 | INFO | Sending forecast: client Test model 7.
+2023-06-04 23:18:34 | INFO | Forecast: client Test model 8.
+2023-06-04 23:18:34 | INFO | Getting forecast: client Test model 8.
+2023-06-04 23:18:35 | INFO | Sending forecast: client Test model 8.
+2023-06-04 23:20:47 | INFO | Forecast: client Test model 6.
+2023-06-04 23:20:47 | INFO | Getting forecast: client Test model 6.
+2023-06-04 23:20:47 | INFO | Sending forecast: client Test model 6.
+2023-06-04 23:21:01 | INFO | Forecast: client Test model 7.
+2023-06-04 23:21:01 | INFO | Getting forecast: client Test model 7.
+2023-06-04 23:21:01 | INFO | Sending forecast: client Test model 7.
+2023-06-04 23:21:08 | INFO | Forecast: client Test model 8.
+2023-06-04 23:21:08 | INFO | Getting forecast: client Test model 8.
+2023-06-04 23:21:08 | INFO | Sending forecast: client Test model 8.
+2023-06-04 23:37:53 | INFO | shutdown event.
+2023-06-04 23:38:06 | INFO | startup event.
+2023-06-04 23:38:37 | INFO | shutdown event.
+2023-06-04 23:38:46 | INFO | startup event.
+2023-06-04 23:38:52 | INFO | Forecast: client Test model 6.
+2023-06-04 23:38:52 | INFO | Getting forecast: client Test model 6.
+2023-06-04 23:38:52 | INFO | Sending forecast: client Test model 6.
+2023-06-04 23:39:04 | INFO | Forecast: client Test model 7.
+2023-06-04 23:39:04 | INFO | Getting forecast: client Test model 7.
+2023-06-04 23:39:04 | INFO | Sending forecast: client Test model 7.
+2023-06-04 23:39:17 | INFO | Forecast: client Test model 8.
+2023-06-04 23:39:17 | INFO | Getting forecast: client Test model 8.
+2023-06-04 23:39:18 | INFO | Sending forecast: client Test model 8.
+2023-06-04 23:39:27 | INFO | Forecast: client Test model 8.
+2023-06-04 23:39:27 | INFO | Getting forecast: client Test model 8.
+2023-06-04 23:39:27 | INFO | Sending forecast: client Test model 8.
+2023-06-04 23:39:34 | INFO | Forecast: client Test model 6.
+2023-06-04 23:39:34 | INFO | Getting forecast: client Test model 6.
+2023-06-04 23:39:34 | INFO | Sending forecast: client Test model 6.
+2023-06-04 23:40:38 | INFO | Forecast: client Test model 6.
+2023-06-04 23:40:38 | INFO | Getting forecast: client Test model 6.
+2023-06-04 23:40:38 | INFO | Sending forecast: client Test model 6.
+2023-06-04 23:42:20 | INFO | Forecast: client Test model 7.
+2023-06-04 23:42:20 | INFO | Getting forecast: client Test model 7.
+2023-06-04 23:42:20 | INFO | Sending forecast: client Test model 7.
+2023-06-05 00:27:29 | INFO | Forecast: client Test model 9.
+2023-06-05 00:27:29 | INFO | Getting forecast: client Test model 9.
+2023-06-05 00:27:29 | INFO | Sending forecast: client Test model 9.
+2023-06-05 00:37:18 | INFO | Forecast: client Test model 9.
+2023-06-05 00:37:18 | INFO | Getting forecast: client Test model 9.
+2023-06-05 00:37:18 | INFO | Sending forecast: client Test model 9.
+2023-06-05 00:37:45 | INFO | Forecast: client Test model 9.
+2023-06-05 00:37:45 | INFO | Getting forecast: client Test model 9.
+2023-06-05 00:37:45 | INFO | Sending forecast: client Test model 9.
+2023-06-05 00:39:21 | INFO | Forecast: client Test model 9.
+2023-06-05 00:39:21 | INFO | Getting forecast: client Test model 9.
+2023-06-05 00:39:21 | INFO | Sending forecast: client Test model 9.

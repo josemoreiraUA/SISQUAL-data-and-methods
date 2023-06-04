@@ -791,6 +791,10 @@ def test_train_RandomForestRegressor_model():
     x = data['x'].tolist()
     y = data['y'].tolist()
 
+    #print(ds)
+    #print(x)
+    #print(y)
+
     N = forecast_period
 
     ds = ds[:-forecast_period]

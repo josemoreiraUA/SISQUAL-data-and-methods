@@ -116,7 +116,8 @@ async def prophet_forecast(model_id: int, params: ForecastIn, model_storage_name
     forecast = forecast['yhat'].tolist()
     forecast = [0 if x < 0 else x for x in forecast]
     
-    return ForecastOut(ds=forecast_input_data['ds'].astype('string').tolist(), forecast=forecast)
+    #return ForecastOut(ds=forecast_input_data['ds'].astype('string').tolist(), forecast=forecast)
+    return ForecastOut(ds=params.model_input_data['ds'], forecast=forecast)    
 
 async def mlp_forecast(model_id: int, params: ForecastIn, model_storage_name: str, forecast_period: int) -> ForecastOut:
     """
@@ -129,7 +130,8 @@ async def mlp_forecast(model_id: int, params: ForecastIn, model_storage_name: st
     #forecast_input_data = np.asarray(params.model_input_data)
     forecast_input_data = pd.DataFrame(params.model_input_data)
 
-    ds = forecast_input_data['ds'].tolist()
+    #ds = forecast_input_data['ds'].tolist()
+    ds = params.model_input_data['ds']
     y = np.asarray(forecast_input_data['y'])
 
     if y.size != len(ds):
@@ -153,6 +155,7 @@ async def mlp_forecast(model_id: int, params: ForecastIn, model_storage_name: st
     forecast = forecast.flatten().tolist()
     forecast = [0 if x < 0 else x for x in forecast]
 	
+    # compute forecast datetimes
     format = "%Y-%m-%d %H:%M:%S"
     ini_datetime = datetime.strptime(ds[len(ds) - 1], format)
     ds = []
@@ -171,6 +174,11 @@ async def hgbr_forecast(model_id: int, params: ForecastIn, model_storage_name: s
 
     client_id = params.client_id
 
+    # validation step
+    if len(params.model_input_data['ds']) != forecast_period:
+        log_message(f'Forecast: client {params.client_id} model {model_id}. Unexpected imput data size: {len(params.model_input_data["ds"])} for defined forecast period: {forecast_period}!', MessageLevel.Critical)
+        raise HTTPException(status_code=400, detail=f'Unexpected imput data size: {len(params.model_input_data["ds"])} for defined forecast period: {forecast_period}!')
+
     # load input forecast data
     input_data = pd.DataFrame(params.model_input_data)
     input_data['ds'] = pd.to_datetime(input_data['ds'])
@@ -181,9 +189,9 @@ async def hgbr_forecast(model_id: int, params: ForecastIn, model_storage_name: s
 
     forecast_input_data = pd.DataFrame.from_dict({'Month': month, 'Day': weekday, 'Hour': hour})
 
-    if len(params.model_input_data['ds']) != forecast_period:
-        log_message(f'Forecast: client {params.client_id} model {model_id}. Unexpected imput data size: {len(params.model_input_data["ds"])} for defined forecast period: {forecast_period}!', MessageLevel.Critical)
-        raise HTTPException(status_code=400, detail=f'Unexpected imput data size: {len(params.model_input_data["ds"])} for defined forecast period: {forecast_period}!')
+    #if len(params.model_input_data['ds']) != forecast_period:
+    #    log_message(f'Forecast: client {params.client_id} model {model_id}. Unexpected imput data size: {len(params.model_input_data["ds"])} for defined forecast period: {forecast_period}!', MessageLevel.Critical)
+    #    raise HTTPException(status_code=400, detail=f'Unexpected imput data size: {len(params.model_input_data["ds"])} for defined forecast period: {forecast_period}!')
 
     # load model
     mlp_model = await load_model(params.client_id, model_id, settings.MODELS_DIR + client_id + '\\' + model_storage_name)
