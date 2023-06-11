@@ -401,10 +401,11 @@ def create_html_report(
     elif model_in_db.type == ForecastingModels.MLPRegressor and type_of_forecast == TypeForecast.CustomerFlowAndSizing.name:
         d_metrics = {}
 
-        d_metrics['Tickets Raw MAE'] = model_metrics['tickets_raw']['mae']
-        d_metrics['Tickets Round MAE'] = model_metrics['tickets_round']['mae']
-        d_metrics['Tickets Floor MAE'] = model_metrics['tickets_floor']['mae']
-        d_metrics['Tickets Ceil MAE'] = model_metrics['tickets_ceil']['mae']
+        d_metrics['Tickets MAE'] = model_metrics['tickets_raw']['mae']
+        #d_metrics['Tickets Raw MAE'] = model_metrics['tickets_raw']['mae']
+        #d_metrics['Tickets Round MAE'] = model_metrics['tickets_round']['mae']
+        #d_metrics['Tickets Floor MAE'] = model_metrics['tickets_floor']['mae']
+        #d_metrics['Tickets Ceil MAE'] = model_metrics['tickets_ceil']['mae']
 
         d_metrics['Team Size Raw MAE'] = model_metrics['team_size_raw']['mae']
         d_metrics['Team Size Round MAE'] = model_metrics['team_size_round']['mae']
