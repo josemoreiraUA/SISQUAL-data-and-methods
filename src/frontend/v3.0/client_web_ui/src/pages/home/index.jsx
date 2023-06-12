@@ -108,7 +108,7 @@ const Home = () => {
                >
                     <DashboardHeader />
                     <div className="container px-5 py-12 mx-auto lg:px-20">
-						<div className="fixed bottom-[120px]" style={{ overlay: {zIndex: 1} }}>
+						<div className="fixed bottom-[150px]" style={{ overlay: {zIndex: 1} }}>
 
 							<Link 
 								to="/clients"
